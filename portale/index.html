@@ -10,14 +10,18 @@
     <link href="css/style.css" rel="stylesheet">
 
     <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.js"></script>
     <script src="js/ui-bootstrap-tpls-0.12.0.min.js"></script>
     <script src="js/main.js"></script>
 
   </head>
   <body ng-controller="Controller">
     <div class="container">
+      <br>
+      <div ng-view>{{ param }} ...testing..</div>
+      <br><br>
       <div ng-repeat="post in posts">
-        <p class="lead">{{ post.title }}</p>
+        <p class="lead"><a href="#/{{ post.slug }}">{{ post.title }}</a></p>
         <p>{{ post.content }}</p>
         <br>
         <br>

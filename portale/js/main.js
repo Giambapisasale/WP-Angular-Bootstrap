@@ -1,5 +1,17 @@
 (function () {
-  var app = angular.module('portale', ['ui.bootstrap']);
+  var app = angular.module('portale', ['ui.bootstrap', 'ngRoute']);
+
+  // routing
+  app.config(function($routeProvider) {
+    
+    $routeProvider
+      .when('/primo-articolo', {
+        templateUrl: '../wordpress/primo-articolo'
+      })
+      .otherwise({
+        redirectTo: '/'
+      });
+  });
 
   app.controller("Controller", function($scope, $http) {
 
@@ -18,5 +30,5 @@
     });
 
   });
-
+  
 })()
