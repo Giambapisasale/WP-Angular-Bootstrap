@@ -14,7 +14,14 @@
     <script src="js/main.js"></script>
 
   </head>
-  <body>
-
+  <body ng-controller="Controller">
+    <div class="container">
+      <div ng-repeat="post in posts">
+        <p class="lead">{{ post.title }}</p>
+        <p>{{ post.content }}</p>
+        <br>
+        <br>
+      </div>
+    </div>
   </body>
 </html>
