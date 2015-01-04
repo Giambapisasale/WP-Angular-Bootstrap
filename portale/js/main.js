@@ -5,12 +5,23 @@
   app.config(function($routeProvider) {
     
     $routeProvider
-      .when('/primo-articolo', {
-        templateUrl: '../wordpress/primo-articolo'
+      .when('/:param', {
+        controller: 'RouteController',
+        template: "{{ param }}"
       })
       .otherwise({
         redirectTo: '/'
       });
+  });
+  
+  app.controller("RouteController", function($scope, $routeParams, $http) {
+    $http.get("/wordpress/wp-json/posts/"+$routeParams.param)
+    .success(function(data, status, header, config) {
+      $scope.param = data.content;
+    })
+    .error(function(data, status, header, config) {
+      alert("Errore");
+    });
   });
 
   app.controller("Controller", function($scope, $http) {
