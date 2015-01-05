@@ -33,40 +33,47 @@
   app.controller("HomeController", function($scope, $routeParams, $http) {
   });
 
-  app.controller("PostController", function($scope, $routeParams, $http) {
+  app.controller("PostController", function($scope, $routeParams, $http, $sce) {
     $http.get( wp + "posts/" + $routeParams.id )
     .success(function(data, status, header, config) {
       $scope.post = data;
+      $scope.post.content = $sce.trustAsHtml(data.content);
     })
     .error(function(data, status, header, config) {
       console.log("Error in $http.get() of PostController");
     });
   });
 
-  app.controller("CategoryController", function($scope, $routeParams, $http) {
+  app.controller("CategoryController", function($scope, $routeParams, $http, $sce) {
     $http.get( wp + "posts?filter[cat]=" + $routeParams.id )
     .success(function(data, status, header, config) {
       $scope.posts = data;
+      for(var i in $scope.posts)
+        $scope.posts[i].content = $sce.trustAsHtml(data[i].content);
     })
     .error(function(data, status, header, config) {
       console.log("Error in $http.get() of CategoryController");
     });
   });
 
-  app.controller("PageController", function($scope, $routeParams, $http) {
+  app.controller("PageController", function($scope, $routeParams, $http, $sce) {
     $http.get( wp + "pages/" + $routeParams.id )
     .success(function(data, status, header, config) {
       $scope.page = data;
+      $scope.page.content = $sce.trustAsHtml(data.content);
     })
     .error(function(data, status, header, config) {
       console.log("Error in $http.get() of PageController");
     });
   });
 
-  app.controller("AuthorController", function($scope, $routeParams, $http) {
+  app.controller("AuthorController", function($scope, $routeParams, $http, $sce) {
     $http.get( wp + "posts?filter[author]=" + $routeParams.id )
     .success(function(data, status, header, config) {
       $scope.posts = data;
+      $scope.posts.content = $sce.trustAsHtml(data.content);
+      for(var i in $scope.posts)
+        $scope.posts[i].content = $sce.trustAsHtml(data[i].content);
     })
     .error(function(data, status, header, config) {
       console.log("Error in $http.get() of AuthorController");
