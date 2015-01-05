@@ -20,6 +20,10 @@
       controller: 'PageController',
       templateUrl: "partials/page.html"
     })
+    .when('/author/:id', {
+      controller: 'AuthorController',
+      templateUrl: "partials/author.html"
+    })
     .otherwise({
       controller: 'HomeController',
       templateUrl: "partials/home.html"
@@ -56,6 +60,16 @@
     })
     .error(function(data, status, header, config) {
       console.log("Error in $http.get() of PageController");
+    });
+  });
+
+  app.controller("AuthorController", function($scope, $routeParams, $http) {
+    $http.get( wp + "posts?filter[author]=" + $routeParams.id )
+    .success(function(data, status, header, config) {
+      $scope.posts = data;
+    })
+    .error(function(data, status, header, config) {
+      console.log("Error in $http.get() of AuthorController");
     });
   });
 

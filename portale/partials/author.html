@@ -1,0 +1,4 @@
+<div ng-repeat="post in posts">
+  <p class="lead"><a ng-href="#/post/{{ post.ID }}">{{ post.title }}</a></p>
+  <div ng-bind-html="post.content"></div>
+</div>
