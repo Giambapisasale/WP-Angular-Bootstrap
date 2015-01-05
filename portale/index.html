@@ -34,10 +34,10 @@
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"  ng-class="{'in':!navCollapsed}">
             <ul class="nav navbar-nav">
               <li><a href="#">Home</a></li>
-              <li ng-repeat="category in categories"><a href="#">{{ category.name }}</a></li>
+              <li ng-repeat="category in categories"><a ng-href="#/category/{{ category.ID }}">{{ category.name }}</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li ng-repeat="page in pages"><a href="#">{{ page.title }}</a></li>
+              <li ng-repeat="page in pages"><a ng-href="#/page/{{ page.ID }}">{{ page.title }}</a></li>
             </ul>
           </div>
         </div>
