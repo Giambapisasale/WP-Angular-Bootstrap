@@ -16,10 +16,17 @@
       controller: 'CategoryController',
       templateUrl: "partials/category.html"
     })
+    .when('/page/:id', {
+      controller: 'PageController',
+      templateUrl: "partials/page.html"
+    })
     .otherwise({
-      controller: 'Home',
+      controller: 'HomeController',
       templateUrl: "partials/home.html"
     });
+  });
+
+  app.controller("HomeController", function($scope, $routeParams, $http) {
   });
 
   app.controller("PostController", function($scope, $routeParams, $http) {
@@ -28,7 +35,7 @@
       $scope.post = data;
     })
     .error(function(data, status, header, config) {
-      console.log("Error in $http.get() of RouteController");
+      console.log("Error in $http.get() of PostController");
     });
   });
 
@@ -38,7 +45,17 @@
       $scope.posts = data;
     })
     .error(function(data, status, header, config) {
-      console.log("Error in $http.get() of RouteController");
+      console.log("Error in $http.get() of CategoryController");
+    });
+  });
+
+  app.controller("PageController", function($scope, $routeParams, $http) {
+    $http.get( wp + "pages/" + $routeParams.id )
+    .success(function(data, status, header, config) {
+      $scope.page = data;
+    })
+    .error(function(data, status, header, config) {
+      console.log("Error in $http.get() of PageController");
     });
   });
 
