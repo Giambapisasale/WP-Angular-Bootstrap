@@ -1,4 +1,5 @@
 <div>
   <p class="lead"><a ng-href="#/post/{{ post.ID }}">{{ post.title }}</a></p>
+  <p>Scritto {{ post.date | date : "fullDate" }} da {{ post.author.nickname }}</p>
   <div ng-bind-html="post.content"></div>
 </div>
