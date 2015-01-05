@@ -17,6 +17,28 @@
   </head>
   <body ng-controller="Controller">
     <div class="container">
+
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Portale</a>
+          </div>
+
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"  ng-class="{'in':!navCollapsed}">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">Link1</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
       <br>
       <h4>Clicca nel titolo dell'articolo per caricare il contenuto</h4>
       <br><br>
