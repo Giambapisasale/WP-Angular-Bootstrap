@@ -1,4 +1,10 @@
 <div ng-repeat="post in posts">
-  <p class="lead"><a ng-href="#/post/{{ post.ID }}">{{ post.title }}</a></p>
+  <p class="lead">
+    <a ng-href="#/post/{{ post.ID }}">{{ post.title }}</a>
+    <br>
+    <small class="writtenby">
+      Scritto <u>{{ post.date | date : "fullDate" }}</u> da <i><a href="#/author/{{ post.author.ID }}">{{ post.author.nickname }}</a></i> in <a href="#/category/{{ post.terms.category[0].ID }}">{{ post.terms.category[0].name }}</a>
+    </small>
+  </p>
   <div ng-bind-html="post.content"></div>
 </div>
