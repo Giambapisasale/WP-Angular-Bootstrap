@@ -6,21 +6,36 @@
 
   // routing
   app.config(function($routeProvider) {
-    
+
     $routeProvider
-      .when('/:param', {
-        controller: 'RouteController',
-        template: "{{ param }}"
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
+    .when('/post/:id', {
+      controller: 'PostController',
+      templateUrl: "partials/post.html"
+    })
+    .when('/category/:id', {
+      controller: 'CategoryController',
+      templateUrl: "partials/category.html"
+    })
+    .otherwise({
+      controller: 'Home',
+      templateUrl: "partials/home.html"
+    });
   });
-  
-  app.controller("RouteController", function($scope, $routeParams, $http) {
-    $http.get( wp + "posts/" + $routeParams.param )
+
+  app.controller("PostController", function($scope, $routeParams, $http) {
+    $http.get( wp + "posts/" + $routeParams.id )
     .success(function(data, status, header, config) {
-      $scope.param = data.content;
+      $scope.post = data;
+    })
+    .error(function(data, status, header, config) {
+      console.log("Error in $http.get() of RouteController");
+    });
+  });
+
+  app.controller("CategoryController", function($scope, $routeParams, $http) {
+    $http.get( wp + "posts?filter[cat]=" + $routeParams.id )
+    .success(function(data, status, header, config) {
+      $scope.posts = data;
     })
     .error(function(data, status, header, config) {
       console.log("Error in $http.get() of RouteController");
@@ -45,19 +60,4 @@
     });
   });
 
-  app.controller("Controller", function($scope, $http) {
-
-    // chiamata a WP API
-    var call = "posts";
-
-    $http.get( wp + call )
-    .success(function(data, status, header, config) {
-      $scope.posts = data;
-    })
-    .error(function(data, status, header, config) {
-      console.log("Error in $http.get() of Controller");
-    });
-
-  });
-  
 })()

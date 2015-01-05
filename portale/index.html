@@ -16,7 +16,7 @@
     <script src="js/main.js"></script>
 
   </head>
-  <body ng-controller="Controller">
+  <body>
     <div class="container">
 
       <nav class="navbar navbar-default" ng-controller="MenuController as menu">
@@ -33,7 +33,7 @@
 
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"  ng-class="{'in':!navCollapsed}">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">Home</a></li>
               <li ng-repeat="category in categories"><a href="#">{{ category.name }}</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -43,18 +43,8 @@
         </div>
       </nav>
 
-      <br>
-      <h4>Clicca nel titolo dell'articolo per caricare il contenuto</h4>
-      <br><br>
-      <p>Contenuto:</p>
-      <div ng-view ng-bind-html="param"></div>
-      <br><br>
-      <div ng-repeat="post in posts">
-        <p class="lead"><a href="#/{{ post.ID }}">{{ post.title }}</a></p>
-        <div ng-bind-html="post.content">{{ post.content }}</div>
-        <br>
-        <br>
-      </div>
+      <div ng-view></div>
+
     </div>
   </body>
 </html>
