@@ -1,6 +1,9 @@
 (function () {
   var app = angular.module('portale', ['ui.bootstrap', 'ngRoute', 'ngSanitize']);
 
+  // indirizzo di wordpress con wp-json plugin
+  var wp = "/wordpress/wp-json/";
+
   // routing
   app.config(function($routeProvider) {
     
@@ -15,7 +18,7 @@
   });
   
   app.controller("RouteController", function($scope, $routeParams, $http) {
-    $http.get("/wordpress/wp-json/posts/"+$routeParams.param)
+    $http.get( wp + "posts/" + $routeParams.param )
     .success(function(data, status, header, config) {
       $scope.param = data.content;
     })
@@ -24,10 +27,17 @@
     });
   });
 
-  app.controller("Controller", function($scope, $http) {
+  app.controller("MenuController", function($scope, $http) {
+    $http.get( wp + "posts/types/posts/taxonomies/category/terms" )
+    .success(function(data, status, header, config) {
+      $scope.categories = data;
+    })
+    .error(function(data, status, header, config) {
+      alert("Errore");
+    });
+  });
 
-    // indirizzo di wordpress con wp-json plugin
-    var wp = "/wordpress/wp-json/";
+  app.controller("Controller", function($scope, $http) {
 
     // chiamata a WP API
     var call = "posts";

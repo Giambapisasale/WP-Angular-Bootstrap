@@ -19,7 +19,7 @@
   <body ng-controller="Controller">
     <div class="container">
 
-      <nav class="navbar navbar-default">
+      <nav class="navbar navbar-default" ng-controller="MenuController as menu">
         <div class="container-fluid">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
@@ -34,7 +34,7 @@
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"  ng-class="{'in':!navCollapsed}">
             <ul class="nav navbar-nav">
               <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">Link1</a></li>
+              <li ng-repeat="category in categories"><a href="#">{{ category.name }}</a></li>
             </ul>
           </div>
         </div>
