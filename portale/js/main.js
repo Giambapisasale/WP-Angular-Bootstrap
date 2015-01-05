@@ -23,7 +23,7 @@
       $scope.param = data.content;
     })
     .error(function(data, status, header, config) {
-      alert("Errore");
+      console.log("Error in $http.get() of RouteController");
     });
   });
 
@@ -33,7 +33,7 @@
       $scope.categories = data;
     })
     .error(function(data, status, header, config) {
-      alert("Errore");
+      console.log("Error in $http.get() of MenuController (categories)");
     });
 
     $http.get( wp + "pages" )
@@ -41,7 +41,7 @@
       $scope.pages = data;
     })
     .error(function(data, status, header, config) {
-      alert("Errore");
+      console.log("Error in $http.get() of MenuController (pages)");
     });
   });
 
@@ -55,7 +55,7 @@
       $scope.posts = data;
     })
     .error(function(data, status, header, config) {
-      alert("Errore");
+      console.log("Error in $http.get() of Controller");
     });
 
   });
