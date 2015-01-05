@@ -35,6 +35,14 @@
     .error(function(data, status, header, config) {
       alert("Errore");
     });
+
+    $http.get( wp + "pages" )
+    .success(function(data, status, header, config) {
+      $scope.pages = data;
+    })
+    .error(function(data, status, header, config) {
+      alert("Errore");
+    });
   });
 
   app.controller("Controller", function($scope, $http) {
