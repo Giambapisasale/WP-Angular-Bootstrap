@@ -2,7 +2,7 @@
   <p class="lead">
     <a ng-href="#/post/{{ post.ID }}">{{ post.title }}</a>
     <br>
-    <small class="writtenby">Scritto <u>{{ post.date | date : "fullDate" }}</u> da <i><a href="#/author/{{ post.author.ID }}">{{ post.author.nickname }}</a></i></small>
+    <small class="writtenby">Scritto <u>{{ post.date | date : "fullDate" }}</u> da <i><a href="#/author/{{ post.author.ID }}">{{ post.author.nickname }}</a></i> Categoria:{{ post.terms.category[0].name }}</small>
   </p>
   <div ng-bind-html="post.content"></div>
 </div>
