@@ -1,5 +1,5 @@
 (function () {
-  var app = angular.module('portale', ['ui.bootstrap', 'ngRoute']);
+  var app = angular.module('portale', ['ui.bootstrap', 'ngRoute', 'ngSanitize']);
 
   // routing
   app.config(function($routeProvider) {

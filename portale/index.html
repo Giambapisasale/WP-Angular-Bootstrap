@@ -11,6 +11,7 @@
 
     <script src="js/angular.min.js"></script>
     <script src="js/angular-route.min.js"></script>
+    <script src="js/angular-sanitize.min.js"></script>
     <script src="js/ui-bootstrap-tpls-0.12.0.min.js"></script>
     <script src="js/main.js"></script>
 
@@ -43,11 +44,11 @@
       <h4>Clicca nel titolo dell'articolo per caricare il contenuto</h4>
       <br><br>
       <p>Contenuto:</p>
-      <div ng-view><p><br> {{ param }}</p></div>
+      <div ng-view ng-bind-html="param"></div>
       <br><br>
       <div ng-repeat="post in posts">
         <p class="lead"><a href="#/{{ post.ID }}">{{ post.title }}</a></p>
-        <p>{{ post.content }}</p>
+        <div ng-bind-html="post.content">{{ post.content }}</div>
         <br>
         <br>
       </div>
