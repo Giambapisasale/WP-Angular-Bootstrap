@@ -1,5 +1,5 @@
 (function () {
-  var app = angular.module('portale', ['ui.bootstrap', 'ngRoute', 'ngSanitize']);
+  var app = angular.module('portale', ['ui.bootstrap', 'ngRoute', 'ngSanitize', 'routeStyles']);
 
   // indirizzo di wordpress con wp-json plugin
   var wp = "/wordpress/wp-json/";
@@ -24,10 +24,18 @@
       controller: 'AuthorController',
       templateUrl: "partials/author.html"
     })
+    .when('/demo', {
+      controller: 'DemoController',
+      templateUrl: "partials/demo.html",
+      css: "css/demo.css"
+    })
     .otherwise({
       controller: 'HomeController',
       templateUrl: "partials/home.html"
     });
+  });
+
+  app.controller("DemoController", function($scope, $routeParams, $http) {
   });
 
   app.controller("HomeController", function($scope, $routeParams, $http) {
