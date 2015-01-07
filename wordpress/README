@@ -1,0 +1,30 @@
+
+CONFIGURARE FILE BASH
+
+Modificare le seguenti variabili 
+
+User corrisponde alla user del nostro database;
+
+password , password del database;
+
+host, di default localhost;
+
+db_name : nome del database che contiene wordpress;
+
+path : Indica il path dove richiamare mysqldump e mysql;
+
+In aggiunta su restore.sh modificare queste variabili:
+
+url: Url di wordpress;
+
+home: home di wordpress;
+
+
+Creare DUMP del database
+
+su riga di comando andare sulla cartella backupandrestore presente su wordpress, digitare il comando bash dump.sh
+
+RESTORE DATABASE ( Update database)
+
+Per creare un restore o andare sulla cartella backupandrestore presente su wordpress, digitare il comando bash restore.sh
+
