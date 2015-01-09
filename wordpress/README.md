@@ -12,3 +12,5 @@ Istruzioni configurazione restore/dump database
 - Eventuali modifiche alla struttura o ai contenuti del database di wordpress devono essere esportate ed è necessario eseguire il commit del dump **wordpress.sql**
 
 - Le credenziali di accesso a wordpress sono username **admin** e password **testadmin**
+
+- Per utilizzare il plugin wp-api è necessario abilitare i permalink, se i permalink non sono abilitati potrebbe essere necessario [modificare la configurazione di apache](http://stackoverflow.com/questions/18740419/how-to-set-allowoverride-all).
