@@ -25,5 +25,5 @@ su riga di comando andare sulla cartella backupandrestore presente su wordpress,
 
 RESTORE DATABASE ( Update database)
 
-Per creare un restore o andare sulla cartella backupandrestore presente su wordpress, digitare il comando bash restore.sh
+Per creare un restore o fare un upload di un dump, andare sulla cartella backupandrestore presente su wordpress, digitare il comando bash restore.sh
 
