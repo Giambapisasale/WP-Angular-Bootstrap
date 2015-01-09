@@ -13,7 +13,7 @@
 # Set default file permissions
  umask 177
 # Dump database into SQL file
-  $path/mysql --user=$user --password=$password  wordpress < /Applications/MAMP/htdocs/$db_name.sql
+  $path/mysql --user=$user --password=$password  wordpress < $db_name.sql
  
  $path/mysql --user=$user --password=$password  wordpress --execute="UPDATE wp_options SET option_value = '$url' where option_name='siteurl'"
   $path/mysql --user=$user --password=$password  wordpress --execute="UPDATE wp_options SET option_value = '$home' where option_name='home'"
