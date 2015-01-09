@@ -1,19 +1,35 @@
 #!/bin/bash
-#RESTORE
-# Database credentials
- user="root"
- password="root"
- host="localhost"
- db_name="wordpress"
- url="http://localhost:8888/wordpress"
- home="http://localhost:8888/wordpress"
- path="/Applications/MAMP/Library/bin"
-# Other options
 
-# Set default file permissions
- umask 177
-# Dump database into SQL file
-  $path/mysql --user=$user --password=$password  wordpress < $db_name.sql
- 
- $path/mysql --user=$user --password=$password  wordpress --execute="UPDATE wp_options SET option_value = '$url' where option_name='siteurl'"
-  $path/mysql --user=$user --password=$password  wordpress --execute="UPDATE wp_options SET option_value = '$home' where option_name='home'"
+# utente root
+user="root"
+
+# password utente root
+password="root"
+
+# indirizzo host
+host="localhost"
+
+# indirizzo istanza wordpress
+url="http://localhost/WP-Angular-Bootstrap/wordpress/"
+home="http://localhost/WP-Angular-Bootstrap/wordpress/"
+
+# path di mysql, esempio: /path/to/mysql
+mysql="mysql"
+
+# default file permission
+umask 177
+
+# crea database se non esiste
+$mysql --user=$user --password=$password --execute="CREATE DATABASE IF NOT EXISTS wordpress;"
+
+# crea utente "portale" se non esiste, con password "fragole", e assegna tutti i privilegi per il database wordpress
+$mysql --user=$user --password=$password --execute="GRANT ALL PRIVILEGES ON wordpress.* To 'portale'@'localhost' IDENTIFIED BY 'fragole';"
+
+# importa dump
+$mysql --user=$user --password=$password  wordpress < wordpress.sql
+
+# configura url wordpress
+$mysql --user=$user --password=$password  wordpress --execute="UPDATE wp_options SET option_value = '$url' where option_name='siteurl';"
+
+# configura home wordpress
+$mysql --user=$user --password=$password  wordpress --execute="UPDATE wp_options SET option_value = '$home' where option_name='home';"
