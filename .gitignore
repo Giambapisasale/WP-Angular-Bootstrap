@@ -1,2 +1,3 @@
 /wordpress/dumpAndRestore/dump.sh
 /wordpress/dumpAndRestore/restore.sh
+*.DS_Store
