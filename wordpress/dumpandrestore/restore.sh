@@ -16,9 +16,6 @@ home="http://localhost/WP-Angular-Bootstrap/wordpress/"
 # path di mysql, esempio: /path/to/mysql
 mysql="mysql"
 
-# default file permission
-umask 177
-
 # crea database se non esiste
 $mysql --user=$user --password=$password --execute="CREATE DATABASE IF NOT EXISTS wordpress;"
 
