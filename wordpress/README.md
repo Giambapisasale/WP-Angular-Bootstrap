@@ -13,4 +13,6 @@ Istruzioni configurazione restore/dump database
 
 - Le credenziali di accesso a wordpress sono username **admin** e password **testadmin**
 
-- Per utilizzare il plugin wp-api è necessario abilitare i permalink, se i permalink non sono abilitati potrebbe essere necessario [modificare la configurazione di apache](http://stackoverflow.com/questions/18740419/how-to-set-allowoverride-all).
+- Per utilizzare il plugin wp-api è necessario abilitare i permalink, se i permalink non sono abilitati potrebbe essere necessario [modificare la configurazione di apache](http://stackoverflow.com/questions/18740419/how-to-set-allowoverride-all)
+
+- Se il percorso dove risiede wordpress è diverso da http://localhost**/WP-Angular-Bootstrap/wordpress/**, modificare il file .htaccess della cartella wordpress sostituendo a **/WP-Angular-Bootstrap/wordpress/** il percorso dell'istanza di wordpress (ad esempio se http://localhost/sito/wordpress/ sostituire con **/sito/wordpress**)
