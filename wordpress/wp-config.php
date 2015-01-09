@@ -10,8 +10,8 @@
  * MySQL dal proprio fornitore di hosting.
  *
  * Questo file viene utilizzato, durante l'installazione, dallo script
- * di creazione di wp-config.php. Non Ë necessario utilizzarlo solo via
- * web,Ë anche possibile copiare questo file in "wp-config.php" e
+ * di creazione di wp-config.php. Non √® necessario utilizzarlo solo via
+ * web,√® anche possibile copiare questo file in "wp-config.php" e
  * rimepire i valori corretti.
  *
  * @package WordPress
@@ -43,7 +43,7 @@ define('DB_COLLATE', '');
  *
  * Modificarle con frasi univoche differenti!
  * E' possibile generare tali chiavi utilizzando {@link https://api.wordpress.org/secret-key/1.1/salt/ servizio di chiavi-segrete di WordPress.org}
- * E' possibile cambiare queste chiavi in qualsiasi momento, per invalidare tuttii cookie esistenti. CiÚ forzer‡ tutti gli utenti ad effettuare nuovamente il login.
+ * E' possibile cambiare queste chiavi in qualsiasi momento, per invalidare tuttii cookie esistenti. Ci√≤ forzer√† tutti gli utenti ad effettuare nuovamente il login.
  *
  * @since 2.6.0
  */
@@ -68,7 +68,7 @@ define('NONCE_SALT',       'W[?`};U#UH|72S1]M%+z6u#j-:vM@ClLI?C}y4x%h;)LS/s3Ph1F
 $table_prefix  = 'wp_';
 
 /**
- * Per gli sviluppatori: modalit‡ di debug di WordPress.
+ * Per gli sviluppatori: modalit√† di debug di WordPress.
  *
  * Modificare questa voce a TRUE per abilitare la visualizzazione degli avvisi
  * durante lo sviluppo.
