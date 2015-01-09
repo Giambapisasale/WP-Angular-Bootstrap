@@ -10,3 +10,5 @@ Istruzioni configurazione restore/dump database
 - Adesso è possibile eseguire gli script **restore.sh** e **dump.sh** per importare/esportare il database di wordpress. Il dump che verrà generato è **/wordpress/dumpAndRestore/wordpress.sql**
 
 - Eventuali modifiche alla struttura o ai contenuti del database di wordpress devono essere esportate ed è necessario eseguire il commit del dump **wordpress.sql**
+
+- Le credenziali di accesso a wordpress sono username **admin** e password **testadmin**
