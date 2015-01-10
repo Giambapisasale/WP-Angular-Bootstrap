@@ -5,3 +5,11 @@ body {
 .navbar-default {
   background-color: #FF0000; !important
 }
+
+a.navbar-brand, a.ng-binding {
+  color: white !important;
+}
+
+#view {
+  background-color: #00EE77;
+}
