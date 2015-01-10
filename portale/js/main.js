@@ -2,7 +2,7 @@
   var app = angular.module('portale', ['ui.bootstrap', 'ngRoute', 'ngSanitize', 'routeStyles']);
 
   // indirizzo di wordpress con wp-json plugin
-  var wp = "/wordpress/wp-json/";
+  var wp = "../wordpress/wp-json/";
 
   // routing
   app.config(function($routeProvider) {
