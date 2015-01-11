@@ -48,6 +48,12 @@
               <li ng-repeat="page in pages"><a ng-href="#/page/{{ page.ID }}">{{ page.title }}</a></li>
             </ul>
           </div>
+
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"  ng-class="{'in':!navCollapsed}">
+            <ul class="nav navbar-nav">
+              <li ng-repeat="menux in menus.items"><a ng-href="">{{ menux.title }}</a></li>
+            </ul>
+          </div>
         </div>
       </nav>
 
