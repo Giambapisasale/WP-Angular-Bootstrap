@@ -31,8 +31,6 @@
       css: "css/demo.css"
     })
     .otherwise({
-      controller: 'HomeController',
-      templateUrl: "partials/home.html"
     });
   });
 
