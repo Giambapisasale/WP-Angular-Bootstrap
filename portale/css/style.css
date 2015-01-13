@@ -15,5 +15,10 @@
 }
 
 * {
-	transition: all 3s ease;
+  transition: all 3s ease;
+}
+
+.bgheader {
+  background-image: url('../images/assets/herader-bg.jpg');
+  height: 800px;
 }
