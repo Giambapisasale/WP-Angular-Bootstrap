@@ -1,3 +1,4 @@
 /wordpress/dumpAndRestore/dump.sh
 /wordpress/dumpAndRestore/restore.sh
+/wordpress/.htaccess
 *.DS_Store
