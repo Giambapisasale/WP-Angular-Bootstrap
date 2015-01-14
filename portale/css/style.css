@@ -33,3 +33,23 @@ body {
   margin: auto;
   max-width: 60%;
 }
+
+.news {
+  min-height: 100vh;
+
+  padding-top: 20px;
+}
+
+.footer {
+  padding-top: 30px;
+  padding-bottom: 40px;
+}
+
+.bottom {
+  background-color: #035c81;
+
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  color: white;
+}
