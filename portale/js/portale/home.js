@@ -2,7 +2,10 @@
   var app = angular.module('portale');
 
   app.controller("HomeController", function($scope, $routeParams, $http, $sce) {
-    $http.get( app.wp + "posts" )
+
+    var call = "posts?filter[posts_per_page]=2&filter[order]=DESC";
+
+    $http.get( app.wp + call )
     .success(function(data, status, header, config) {
       $scope.posts = data;
       for(var i in $scope.posts)

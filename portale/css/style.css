@@ -76,6 +76,29 @@ body {
   padding-top: 20px;
 }
 
+.news > .row > div {
+  height: 100%;
+}
+
+.showAll {
+  bottom: 0;
+
+  background-color: #035c81;
+  height: 40px;
+
+  margin: auto;
+  padding: 10px;
+}
+
+.showAll a {
+  display: block;
+  height: 100%;
+  width: 100%;
+
+  color: white;
+  text-decoration: none;
+}
+
 .footer {
   padding-top: 30px;
   padding-bottom: 40px;
