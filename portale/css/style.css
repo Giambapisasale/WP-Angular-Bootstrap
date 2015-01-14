@@ -187,3 +187,15 @@ body {
 
   color: white;
 }
+
+.search {
+  border-radius: 2em;
+  border: .5px solid #fff;
+  padding: 4px 7px;
+}
+
+.searchinput {
+ background-color: transparent;
+  border: none;
+  width: 130px; 
+}
