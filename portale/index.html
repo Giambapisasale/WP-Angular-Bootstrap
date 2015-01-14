@@ -7,6 +7,7 @@
     <title>Portale</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
     <script src="js/lib/angular.min.js"></script>
@@ -31,10 +32,13 @@
       <div class="container">
         <div class="row top-links">
           <div class="col-xs-2 pull-right">
-            <a href="#">Search</a>
+            <div style="border-radius: 2em; border: .5px solid #fff; padding: 4px 7px;">
+              <input type="text" placeholder="Cerca nel sito" style="background-color: transparent; border: none; width: 130px;">
+              <img src="images/assets/search-icon.png">
+            </div>
           </div>
           <div class="col-xs-2 pull-right">
-            <a href="#">Login</a>
+            <a href="#">Login</a>&nbsp;&nbsp;<img src="images/assets/login-icon.png">
           </div>
         </div>
         <img class="img-responsive header-img" src="images/assets/logo-header.png">
@@ -114,7 +118,7 @@
             <p>Copyright 2014-2015 Comune di Catania - Tutti i diritti riservati.</p>
           </div>
           <div col="col-xs-3">
-            <p>Segui il Comune di Catania su</p>
+            <p>Segui il Comune di Catania su &nbsp;&nbsp;<i class="fa fa-facebook"></i>&nbsp;&nbsp;<i class="fa fa-twitter"></i>&nbsp;&nbsp;<i class="fa fa-youtube-play"></i></p>
           </div>
         </div>
 
