@@ -29,6 +29,18 @@ body {
   margin-top: 90px;
 }
 
+.header-link-title {
+  color: white;
+
+  padding-top: 10px;
+  padding-bottom: 4px;
+}
+
+.header-link-description {
+  color: #c6c6c7;
+  text-transform: uppercase;
+}
+
 .header-icon {
   margin: auto;
   max-width: 60%;
