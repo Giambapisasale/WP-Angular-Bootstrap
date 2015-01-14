@@ -9,6 +9,10 @@
   app.config(function($routeProvider) {
 
     $routeProvider
+    .when('/home', {
+      controller: 'HomeController',
+      templateUrl: "partials/home.html"
+    })
     .when('/post/:id', {
       controller: 'PostController',
       templateUrl: "partials/post.html"
@@ -25,12 +29,8 @@
       controller: 'AuthorController',
       templateUrl: "partials/author.html"
     })
-    .when('/demo', {
-      controller: 'DemoController',
-      templateUrl: "partials/demo.html",
-      css: "css/demo.css"
-    })
     .otherwise({
+      redirectTo: '/home'
     });
   });
 
