@@ -1,12 +1,12 @@
 <div ng-repeat="post in posts">
-  <p class="lead">
+  <p class="post-title">
     <a ng-href="#/post/{{ post.ID }}">{{ post.title }}</a>
     <br>
-    <small class="post-data">
+    <p class="post-date">
       Pubblicato il {{ post.date | date : "shortDate" }}
-    </small>
+    </p>
   </p>
-  <div ng-bind-html="post.content"></div>
+  <div class="post-content" ng-bind-html="post.content"></div>
   <br>
   <br>
 </div>
