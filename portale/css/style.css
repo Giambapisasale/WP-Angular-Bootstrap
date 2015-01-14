@@ -1,5 +1,25 @@
-body {
+@font-face {
+  font-family: ProximaNova-Bold;
+  src: url('../fonts/ProximaNova-Bold') format("opentype");
+}
 
+@font-face {
+  font-family: ProximaNova-Light;
+  src: url('../fonts/ProximaNova-Light') format("opentype");
+}
+
+@font-face {
+  font-family: ProximaNova-Regular;
+  src: url('../fonts/ProximaNova-Regular') format("opentype");
+}
+
+@font-face {
+  font-family: ProximaNova-Semibold;
+  src: url('../fonts/ProximaNova-Semibold') format("opentype");
+}
+
+body {
+  background-color: #ffffff;
 }
 
 .container {
@@ -12,7 +32,10 @@ body {
 
 .header {
   background-image: url('../images/assets/herader-bg.jpg');
-  background-size: 100%;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
 
   width: 100%;
   min-height: 100vh;
@@ -31,6 +54,7 @@ body {
 
 .header-link-title {
   color: white;
+  font-family: ProximaNova-Bold;
 
   padding-top: 10px;
   padding-bottom: 4px;
