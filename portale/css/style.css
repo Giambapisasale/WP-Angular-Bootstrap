@@ -1,21 +1,21 @@
 @font-face {
   font-family: ProximaNova-Bold;
-  src: url('../fonts/ProximaNova-Bold') format("opentype");
+  src: url('../fonts/ProximaNova-Bold.otf') format("opentype");
 }
 
 @font-face {
   font-family: ProximaNova-Light;
-  src: url('../fonts/ProximaNova-Light') format("opentype");
+  src: url('../fonts/ProximaNova-Light.otf') format("opentype");
 }
 
 @font-face {
   font-family: ProximaNova-Regular;
-  src: url('../fonts/ProximaNova-Regular') format("opentype");
+  src: url('../fonts/ProximaNova-Regular.otf') format("opentype");
 }
 
 @font-face {
   font-family: ProximaNova-Semibold;
-  src: url('../fonts/ProximaNova-Semibold') format("opentype");
+  src: url('../fonts/ProximaNova-Semibold.otf') format("opentype");
 }
 
 * {
