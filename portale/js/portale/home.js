@@ -8,8 +8,10 @@
     $http.get( app.wp + call )
     .success(function(data, status, header, config) {
       $scope.posts = data;
-      for(var i in $scope.posts)
+      for (var i in $scope.posts)
+      {
         $scope.posts[i].content = $sce.trustAsHtml(data[i].content);
+      }
     })
     .error(function(data, status, header, config) {
       console.log("Error in $http.get() of CategoryController");
