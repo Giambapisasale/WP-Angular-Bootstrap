@@ -3,7 +3,7 @@
     <a ng-href="#/post/{{ post.ID }}" ng-bind-html="post.title"></a>
     <br>
     <p class="post-date">
-      <img src="images/assets/calendar-icon.png"> Pubblicato il {{ post.date | date : "shortDate" }}
+      <img class="calendar" src="images/assets/calendar-icon.png"> Pubblicato il {{ post.date | date : "shortDate" }}
     </p>
   </p>
   <div class="post-content" ng-bind-html="post.content"></div>

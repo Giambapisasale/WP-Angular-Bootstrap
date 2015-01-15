@@ -142,6 +142,7 @@ body {
   font-size 16px;
   color: #ffffff;
   text-decoration: none;
+  text-transform: uppercase;
 }
 
 .img-title {
@@ -170,6 +171,7 @@ body {
   font-family: ProximaNova-Bold;
   font-size: 18px;
   color: #005c81;
+  text-transform: uppercase;
 }
 
 .footer-element {
@@ -207,3 +209,7 @@ body {
 .searchinput:-moz-placeholder { color: #fff; opacity: 1; } /* Firefox 18- */
 .searchinput::-moz-placeholder { color: #fff; opacity: 1; } /* Firefox 19+ */
 .searchinput:-ms-input-placeholder { color: #fff; }
+
+.calendar {
+ vertical-align: baseline; 
+}
