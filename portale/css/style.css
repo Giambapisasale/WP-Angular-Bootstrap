@@ -47,6 +47,22 @@ body {
   padding-bottom: 4px;
 }
 
+.search {
+  border-radius: 2em;
+  border: 1px solid #fff;
+  padding: 4px 7px;
+}
+
+.searchinput {
+ background-color: transparent;
+  border: none;
+  width: 130px;
+}
+
+.search img, .top-link img {
+ vertical-align: text-top;
+}
+
 .header {
   background-image: url('../images/assets/herader-bg.jpg');
   background-size: cover;
@@ -62,6 +78,7 @@ body {
 
 .header-img {
   margin: auto;
+  max-width: 25%;
 }
 
 .header-links {
@@ -150,15 +167,8 @@ body {
   color: #ffffff;
 }
 
-.template {
-  font-family: ;
-  font-size: ;
-  color: ;
-
-}
-
 .line {
-  color: #c2c2c2;
+  border-color: #c2c2c2;
 }
 
 .footer {
@@ -169,36 +179,21 @@ body {
 .footer-title {
   font-family: ProximaNova-Bold;
   font-size: 18px;
+  text-transform: uppercase;
   color: #005c81;
 }
 
 .footer-element {
-  font-family: ProximaNova-Light;
-  font-size: 16px;
+  font-family: ProximaNova-Regular;
+  font-size: 18px;
   color: #565555;
 }
 
 .bottom {
   background-color: #035c81;
 
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 45px;
+  padding-bottom: 45px;
 
   color: white;
-}
-
-.search {
-  border-radius: 2em;
-  border: 1px solid #fff;
-  padding: 4px 7px;
-}
-
-.searchinput {
- background-color: transparent;
-  border: none;
-  width: 130px; 
-}
-
-.search img, .top-link img {
- vertical-align: text-top;
 }
