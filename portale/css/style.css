@@ -202,3 +202,8 @@ body {
 .search img, .top-link img {
  vertical-align: text-top;
 }
+
+.searchinput::-webkit-input-placeholder { color: #fff; }
+.searchinput:-moz-placeholder { color: #fff; opacity: 1; } /* Firefox 18- */
+.searchinput::-moz-placeholder { color: #fff; opacity: 1; } /* Firefox 19+ */
+.searchinput:-ms-input-placeholder { color: #fff; }
