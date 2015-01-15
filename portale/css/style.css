@@ -105,10 +105,10 @@ body {
   color: #005c81;
 }
 
-.post-title {
+.post-title a {
   font-family: ProximaNova-Regular;
   font-size: 24px;
-  font-color: #005c81;
+  color: #005c81;
 }
 
 .post-date {
