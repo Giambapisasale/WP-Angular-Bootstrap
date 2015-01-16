@@ -159,6 +159,19 @@ body {
   color: #565555;
 }
 
+.featured-img-link {
+  display: block;
+}
+
+.featured-img-link:hover .featured-img,
+.featured-img-link:hover .featured-img-text {
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
 .featured-img-text {
   font-family: ProximaNova-Bold;
   font-size: 24px;
