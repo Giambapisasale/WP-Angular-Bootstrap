@@ -60,9 +60,10 @@ body {
 }
 
 .searchinput {
- background-color: transparent;
+  background-color: transparent;
   border: none;
   width: 130px;
+  outline: none;
 }
 
 .search img, .top-link img {
