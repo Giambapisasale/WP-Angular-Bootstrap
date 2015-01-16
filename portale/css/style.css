@@ -47,16 +47,18 @@ body {
   padding-bottom: 4px;
 }
 
-.search {
-  border-radius: 2em;
-  border: 1px solid #fff;
-  padding: 4px 7px;
+.login {
+  padding: 6px;
+  padding-right: 18px;
 }
 
 .search {
   border-radius: 2em;
   border: 1px solid #fff;
-  padding: 4px 7px;
+  padding: 6px 4px 6px 10px;
+
+  height: 40px;
+  max-width: 210px;
 }
 
 .searchinput {
