@@ -140,8 +140,9 @@ body {
 }
 
 .post-title a {
-  font-family: ProximaNova-Regular;
-  font-size: 24px;
+  font-family: ProximaNova-Bold;
+  font-size: 18px;
+  text-transform: uppercase;
   color: #005c81;
 }
 
