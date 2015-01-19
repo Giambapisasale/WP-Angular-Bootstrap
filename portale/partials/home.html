@@ -1,14 +1,149 @@
-<div ng-repeat="post in posts">
-  <p class="post-title">
-    <a ng-href="#/post/{{ post.ID }}" ng-bind-html="post.title"></a>
-    <br>
-    <p class="post-date">
-      <img class="calendar" src="images/assets/calendar-icon.png"> Pubblicato il {{ post.date | date : "shortDate" }}
-    </p>
-  </p>
-  <div class="post-content" ng-bind-html="post.content"></div>
-  <br>
-  <br>
-</div>
+<div class="container-fluid header">
+      <div class="container">
+        <div class="row top-links">
+          <div class="col-xs-3 pull-right">
+            <div class="search">
+              &nbsp;&nbsp;&nbsp;
+              <input type="text" placeholder="Cerca nel sito" class="searchinput">
+              &nbsp;
+              <img src="images/assets/search-icon.png">
+            </div>
+          </div>
+          <div class="col-xs-2 pull-right text-right top-link login">
+            <a href="#">Login</a>&nbsp;&nbsp;<img src="images/assets/login-icon.png">
+          </div>
+        </div>
+        <img class="img-responsive header-img" src="images/assets/logo-header.png">
 
-<div class="showAll text-center"><a href="#/home">Mostra tutti</a></div>
+        <div class="row header-links text-center">
+          <div class="col-sm-4">
+            <img class="img-responsive header-icon" style="margin: auto;" src="images/assets/comune-icon.png">
+            <p class="header-link-title">Il Comune<br>informa</p>
+            <p class="header-link-description">Organi di governo&nbsp;&nbsp;|&nbsp;&nbsp;Uffici&nbsp;&nbsp;|&nbsp;&nbsp;Bandi e gare<br>Amministrazione trasparente&nbsp;&nbsp;|&nbsp;&nbsp;Num. utili</p>
+          </div>
+          <div class="col-sm-4">
+            <img class="img-responsive header-icon" style="margin: auto;" src="images/assets/cultura-icon.png">
+            <p class="header-link-title">Cultura<br>e turismo</p>
+            <p class="header-link-description">Eventi&nbsp;&nbsp;|&nbsp;&nbsp;Monumenti&nbsp;&nbsp;|&nbsp;&nbsp;Chiese<br>Teatri&nbsp;&nbsp;|&nbsp;&nbsp;Luoghi di interesse</p>
+          </div>
+          <div class="col-sm-4">
+            <img class="img-responsive header-icon" style="margin: auto;" src="images/assets/servizi-icon.png">
+            <p class="header-link-title">Servizi<br>online</p>
+            <p class="header-link-description">Albo pretorio&nbsp;&nbsp;|&nbsp;&nbsp;Servizi E-Government<br>Pec&nbsp;&nbsp;|&nbsp;&nbsp;Pagamenti online</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container news">
+      <div class="row">
+        <div class="col-xs-8">
+          <p class="news-main-title">News e Comunicati Stampa</p>
+          
+          <div ng-repeat="post in posts">
+            <p class="post-title">
+              <a ng-href="#/post/{{ post.ID }}" ng-bind-html="post.title"></a>
+              <br>
+            <p class="post-date">
+              <img class="calendar" src="images/assets/calendar-icon.png"> Pubblicato il {{ post.date | date : "shortDate" }}
+            </p>
+            </p>
+          <div class="post-content" ng-bind-html="post.content"></div>
+          <br>
+          <br>
+        </div>
+
+        <div class="showAll text-center"><a href="#/home">Mostra tutti</a></div>
+
+      </div>
+      <div class="col-xs-4">
+        <p class="news-main-title">In evidenza</p>
+
+        <a class="featured-img-link" href="#">
+          <div class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="item active">
+                <img class="img-responsive featured-img" src="images/assets/side-1.jpg" alt="Etna">
+                <div class="carousel-caption featured-img-text">
+                  Etna
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+        <br>
+
+        <a class="featured-img-link" href="#">
+          <div class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="item active">
+                <img class="img-responsive featured-img" src="images/assets/side-2.jpg" alt="La festa di Sant'Agata">
+                <div class="carousel-caption featured-img-text">
+                  La festa di<br>Sant'Agata
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+        <br>
+
+        <a class="featured-img-link" href="#">
+          <div class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="item active">
+                <img class="img-responsive featured-img" src="images/assets/side-3.jpg" alt="Trasporti pubblici">
+                <div class="carousel-caption featured-img-text">
+                  Trasporti<br>pubblici
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+        <br>
+      </div>
+    </div>
+
+    <hr class="line">
+
+    <div class="row footer text-center">
+      <div class="col-sm-4">
+        <p class="footer-title">Footer column 1</p>
+        <p class="footer-element">Voce 1</p>
+        <p class="footer-element">Voce 2</p>
+        <p class="footer-element">Voce 3</p>
+        <p class="footer-element">Voce 4</p>
+        <p class="footer-element">Voce 5</p>
+
+      </div>
+      <div class="col-sm-4">
+        <p class="footer-title">Footer column 2</p>
+        <p class="footer-element">Voce 1</p>
+        <p class="footer-element">Voce 2</p>
+        <p class="footer-element">Voce 3</p>
+        <p class="footer-element">Voce 4</p>
+        <p class="footer-element">Voce 5</p>
+
+      </div>
+      <div class="col-sm-4">
+        <p class="footer-title">Footer column 3</p>
+        <p class="footer-element">Voce 1</p>
+        <p class="footer-element">Voce 2</p>
+        <p class="footer-element">Voce 3</p>
+        <p class="footer-element">Voce 4</p>
+        <p class="footer-element">Voce 5</p>
+
+      </div>
+    </div>
+    </div>
+  <div class="container-fluid bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-9">
+          <p class="underfooter">Copyright 2014-2015 Comune di Catania - Tutti i diritti riservati.</p>
+        </div>
+        <div col="col-xs-3">
+          <p class="underfooter">Segui il Comune di Catania su &nbsp;&nbsp;<i class="fa fa-facebook"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-twitter"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-youtube-play"></i></p>
+        </div>
+      </div>
+
+    </div>
+  </div>

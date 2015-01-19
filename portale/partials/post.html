@@ -1,10 +1,1 @@
-<div>
-  <p class="lead">
-    <a ng-href="#/post/{{ post.ID }}" ng-bind-html="post.title"></a>
-    <br>
-    <small class="writtenby">
-      Scritto <u>{{ post.date | date : "fullDate" }}</u> da <i><a href="#/author/{{ post.author.ID }}">{{ post.author.nickname }}</a></i> in <a href="#/category/{{ post.terms.category[0].ID }}">{{ post.terms.category[0].name }}</a>
-    </small>
-  </p>
-  <div ng-bind-html="post.content"></div>
-</div>
+<p class="lead">Questo è il post {{ post.ID }}</p>

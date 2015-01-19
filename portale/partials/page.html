@@ -1,10 +1,1 @@
-<div>
-  <p class="lead">
-    <a ng-href="#/page/{{ page.ID }}">{{ page.title }}</a>
-    <br>
-    <small class="writtenby">
-      Scritto <u>{{ page.date | date : "fullDate" }}</u> da <i><a href="#/author/{{ page.author.ID }}">{{ page.author.nickname }}</a></i>
-    </small>
-  </p>
-  <div ng-bind-html="page.content"></div>
-</div>
+<p class="lead">Questa è la pagina {{ page.ID }}</p>
