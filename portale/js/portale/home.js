@@ -82,6 +82,7 @@
       console.log("Error in $http.get() of HomeController (menu servizi_online)");
     });
 
+    // News
     var call = "posts?filter[posts_per_page]=2&filter[order]=DESC";
 
     $http.get( app.wp + call )
@@ -93,7 +94,7 @@
       }
     })
     .error(function(data, status, header, config) {
-      console.log("Error in $http.get() of CategoryController");
+      console.log("Error in $http.get() of HomeController (news)");
     });
   });
 
