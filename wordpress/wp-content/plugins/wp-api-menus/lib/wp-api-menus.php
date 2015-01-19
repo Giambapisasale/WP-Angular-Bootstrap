@@ -38,7 +38,7 @@ if ( ! class_exists( 'WP_JSON_Menus' ) ) :
 			$routes['/menu-locations'] = array(
 				array( array( $this, 'get_menu_locations' ), WP_JSON_Server::READABLE ),
 			);
-			// menu for given location
+			// menu for given location 
 			$routes['/menu-locations/(?<location>\w+)'] = array(
 				array( array( $this, 'get_menu_location' ), WP_JSON_Server::READABLE ),
 			);
@@ -107,7 +107,7 @@ if ( ! class_exists( 'WP_JSON_Menus' ) ) :
 				$json_menu_items = array();
 				foreach( $wp_menu_items as $item_object )
 					$json_menu_items[] = $this->format_menu_item( $item_object );
-
+				
 				$json_menu['items'] = $json_menu_items;
 				$json_menu['meta']['links']['collection'] = $json_url;
 				$json_menu['meta']['links']['self'] = $json_url . $id;
@@ -247,7 +247,7 @@ if ( ! class_exists( 'WP_JSON_Menus' ) ) :
 		private function format_menu_item( $menu_item, $children = false, $menu = array() ) {
 
 			$item = (array) $menu_item;
-			$menu_item = array(
+			$menu_item = array( 
 				'ID'       => abs( $item['ID'] ),
 				'order'    => (int) $item['menu_order'],
 				'parent'   => abs( $item['menu_item_parent'] ),
