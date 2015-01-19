@@ -92,7 +92,12 @@ body {
 
 .header-img {
   margin: auto;
-  max-width: 25%;
+}
+
+@media (max-width: 1450px) {
+  .header-img {
+    max-width: 18%;
+  }
 }
 
 .header-links {
@@ -109,7 +114,7 @@ body {
   padding-bottom: 4px;
 }
 
-.header-link-description {
+.header-link-description, .header-link-description a {
   font-family: ProximaNova-Semibold;
   font-size: 16px;
   line-height: 26px;
