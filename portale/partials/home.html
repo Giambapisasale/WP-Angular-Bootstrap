@@ -53,7 +53,7 @@
 
       <div ng-repeat="post in posts">
         <p class="post-title">
-          <a ng-href="#/post/{{ post.ID }}" ng-bind-html="post.title"></a>
+          <a ng-href="#/section/post/{{ post.ID }}" ng-bind-html="post.title"></a>
         </p>
         <p class="post-date">
           <img class="calendar" src="images/assets/calendar-icon.png"> Pubblicato il {{ post.date | date : "shortDate" }}
