@@ -8,7 +8,7 @@
       $scope.post.content = $sce.trustAsHtml(data.content);
     })
     .error(function(data, status, header, config) {
-      console.log("Error in $http.get() of PostController");
+      console.log("Error in $http.get() of HomeController");
     });
   });
 

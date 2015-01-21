@@ -14,27 +14,31 @@
     .state('home', {
       url: '/home',
       controller: 'HomeController',
-      templateUrl: "partials/home.html"
+      templateUrl: "partials/home.html",
+      data: {
+        css: 'css/home.css'
+      }
     })
-    .state('post', {
+    .state('section', {
+      templateUrl: "partials/section.html",
+      data: {
+        css: 'css/section.css'
+      }
+    })
+    .state('section.post', {
       url: '/post/:id',
       controller: 'PostController',
-      templateUrl: "partials/post.html"
+      templateUrl: "partials/section.post.html"
     })
-    .state('category', {
+    .state('section.category', {
       url: '/category/:id',
       controller: 'CategoryController',
-      templateUrl: "partials/category.html",
+      templateUrl: "partials/section.category.html",
     })
-    .state('page', {
+    .state('section.page', {
       url: '/page/:id',
       controller: 'PageController',
-      templateUrl: "partials/page.html"
-    })
-    .state('author', {
-      url: '/author/:id',
-      controller: 'AuthorController',
-      templateUrl: "partials/author.html"
+      templateUrl: "partials/section.page.html"
     });
   });
 
