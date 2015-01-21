@@ -5,6 +5,11 @@
   // indirizzo di wordpress con app.wp-json plugin
   app.wp = "../wordpress/wp-json/";
 
+  // ID menu principali
+  app.comune_informa  = 25;
+  app.cultura_turismo = 26;
+  app.servizi_online  = 27;
+
   // routing
   app.config(function($stateProvider, $urlRouterProvider) {
 

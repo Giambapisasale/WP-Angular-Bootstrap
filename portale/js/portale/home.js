@@ -3,12 +3,8 @@
 
   app.controller("HomeController", function($scope, $http, $sce) {
 
-    var comune_informa  = 25;
-    var cultura_turismo = 26;
-    var servizi_online  = 27;
-
     // Il Comune Informa
-    $http.get( app.wp + "menus/" + comune_informa )
+    $http.get( app.wp + "menus/" + app.comune_informa )
     .success(function(data, status, header, config) {
 
       $scope.menu_comune_informa = Array();
@@ -33,7 +29,7 @@
     });
 
     // Cultura e Turismo
-    $http.get( app.wp + "menus/" + cultura_turismo )
+    $http.get( app.wp + "menus/" + app.cultura_turismo )
     .success(function(data, status, header, config) {
 
       $scope.cultura_turismo = Array();
@@ -58,7 +54,7 @@
     });
 
     // Servizi Online
-    $http.get( app.wp + "menus/" + servizi_online )
+    $http.get( app.wp + "menus/" + app.servizi_online )
     .success(function(data, status, header, config) {
 
       $scope.servizi_online = Array();
