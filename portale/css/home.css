@@ -70,29 +70,6 @@
   margin-top: 35px;
 }
 
-.post-title a {
-  font-family: ProximaNova-Bold;
-  font-size: 18px;
-  text-transform: uppercase;
-  color: #005c81;
-}
-
-.post-date {
-  font-family: ProximaNova-Regular;
-  font-size: 14px;
-  color: #f84339;
-}
-
-.calendar {
-  vertical-align: baseline;
-}
-
-.post-content {
-  font-family: ProximaNova-Light;
-  font-size 16px;
-  color: #565555;
-}
-
 .featured-img-link {
   display: block;
 }

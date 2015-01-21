@@ -1,1 +1,8 @@
-<p class="lead">Questo è il post {{ post.ID }}</p>
+<p class="post-title">
+  <a ng-href="#/section/0/post/{{ post.ID }}" ng-bind-html="post.title"></a>
+</p>
+<p class="post-date">
+  <img class="calendar" src="images/assets/calendar-icon.png"> Pubblicato il {{ post.date | date : "shortDate" }}
+</p>
+
+<div class="post-content" ng-bind-html="post.content"></div>

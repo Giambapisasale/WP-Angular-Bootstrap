@@ -73,6 +73,29 @@ body {
 .searchinput::-moz-placeholder { color: #fff; opacity: 1; } /* Firefox 19+ */
 .searchinput:-ms-input-placeholder { color: #fff; }
 
+.post-title a {
+  font-family: ProximaNova-Bold;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: #005c81;
+}
+
+.post-date {
+  font-family: ProximaNova-Regular;
+  font-size: 14px;
+  color: #f84339;
+}
+
+.calendar {
+  vertical-align: baseline;
+}
+
+.post-content {
+  font-family: ProximaNova-Light;
+  font-size 16px;
+  color: #565555;
+}
+
 .footer {
   padding-top: 30px;
   padding-bottom: 40px;
