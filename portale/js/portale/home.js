@@ -3,6 +3,10 @@
 
   app.controller("HomeController", function($scope, $http, $sce) {
 
+    $scope.menu1 = app.comune_informa;
+    $scope.menu2 = app.cultura_turismo;
+    $scope.menu3 = app.servizi_online;
+
     // Il Comune Informa
     $http.get( app.wp + "menus/" + app.comune_informa )
     .success(function(data, status, header, config) {
