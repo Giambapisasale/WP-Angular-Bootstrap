@@ -1,0 +1,65 @@
+.inline {
+  display: inline; 
+}
+
+.top-links {
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.sec-header {
+  background-color: #005c81;
+  color: #fff; 
+}
+
+.sec-header-menu {
+  background-color: #003044;
+  color: #fff;
+  text-transform: uppercase;
+}
+.sec-header-menu h6 {
+  vertical-align: sub;
+  line-height: 16px;
+}
+
+.sec-header-submenu {
+  padding: 20px;
+  transition: all 0.5s;
+}
+.sec-header-submenu:hover {
+  transition: all 0.5s;
+  background-color: #fff;
+  color: #005c81;
+}
+.sec-header-submenu:hover .comune {
+  background-position: -20px 0px;
+}
+.sec-header-submenu:hover .cultura {
+  background-position: -22px 0px;
+}
+.sec-header-submenu:hover .servizi {
+  background-position: -18px 0px;
+}
+
+.comune, .cultura, .servizi {
+  vertical-align: middle;
+  display: inline-block;
+  transition: all 0s;
+  background-repeat: no-repeat;
+  background-position: 0px 0px;
+}
+.comune {
+  height: 19px;
+  width: 20px;
+  background-image: url('../images/assets/comune-small-sprite.png');
+}
+.cultura {
+  height: 15px;
+  width: 22px;
+  background-image: url('../images/assets/cultura-small-sprite.png');
+}
+.servizi {
+  height: 20px;
+  width: 18px;
+  background-image: url('../images/assets/servizi-small-sprite.png');
+}
