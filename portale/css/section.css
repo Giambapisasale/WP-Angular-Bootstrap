@@ -88,3 +88,43 @@
   width: 264px;
   height: 590px
 }
+
+.side-menu ul {
+  padding: 0;
+  list-style: none;
+}
+
+.side-menu li {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.side-menu > ul > li {
+  padding-left: 20px;
+}
+
+.side-menu > ul > ul > li {
+  padding-left: 40px;
+}
+
+.side-menu a {
+  color: #ffffff;
+}
+
+.side-menu > ul > li > a {
+  font-family: 'ProximaNova-Bold';
+  font-size: 18px;
+}
+
+.side-menu > ul > li.active {
+  background-color: #005c81;
+}
+
+.side-menu > ul > ul > li > a {
+  font-family: 'ProximaNova-Regular';
+  font-size: 16px;
+}
+
+.side-menu > ul > ul > li.active {
+  background-color: #005c81;
+}
