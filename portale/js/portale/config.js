@@ -28,9 +28,18 @@
       }
     })
     .state('section', {
-      templateUrl: "partials/section.html",
+      url: '/section',
       data: {
         css: 'css/section.css'
+      },
+      views: {
+        '': {
+          templateUrl: "partials/section.html"
+        },
+        'footer@section': {
+          controller: 'FooterController',
+          templateUrl: 'partials/footer.html'
+        }
       }
     })
     .state('section.post', {

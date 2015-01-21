@@ -21,7 +21,7 @@
         {
           $scope.menu_comune_informa[j] = data.items[i];
 
-          $scope.menu_comune_informa[j].url = $scope.menu_comune_informa[j].object + "/" + $scope.menu_comune_informa[j].object_id;
+          $scope.menu_comune_informa[j].url = "section/" + $scope.menu_comune_informa[j].object + "/" + $scope.menu_comune_informa[j].object_id;
 
           j++;
         }
@@ -46,7 +46,7 @@
         {
           $scope.cultura_turismo[j] = data.items[i];
 
-          $scope.cultura_turismo[j].url = $scope.cultura_turismo[j].object + "/" + $scope.cultura_turismo[j].object_id;
+          $scope.cultura_turismo[j].url = "section/" + $scope.cultura_turismo[j].object + "/" + $scope.cultura_turismo[j].object_id;
 
           j++;
         }
@@ -71,7 +71,7 @@
         {
           $scope.servizi_online[j] = data.items[i];
 
-          $scope.servizi_online[j].url = $scope.servizi_online[j].object + "/" + $scope.servizi_online[j].object_id;
+          $scope.servizi_online[j].url = "section/" + $scope.servizi_online[j].object + "/" + $scope.servizi_online[j].object_id;
 
           j++;
         }
