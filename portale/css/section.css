@@ -127,4 +127,20 @@
 
 .side-menu > ul > ul > li.active {
   background-color: #005c81;
+
+.section-title
+{
+  font-family: ProximaNova-Light;
+  font-size: 36px;
+  color: #005c81;
+}
+
+.breadcrumb {
+  font-family: ProximaNova-Bold;
+  font-size: 13px;
+  text-transform: uppercase;
+  color: #646464;
+}
+.breadcrumb .active {
+  color: #f84339;
 }
