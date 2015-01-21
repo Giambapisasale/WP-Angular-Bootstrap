@@ -127,6 +127,7 @@
 
 .side-menu > ul > ul > li.active {
   background-color: #005c81;
+}
 
 .section-title
 {
@@ -143,4 +144,13 @@
 }
 .breadcrumb .active {
   color: #f84339;
+}
+
+.sec-footer {
+  background-color: #003044;
+  color: #fff;
+  margin-top: 100px;
+}
+.footer-title, .footer-element {
+ color: #fff; 
 }
