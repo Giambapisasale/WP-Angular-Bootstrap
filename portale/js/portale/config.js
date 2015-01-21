@@ -33,7 +33,7 @@
       }
     })
     .state('section', {
-      url: '/section/:menu',
+      url: '/section/:menu/',
       data: {
         css: 'css/section.css'
       },
@@ -48,17 +48,17 @@
       }
     })
     .state('section.post', {
-      url: '/post/:id',
+      url: 'post/:id',
       controller: 'PostController',
       templateUrl: "partials/section.post.html"
     })
     .state('section.category', {
-      url: '/category/:id',
+      url: 'category/:id',
       controller: 'CategoryController',
       templateUrl: "partials/section.category.html",
     })
     .state('section.page', {
-      url: '/page/:id',
+      url: 'page/:id',
       controller: 'PageController',
       templateUrl: "partials/section.page.html"
     });

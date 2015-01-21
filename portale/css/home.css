@@ -29,11 +29,12 @@
   margin-top: 90px;
 }
 
-.header-link-title {
+.header-link-title, .header-link-title a {
   color: white;
   font-family: ProximaNova-Bold;
   font-size: 30px;
   line-height: 35px;
+  text-decoration: none;
 
   padding-top: 10px;
   padding-bottom: 4px;
