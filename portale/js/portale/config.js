@@ -33,7 +33,7 @@
       }
     })
     .state('section', {
-      url: '/section',
+      url: '/section/:menu',
       data: {
         css: 'css/section.css'
       },
