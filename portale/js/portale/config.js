@@ -13,10 +13,18 @@
     $stateProvider
     .state('home', {
       url: '/home',
-      controller: 'HomeController',
-      templateUrl: "partials/home.html",
       data: {
         css: 'css/home.css'
+      },
+      views: {
+        '': {
+          controller: 'HomeController',
+          templateUrl: "partials/home.html"
+        },
+        'footer@home': {
+          controller: 'FooterController',
+          templateUrl: 'partials/footer.html'
+        }
       }
     })
     .state('section', {
