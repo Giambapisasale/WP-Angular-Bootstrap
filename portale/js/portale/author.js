@@ -1,8 +1,8 @@
 (function () {
   var app = angular.module('portale');
 
-  app.controller("AuthorController", function($scope, $routeParams, $http, $sce) {
-    $http.get( app.wp + "posts?filter[author]=" + $routeParams.id )
+  app.controller("AuthorController", function($scope, $stateParams, $http, $sce) {
+    $http.get( app.wp + "posts?filter[author]=" + $stateParams.id )
     .success(function(data, status, header, config) {
       $scope.posts = data;
       $scope.posts.content = $sce.trustAsHtml(data.content);

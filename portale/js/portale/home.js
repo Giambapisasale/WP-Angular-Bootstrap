@@ -1,7 +1,7 @@
 (function () {
   var app = angular.module('portale');
 
-  app.controller("HomeController", function($scope, $routeParams, $http, $sce) {
+  app.controller("HomeController", function($scope, $http, $sce) {
 
     var comune_informa  = 25;
     var cultura_turismo = 26;

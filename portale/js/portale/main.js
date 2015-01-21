@@ -1,7 +1,7 @@
 (function () {
-  var app = angular.module('portale', ['ui.bootstrap', 'ngRoute', 'ngSanitize', 'routeStyles']);
+  var app = angular.module('portale', ['ui.router', 'ui.bootstrap', 'ngSanitize', 'uiRouterStyles']);
 
-  app.controller("HomeController", function($scope, $routeParams, $http, $sce) {
+  app.controller("HomeController", function($scope, $stateParams, $http, $sce) {
     $http.get( app.wp + "posts/" )
     .success(function(data, status, header, config) {
       $scope.post = data;

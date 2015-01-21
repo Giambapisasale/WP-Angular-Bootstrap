@@ -1,9 +1,9 @@
 (function () {
   var app = angular.module('portale');
 
-  app.controller("CategoryController", function($scope, $routeParams, $http, $sce) {
+  app.controller("CategoryController", function($scope, $stateParams, $http, $sce) {
 
-    $http.get( app.wp + "posts/types/posts/taxonomies/category/terms/" + $routeParams.id )
+    $http.get( app.wp + "posts/types/posts/taxonomies/category/terms/" + $stateParams.id )
     .success(function(data, status, header, config) {
 
       $scope.category = data;
@@ -13,7 +13,7 @@
       console.log("Error in $http.get() of CategoryController");
     });
 
-    $http.get( app.wp + "posts?filter[cat]=" + $routeParams.id )
+    $http.get( app.wp + "posts?filter[cat]=" + $stateParams.id )
     .success(function(data, status, header, config) {
 
       $scope.posts = data;

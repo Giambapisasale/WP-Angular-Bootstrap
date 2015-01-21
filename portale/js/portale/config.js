@@ -6,31 +6,35 @@
   app.wp = "../wordpress/wp-json/";
 
   // routing
-  app.config(function($routeProvider) {
+  app.config(function($stateProvider, $urlRouterProvider) {
 
-    $routeProvider
-    .when('/home', {
+    $urlRouterProvider.otherwise("/home");
+
+    $stateProvider
+    .state('home', {
+      url: '/home',
       controller: 'HomeController',
       templateUrl: "partials/home.html"
     })
-    .when('/post/:id', {
+    .state('post', {
+      url: '/post/:id',
       controller: 'PostController',
       templateUrl: "partials/post.html"
     })
-    .when('/category/:id', {
+    .state('category', {
+      url: '/category/:id',
       controller: 'CategoryController',
-      templateUrl: "partials/category.html"
+      templateUrl: "partials/category.html",
     })
-    .when('/page/:id', {
+    .state('page', {
+      url: '/page/:id',
       controller: 'PageController',
       templateUrl: "partials/page.html"
     })
-    .when('/author/:id', {
+    .state('author', {
+      url: '/author/:id',
       controller: 'AuthorController',
       templateUrl: "partials/author.html"
-    })
-    .otherwise({
-      redirectTo: '/home'
     });
   });
 
