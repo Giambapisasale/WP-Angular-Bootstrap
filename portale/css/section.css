@@ -81,3 +81,10 @@
   line-height: 40px;
   background-color: #ececec;
 }
+
+.side-menu {
+  background-color: #003044;
+
+  width: 264px;
+  height: 590px
+}
