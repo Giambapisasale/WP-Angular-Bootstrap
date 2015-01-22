@@ -47,7 +47,7 @@
 <div class="container-fluid path">
   <div class="container">
     <span class="breadcrumb">
-      <i class="fa fa-home fa-13"></i> <i class="fa fa-angle-double-right fa-13"></i> Il comune informa...
+      <i class="fa fa-home fa-13"></i> <i class="fa fa-angle-double-right fa-13"></i> {{ selectedMenuName }} <i class="fa fa-angle-double-right fa-13"></i> <span ng-bind-html="selectedItem"></span>
     </span>
   </div>
 </div>
@@ -72,5 +72,3 @@
     <div ui-view="footer"></div>
   </div>
 </div>
-
-<!-- UnderFooter -->

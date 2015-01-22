@@ -1,12 +1,13 @@
 (function () {
   var app = angular.module('portale');
 
-  app.controller("CategoryController", function($scope, $stateParams, $http, $sce) {
+  app.controller("CategoryController", function($scope, $rootScope, $stateParams, $http, $sce) {
 
     $http.get( app.wp + "posts/types/posts/taxonomies/category/terms/" + $stateParams.id )
     .success(function(data, status, header, config) {
 
       $scope.category = data;
+      $rootScope.selectedItem = $sce.trustAsHtml($scope.category.name);
 
     })
     .error(function(data, status, header, config) {

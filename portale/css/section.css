@@ -46,13 +46,13 @@
   background-color: #eeeeee;
 }
 
-.sec-header-submenu:hover .comune {
+.sec-header-submenu:hover .comune, .sec-header-submenu.active .comune {
   background-position: -20px 0px;
 }
-.sec-header-submenu:hover .cultura {
+.sec-header-submenu:hover .cultura, .sec-header-submenu.active .cultura {
   background-position: -22px 0px;
 }
-.sec-header-submenu:hover .servizi {
+.sec-header-submenu:hover .servizi, .sec-header-submenu.active .servizi {
   background-position: -18px 0px;
 }
 
@@ -147,6 +147,7 @@
   font-size: 13px;
   text-transform: uppercase;
   color: #646464;
+  background-color: #ECECEC;
 }
 .breadcrumb .active {
   color: #f84339;

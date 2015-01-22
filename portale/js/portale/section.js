@@ -1,17 +1,19 @@
 (function () {
   var app = angular.module('portale');
 
-  app.controller("SectionController", function($scope, $http, $stateParams) {
+  app.controller("SectionController", function($scope, $rootScope, $http, $stateParams) {
 
     $scope.menu1 = app.comune_informa;
     $scope.menu2 = app.cultura_turismo;
     $scope.menu3 = app.servizi_online;
     $scope.selectedMenu = $stateParams.menu;
+    $rootScope.selectedItem = "";
 
     $http.get( app.wp + "menus/" + $stateParams.menu )
     .success(function(data, status, header, config) {
 
       data.items.sort(function(a,b) { return parseInt(a.order) - parseInt(b.order) } );
+      $scope.selectedMenuName = data.items[0].title;
 
       $scope.side_menu = "";
 
@@ -19,7 +21,7 @@
 
       for (var i = 1; i < data.items.length; i++)
       {
-        console.log(data.items[i]);
+        // console.log(data.items[i]);
 
         if (data.items[i].parent == root_parent)
         {
