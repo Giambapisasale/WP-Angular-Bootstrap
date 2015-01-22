@@ -91,7 +91,7 @@
   background-color: #003044;
 
   width: 264px;
-  height: 590px
+  min-height: 590px
 }
 
 .side-menu ul {
@@ -104,34 +104,26 @@
   padding-bottom: 8px;
 }
 
-.side-menu > ul > li {
-  padding-left: 20px;
-}
-
-.side-menu > ul > ul > li {
-  padding-left: 40px;
-}
-
 .side-menu a {
   color: #ffffff;
-}
-
-.side-menu > ul > li > a {
-  font-family: 'ProximaNova-Bold';
-  font-size: 18px;
 }
 
 .side-menu > ul > li.active {
   background-color: #005c81;
 }
 
-.side-menu > ul > ul > li > a {
-  font-family: 'ProximaNova-Regular';
-  font-size: 16px;
+.side-menu > ul > li.first > a {
+  padding-left: 12px;
+
+  font-family: 'ProximaNova-Bold';
+  font-size: 18px;
 }
 
-.side-menu > ul > ul > li.active {
-  background-color: #005c81;
+.side-menu > ul > li.second > a {
+  padding-left: 28px;
+
+  font-family: 'ProximaNova-Regular';
+  font-size: 16px;
 }
 
 .section-title
@@ -157,5 +149,5 @@
   margin-top: 100px;
 }
 .footer-title, .footer-element {
- color: #fff; 
+  color: #fff;
 }
