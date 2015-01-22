@@ -6,6 +6,7 @@
     $scope.menu1 = app.comune_informa;
     $scope.menu2 = app.cultura_turismo;
     $scope.menu3 = app.servizi_online;
+    $scope.selectedMenu = $stateParams.menu;
 
     $http.get( app.wp + "menus/" + $stateParams.menu )
     .success(function(data, status, header, config) {
@@ -22,11 +23,11 @@
 
         if (data.items[i].parent == root_parent)
         {
-          $scope.side_menu += '<li class="first"><a href="./#/section/25/' + data.items[i].object + '/' + data.items[i].object_id + '">' + data.items[i].title + '</a></li>\n';
+          $scope.side_menu += '<li class="first"><a href="./#/section/' + $stateParams.menu + '/' + data.items[i].object + '/' + data.items[i].object_id + '">' + data.items[i].title + '</a></li>\n';
         }
         else
         {
-          $scope.side_menu += '<li class="second"><a href="./#/section/25/' + data.items[i].object + '/' + data.items[i].object_id + '">' + data.items[i].title + '</a></li>\n';
+          $scope.side_menu += '<li class="second"><a href="./#/section/' + $stateParams.menu + '/' + data.items[i].object + '/' + data.items[i].object_id + '">' + data.items[i].title + '</a></li>\n';
         }
       }
 

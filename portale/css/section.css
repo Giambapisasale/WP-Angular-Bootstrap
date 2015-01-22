@@ -32,11 +32,20 @@
   padding: 20px;
   transition: all 0.5s;
 }
-.sec-header-submenu:hover {
-  transition: all 0.5s;
-  background-color: #fff;
+
+.sec-header-submenu:hover, .sec-header-submenu.active {
   color: #00374d;
 }
+
+.sec-header-submenu.active {
+  background-color: #fff;
+}
+
+.sec-header-submenu:hover {
+  transition: all 0.5s;
+  background-color: #eeeeee;
+}
+
 .sec-header-submenu:hover .comune {
   background-position: -20px 0px;
 }

@@ -22,19 +22,19 @@
 <div class="container-fluid sec-header-menu">
   <div class="container">
     <a ng-href="./#/section/{{ menu1 }}/">
-      <div class="col-xs-3 sec-header-submenu">
+      <div id="{{ menu1 }}" class="col-xs-3 sec-header-submenu" ng-class="{ active: selectedMenu == menu1 }">
         <div class="comune"></div>
         &nbsp;&nbsp;<h6 class="inline">Il Comune Informa</h6>
       </div>
     </a>
     <a ng-href="./#/section/{{ menu2 }}/">
-      <div class="col-xs-3 sec-header-submenu">
+      <div id="{{ menu2 }}" class="col-xs-3 sec-header-submenu" ng-class="{ active: selectedMenu == menu2 }">
         <div class="cultura"></div>
         &nbsp;&nbsp;<h6 class="inline">Cultura e Turismo</h6>
       </div>
     </a>
     <a ng-href="./#/section/{{ menu3 }}/">
-      <div class="col-xs-3 sec-header-submenu">
+      <div id="{{ menu3 }}" class="col-xs-3 sec-header-submenu" ng-class="{ active: selectedMenu == menu3 }">
         <div class="servizi"></div>
         &nbsp;&nbsp;<h6 class="inline">Servizi Online</h6>
       </div>
