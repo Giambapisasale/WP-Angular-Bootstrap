@@ -108,16 +108,16 @@
   list-style: none;
 }
 
-.side-menu li {
+.side-menu a {
   padding-top: 8px;
   padding-bottom: 8px;
-}
 
-.side-menu a {
+  text-decoration: none;
+  display: block;
   color: #ffffff;
 }
 
-.side-menu > ul > li.active {
+.side-menu > ul > li.active, .side-menu > ul > li:hover {
   background-color: #005c81;
 }
 
