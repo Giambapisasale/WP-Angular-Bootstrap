@@ -17,6 +17,11 @@
   color: #fff;
   text-transform: uppercase;
 }
+
+.sec-header-menu a {
+  color: #ffffff;
+}
+
 .sec-header-menu h6 {
   vertical-align: sub;
   font-size: 16px;

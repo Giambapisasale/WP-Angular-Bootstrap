@@ -39,6 +39,7 @@
       },
       views: {
         '': {
+          controller: 'SectionController',
           templateUrl: "partials/section.html"
         },
         'footer@section': {
