@@ -1,6 +1,6 @@
-<p class="post-title">
-  <a ng-href="#/section/0/post/{{ post.ID }}" ng-bind-html="post.title"></a>
-</p>
+<h1 class="section-title">
+  <a ng-href="#/section/{{ selectedMenu }}/post/{{ post.ID }}" ng-bind-html="post.title"></a>
+</h1>
 <p class="post-date">
   <img class="calendar" src="images/assets/calendar-icon.png"> Pubblicato il {{ post.date | date : "shortDate" }}
 </p>

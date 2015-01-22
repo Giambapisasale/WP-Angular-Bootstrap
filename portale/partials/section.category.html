@@ -1,1 +1,12 @@
-<p class="lead">Questa è la categoria {{ category.ID }}</p>
+<h1 class="section-title">{{ category.name }}</h1>
+
+<div ng-repeat="post in posts">
+  <p class="post-title">
+    <a ng-href="#/section/{{ selectedMenu }}/post/{{ post.ID }}" ng-bind-html="post.title"></a>
+  </p>
+  <p class="post-date">
+    <img class="calendar" src="images/assets/calendar-icon.png"> Pubblicato il {{ post.date | date : "shortDate" }}
+  </p>
+
+  <div class="post-content" ng-bind-html="post.content"></div>
+</div>
