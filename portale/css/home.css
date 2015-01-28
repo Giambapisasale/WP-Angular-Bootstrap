@@ -29,7 +29,8 @@
   margin-top: 90px;
 }
 
-.header-link-title, .header-link-title a {
+.header-link-title,
+.header-link-title a {
   color: white;
   font-family: ProximaNova-Bold;
   font-size: 30px;
@@ -40,7 +41,8 @@
   padding-bottom: 4px;
 }
 
-.header-link-description, .header-link-description a {
+.header-link-description,
+.header-link-description a {
   font-family: ProximaNova-Semibold;
   font-size: 16px;
   line-height: 26px;
