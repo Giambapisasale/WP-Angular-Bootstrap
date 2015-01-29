@@ -19,7 +19,7 @@
 }
 
 * {
-  transition: all 1s ease;
+  transition: all 0.5s ease;
 }
 
 body {
@@ -47,6 +47,10 @@ body {
 .login {
   padding: 6px;
   padding-right: 18px;
+}
+
+.login a {
+ text-decoration: none;
 }
 
 .search {
@@ -101,19 +105,21 @@ body {
 .footer {
   padding-top: 30px;
   padding-bottom: 40px;
+  background-color: #003044;
+  color: #fff;
 }
 
 .footer-title {
   font-family: ProximaNova-Bold;
   font-size: 18px;
   text-transform: uppercase;
-  color: #005c81;
+  color: #fff;
 }
 
 .footer-element {
   font-family: ProximaNova-Regular;
   font-size: 18px;
-  color: #565555;
+  color: #fff;
 }
 
 .bottom {

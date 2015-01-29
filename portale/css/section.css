@@ -30,7 +30,8 @@
 
 .sec-header-submenu {
   padding: 20px;
-  transition: all 0.5s;
+  transition: all 0.2s;
+  text-align: center;
 }
 
 .sec-header-submenu:hover,
@@ -43,7 +44,7 @@
 }
 
 .sec-header-submenu:hover {
-  transition: all 0.5s;
+  transition: all 0.2s;
   background-color: #eeeeee;
 }
 
@@ -156,12 +157,10 @@
   color: #f84339;
 }
 
-.sec-footer {
-  background-color: #003044;
-  color: #fff;
-  margin-top: 100px;
+.breadcrumb span:hover {
+  color: #005c81;
 }
-.footer-title,
-.footer-element {
-  color: #fff;
+
+.footer {
+   margin-top: 100px;
 }

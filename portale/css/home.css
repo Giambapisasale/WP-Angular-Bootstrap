@@ -50,6 +50,11 @@
   text-transform: uppercase;
 }
 
+.header-link-description span a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
 .header-icon {
   margin: auto;
   max-width: 60%;
