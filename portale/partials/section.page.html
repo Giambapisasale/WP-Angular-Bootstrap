@@ -1,8 +1,5 @@
 <h1 class="section-title">
-  <a ng-href="#/section/{{ selectedMenu }}/post/{{ page.ID }}" ng-bind-html="page.title"></a>
+  <p ng-bind-html="page.title"></p>
 </h1>
-<p class="post-date">
-  <img class="calendar" src="images/assets/calendar-icon.png"> Pubblicato il {{ page.date | date : "shortDate" }}
-</p>
 
 <div class="post-content" ng-bind-html="page.content"></div>

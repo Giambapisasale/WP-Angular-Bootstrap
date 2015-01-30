@@ -135,3 +135,7 @@ body {
   font-size: 16px;
   font-family: ProximaNova-Light;
 }
+
+.underfooter i:hover {
+ color: #c7c7c7; 
+}
