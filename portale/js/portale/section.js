@@ -18,8 +18,9 @@
       $scope.side_menu = "";
 
       var root_parent = data.items[0].ID;
+      var i = 1;
 
-      for (var i = 1; i < data.items.length-1; i++)
+      for (/* i = 1 */; i < data.items.length-1; i++)
       {
         // console.log(data.items[i]);
 
@@ -27,39 +28,29 @@
         {
           $scope.side_menu += '<li tabindex="0" class="first"><a href="./#/section/' + $stateParams.menu + '/' + data.items[i].object + '/' + data.items[i].object_id + '">' + data.items[i].title + '</a></li>\n';
         }
-        else if((data.items[i].parent == root_parent) && (data.items[i+1].parent != root_parent))
+        else if ((data.items[i].parent == root_parent) && (data.items[i+1].parent != root_parent))
         {
           $scope.side_menu += '<li tabindex="0" class="first"><a href="./#/section/' + $stateParams.menu + '/' + data.items[i].object + '/' + data.items[i].object_id + '">' + data.items[i].title + '</a>\n<ul>\n';
         }
-        else if((data.items[i].parent != root_parent) && (data.items[i+1].parent == root_parent))
+        else if ((data.items[i].parent != root_parent) && (data.items[i+1].parent == root_parent))
         {
-          $scope.side_menu += '<li class="second"><a href="./#/section/' + $stateParams.menu + '/' + data.items[i].object + '/' + data.items[i].object_id + '">' + data.items[i].title + '</a></li>\n</ul>\n';
+          $scope.side_menu += '<li class="second"><a href="./#/section/' + $stateParams.menu + '/' + data.items[i].object + '/' + data.items[i].object_id + '">' + data.items[i].title + '</a></li>\n</ul>\n</li>\n';
         }
         else
         {
           $scope.side_menu += '<li class="second"><a href="./#/section/' + $stateParams.menu + '/' + data.items[i].object + '/' + data.items[i].object_id + '">' + data.items[i].title + '</a></li>\n';
         }
       }
-/*
-      i++;
-      
-        if ((data.items[i].parent == root_parent) && (data.items[i+1].parent == root_parent))
-        {
-          $scope.side_menu += '<li tabindex="0" class="first"><a href="./#/section/' + $stateParams.menu + '/' + data.items[i].object + '/' + data.items[i].object_id + '">' + data.items[i].title + '</a></li>\n';
-        }
-        else if((data.items[i].parent == root_parent) && (data.items[i+1].parent != root_parent))
-        {
-          $scope.side_menu += '<li tabindex="0" class="first"><a href="./#/section/' + $stateParams.menu + '/' + data.items[i].object + '/' + data.items[i].object_id + '">' + data.items[i].title + '</a>\n<ul>\n';
-        }
-        else if((data.items[i].parent != root_parent) && (data.items[i+1].parent == root_parent))
-        {
-          $scope.side_menu += '<li class="second"><a href="./#/section/' + $stateParams.menu + '/' + data.items[i].object + '/' + data.items[i].object_id + '">' + data.items[i].title + '</a></li>\n</ul>\n';
-        }
-        else
-        {
-          $scope.side_menu += '<li class="second"><a href="./#/section/' + $stateParams.menu + '/' + data.items[i].object + '/' + data.items[i].object_id + '">' + data.items[i].title + '</a></li>\n';
-        }
-*/
+          
+      if (data.items[i].parent == root_parent)
+      {
+        $scope.side_menu += '<li tabindex="0" class="first"><a href="./#/section/' + $stateParams.menu + '/' + data.items[i].object + '/' + data.items[i].object_id + '">' + data.items[i].title + '</a></li>\n';
+      }
+      else
+      {
+        $scope.side_menu += '<li class="second"><a href="./#/section/' + $stateParams.menu + '/' + data.items[i].object + '/' + data.items[i].object_id + '">' + data.items[i].title + '</a></li>\n</ul>\n</li>\n';
+      }
+
     })
     .error(function(data, status, header, config) {
       console.log("Error in $http.get() of SectionController");
