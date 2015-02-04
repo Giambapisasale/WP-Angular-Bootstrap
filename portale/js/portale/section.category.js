@@ -7,7 +7,7 @@
     .success(function(data, status, header, config) {
 
       $scope.category = data;
-      $rootScope.selectedItem = $sce.trustAsHtml($scope.category.name);
+      $rootScope.selectedItem = $sce.trustAsHtml('<a href="./#/section/' + $stateParams.menu + '/category/' + $scope.category.ID + '">' + $scope.category.name + '</a>');
 
     })
     .error(function(data, status, header, config) {

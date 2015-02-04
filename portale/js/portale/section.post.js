@@ -6,7 +6,7 @@
     .success(function(data, status, header, config) {
       $scope.post = data;
       $scope.post.content = $sce.trustAsHtml(data.content);
-      $rootScope.selectedItem = $sce.trustAsHtml($scope.post.title);
+      $rootScope.selectedItem = $sce.trustAsHtml('<a href="./#/section/' + $stateParams.menu + '/post/' + $scope.post.ID + '">' + $scope.post.title + '</a>');
     })
     .error(function(data, status, header, config) {
       console.log("Error in $http.get() of PostController");

@@ -147,10 +147,6 @@
 /* display: none; */
 }
 
-.side-menu > ul > li.first:focus > ul {
-  background-color: black;
-}
-
 .section-title
 {
   font-family: ProximaNova-Light;
@@ -169,6 +165,10 @@
   color: #f84339;
 }
 
+.breadcrumb span a {
+  text-decoration: none;
+}
+
 .breadcrumb span:hover {
   color: #005c81;
 }
@@ -177,6 +177,6 @@
    margin-top: 100px;
 }
 
-.selectedItem {
+.selectedItem a {
  color: #f84339;
 }
