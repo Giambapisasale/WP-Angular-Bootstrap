@@ -143,9 +143,11 @@
   font-size: 16px;
 }
 
-.side-menu > ul > li.first > ul {
-/* display: none; */
+.side-menu > ul > li.first > ul > li.second {
+  display: none;
 }
+
+.side-menu * { transition: all 1s; }
 
 .section-title
 {
