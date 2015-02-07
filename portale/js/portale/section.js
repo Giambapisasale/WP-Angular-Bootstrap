@@ -5,7 +5,7 @@ function show_submenu(menu_)
   {
     if(seconds[i].getElementsByTagName("ul")[0] != null)
     {
-  //    seconds[i].getElementsByTagName("ul")[0].style.display = "block";
+//    seconds[i].getElementsByTagName("ul")[0].style.display = "block";
       seconds[i].getElementsByTagName("ul")[0].className = "disappear";
     }
   }

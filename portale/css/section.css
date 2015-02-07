@@ -145,10 +145,6 @@
 
 .side-menu * { transition: all 1s; }
 
-.side-menu > ul > li.first > ul {
-  display: none;
-}
-
 .appear {
   display: block;
   animation: app 0.5s;
