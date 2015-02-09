@@ -143,39 +143,11 @@
   font-size: 16px;
 }
 
-.side-menu * { transition: all 1s; }
-
-.appear {
-  display: block;
-  animation: app 0.5s;
-  -webkit-animation: disapp 0.5s;
-}
-.disappear {
-  animation: disapp 0.5s;
-  -webkit-animation: disapp 0.5s;
+.side-menu > ul > li.first > ul > li.second {
   display: none;
 }
-.appear, .disappear {
-  animation-fill-mode: forwards;
-  -webkit-animation-fill-mode: forwards;
-}
 
-@keyframes app {
-  0% { opacity: 0; display: block; max-height: 0px; }
-  100% { opacity: 1; max-height: 3000px; }
-}
-@-webkit-keyframes app {
-  0% { opacity: 0; display: block; }
-  100% { opacity: 1; }
-}
-@keyframes disapp {
-  0% { opacity: 1; max-height: 3000px; }
-  100% { opacity: 0; max-height: 0px; display: none; }
-}
-@-webkit-keyframes disapp {
-  0% { opacity: 1; }
-  100% { opacity: 0; display: none; }
-}
+.side-menu * { transition: all 1s; }
 
 .section-title
 {

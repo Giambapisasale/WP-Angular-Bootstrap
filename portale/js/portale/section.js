@@ -1,23 +1,15 @@
 function show_submenu(menu_)
 {
-  var seconds = document.getElementsByClassName("first");
+  var seconds = document.getElementsByClassName("second");
   for (var i = 0; i < seconds.length; i++)
   {
-    if(seconds[i].getElementsByTagName("ul")[0] != null)
-    {
-//    seconds[i].getElementsByTagName("ul")[0].style.display = "block";
-      seconds[i].getElementsByTagName("ul")[0].className = "disappear";
-    }
+    seconds[i].style.display = "none";
   }
-
-  var menu_ul = menu_.getElementsByTagName("ul")[0];
-  if (menu_ul.className == "appear")
+  
+  var sub_menu = menu_.getElementsByClassName("second");
+  for (var i = 0; i < sub_menu.length; i++)
   {
-    menu_ul.className = "disappear";
-  }
-  else
-  {
-    menu_ul.className = "appear";
+    sub_menu[i].style.display = "block"; 
   }
 }
 
