@@ -18,13 +18,13 @@ mysql="mysql"
 
 database="portale"
 # crea database se non esiste
-$mysql --user=$user --password=$password --execute="CREATE DATABASE IF NOT EXISTS '$database';"
+$mysql --user=$user --password=$password --execute="CREATE DATABASE IF NOT EXISTS $database;"
 
 # crea utente "portale" se non esiste, con password "fragole", e assegna tutti i privilegi per il database wordpress
 #$mysql --user=$user --password=$password --execute="GRANT ALL PRIVILEGES ON $database.* To 'portale'@'localhost' IDENTIFIED BY 'fragole';"
 
 # importa dump
-$mysql --user=$user --password=$password  $database < $database.sql
+$mysql --user=$user --password=$password  $database < wordpress.sql
 
 # configura url wordpress
 $mysql --user=$user --password=$password  $database --execute="UPDATE wp_options SET option_value = '$url' where option_name='siteurl';"

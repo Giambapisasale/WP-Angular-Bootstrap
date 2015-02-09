@@ -18,8 +18,10 @@ function scrolltomenu()
 {
   var el = document.getElementsByClassName("side-menu")[0];
   var sec_offset = document.getElementById("section").offsetTop;
-  if((document.documentElement.scrollTop) > sec_offset)
-    el.scrollIntoView();
+  if(window.pageYOffset > sec_offset)
+  {
+    window.scrollTo(0,375);
+  }
 }
 
 (function () {
