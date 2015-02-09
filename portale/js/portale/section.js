@@ -11,6 +11,15 @@ function show_submenu(menu_)
   {
     sub_menu[i].style.display = "block"; 
   }
+  scrolltomenu();
+}
+
+function scrolltomenu()
+{
+  var el = document.getElementsByClassName("side-menu")[0];
+  var sec_offset = document.getElementById("section").offsetTop;
+  if((document.documentElement.scrollTop) > sec_offset)
+    el.scrollIntoView();
 }
 
 (function () {
@@ -41,7 +50,7 @@ function show_submenu(menu_)
 
         if ((data.items[i].parent == root_parent) && (data.items[i+1].parent == root_parent))
         {
-          $scope.side_menu += '<li class="first"><a href="./#/section/' + $stateParams.menu + '/' + data.items[i].object + '/' + data.items[i].object_id + '">' + data.items[i].title + '</a></li>\n';
+          $scope.side_menu += '<li class="first" OnClick="scrolltomenu()"><a href="./#/section/' + $stateParams.menu + '/' + data.items[i].object + '/' + data.items[i].object_id + '">' + data.items[i].title + '</a></li>\n';
         }
         else if ((data.items[i].parent == root_parent) && (data.items[i+1].parent != root_parent))
         {
@@ -59,7 +68,7 @@ function show_submenu(menu_)
           
       if (data.items[i].parent == root_parent)
       {
-        $scope.side_menu += '<li class="first"><a href="./#/section/' + $stateParams.menu + '/' + data.items[i].object + '/' + data.items[i].object_id + '">' + data.items[i].title + '</a></li>\n';
+        $scope.side_menu += '<li class="first" OnClick="scrolltomenu()"><a href="./#/section/' + $stateParams.menu + '/' + data.items[i].object + '/' + data.items[i].object_id + '">' + data.items[i].title + '</a></li>\n';
       }
       else
       {
