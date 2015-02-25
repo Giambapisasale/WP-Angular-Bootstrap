@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# utente root
-user="root"
+# utente portale
+user="portale"
 
-# password utente root
-password="root"
+# password utente portale
+password="fragole"
 
 # indirizzo host
 host="localhost"
@@ -16,12 +16,8 @@ home="http://localhost/WP-Angular-Bootstrap/wordpress/"
 # path di mysql, esempio: /path/to/mysql
 mysql="mysql"
 
-database="portale"
-# crea database se non esiste
-$mysql --user=$user --password=$password --execute="CREATE DATABASE IF NOT EXISTS $database;"
-
-# crea utente "portale" se non esiste, con password "fragole", e assegna tutti i privilegi per il database wordpress
-#$mysql --user=$user --password=$password --execute="GRANT ALL PRIVILEGES ON $database.* To 'portale'@'localhost' IDENTIFIED BY 'fragole';"
+# database
+database="wordpress"
 
 # importa dump
 $mysql --user=$user --password=$password  $database < wordpress.sql
