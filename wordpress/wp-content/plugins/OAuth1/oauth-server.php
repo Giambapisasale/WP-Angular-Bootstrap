@@ -106,7 +106,7 @@ function json_oauth_server_loaded() {
 		die();
 	}
 
-	header( 'Content-Type: application/x-www-form-urlencoded; charset=utf-8' );
+//	header( 'Content-Type: application/x-www-form-urlencoded; charset=utf-8' );
 	$response = http_build_query( $response, '', '&' );
 
 	echo $response;
