@@ -87,7 +87,9 @@ else if ($action == "access_token") {
 	  "token" => $oauth_token,
 	  "token_secret" => $oauth_token_secret
   );
-  header('Content-Type: application/json');
+  //header('Content-Type: application/json');
   echo json_encode($data);
+  $data = json_encode($data);
+  echo "<script>parent.update_storage('".$data."');</script>";
   return;
 } 
