@@ -1,5 +1,5 @@
 (function () {
-  var app = angular.module('portale', ['ui.router', 'ui.bootstrap', 'ngSanitize', 'uiRouterStyles']);
+  var app = angular.module('portale', ['ui.router', 'ui.bootstrap', 'ngSanitize', 'uiRouterStyles', 'ngStorage']);
 
   app.controller("HomeController", function($scope, $stateParams, $http, $sce) {
     $http.get( app.wp + "posts/" )
@@ -18,7 +18,7 @@
     $scope.open = function (size) {
 
       var modalInstance = $modal.open({
-        template: '<iframe class="login_ifr" src="oauth/client.php"></iframe>',
+        template: '<iframe class="login_ifr" src="oauth/test.php"></iframe>',
         controller: 'ModalInstanceCtrl',
         size: size,
         resolve: {
@@ -51,4 +51,13 @@
     };
   });
 
+  app.controller('StorageCtrl', function($scope, $localStorage) {
+    $scope.$storage = $localStorage.$default({
+      token_: $scope.tokens
+    });
+  });
+
+
 })()
+
+  }
