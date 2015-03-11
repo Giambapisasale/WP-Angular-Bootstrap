@@ -61,8 +61,6 @@
 
 function update_storage(data) {
   var scope = angular.element(document.getElementById("storage")).scope();
-  scope.$apply(function(){
-    scope.tokens = data;
-  })
-  alert(scope.tokens);
+  scope.$storage.token_ = data;
+  alert(scope.$storage.token_);
 }
