@@ -2,10 +2,10 @@
   <div class="row">
     <div class="col-xs-2">
       <div class="bg-panel-lateral">
-        <h1>Comune di Catania</h1>
+        <h1>{{name}}</h1>
         <br>
         <h5 class="text-center uppercase">Servizi Online</h5>
-        <h4 class="contracts-type uppercase"><img src="images/assets/tap.png"> Acquedotto</h4>
+        <h4 class="contracts-type uppercase" ng-repeat="panels in panel_menu.items"><img src="images/assets/tap.png"> {{panels.title}}</h4>
       </div>
     </div>
     <div class="col-xs-10">
@@ -45,7 +45,7 @@
             </thead>
             <tbody>
               <tr ng-repeat="contract in contracts_.contracts" button-toggle="active"  ng-model="myModel['A']">
-                  <td><input type="checkbox" ng-model="myModel['A']" button-toggle="active"  ng-model="myModel['A']"> &nbsp; {{contract.indirizzo}}</td>
+                  <td><input type="checkbox" ng-model="myModel['A']" button-toggle="active"  ng-model="myModel['A']"><img src="images/assets/checkbox.png"><img src="images/assets/checkbox_checked.png"> &nbsp; {{contract.indirizzo}}</td>
                   <td>{{contract.categoria}}</td>
                   <td>{{contract.matricola}}</td>
                   <td>{{contract.data}}</td>
