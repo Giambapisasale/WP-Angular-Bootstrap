@@ -103,6 +103,7 @@ input[type="checkbox"] + img, input[type="checkbox"]:checked + img + img
   display: inline-block;
   width: 16px;
   height: 16px;
+  margin-top: -2px;
 }
 
 .contracts button {
