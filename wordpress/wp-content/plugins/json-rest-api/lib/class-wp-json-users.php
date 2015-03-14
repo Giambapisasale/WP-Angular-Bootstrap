@@ -97,22 +97,30 @@ class WP_JSON_Users {
 			return new WP_Error( 'json_not_logged_in', __( 'You are not currently logged in.' ), array( 'status' => 401 ) );
 		}
 
-		$response = $this->get_user( $current_user_id, $context );
-
-		if ( is_wp_error( $response ) ) {
-			return $response;
+		$user = get_userdata( $current_user_id );
+		
+		if ( empty( $user->ID ) ) {
+			return new WP_Error( 'json_user_invalid_id', __( 'Invalid user ID.' ), array( 'status' => 400 ) );
 		}
+		
+		return $this->prepare_user( $user, $context );
+		
+// 		$response = $this->get_user( $current_user_id, $context );
 
-		if ( ! ( $response instanceof WP_JSON_ResponseInterface ) ) {
-			$response = new WP_JSON_Response( $response );
-		}
+// 		if ( is_wp_error( $response ) ) {
+// 			return $response;
+// 		}
 
-		$data = $response->get_data();
+// 		if ( ! ( $response instanceof WP_JSON_ResponseInterface ) ) {
+// 			$response = new WP_JSON_Response( $response );
+// 		}
 
-		$response->header( 'Location', $data['meta']['links']['self'] );
-		$response->set_status( 302 );
+// 		$data = $response->get_data();
 
-		return $response;
+// 		$response->header( 'Location', $data['meta']['links']['self'] );
+// 		$response->set_status( 302 );
+
+// 		return $response;
 	}
 
 	/**
