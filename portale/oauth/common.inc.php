@@ -11,7 +11,7 @@ $base = "/portale/oauth";
 $base_url = "http://$domain$base";
 
 //da questo url vengono recuperati gli endpoint corretti
-$wp_json_url= "http://$domain/WP-Angular-Bootstrap/wordpress/wp-json/";
+$wp_json_url= "http://$domain/wordpress/wp-json/";
 
 
 // in caso di fallimento della prima request si potrebbero rigenerare?
