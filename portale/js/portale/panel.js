@@ -5,7 +5,7 @@ function Main($scope) {
 (function () {
   var app = angular.module('portale');
 
-  app.controller("PanelController", function($scope, $http) {
+  app.controller("PanelController", function($scope, $http, $sce) {
     $http.get( app.wp )
       .success(function(data, status, header, config) {
       $scope.name = data.name;
@@ -14,10 +14,11 @@ function Main($scope) {
       console.log("Error in $http.get() of PanelController (name)");
     });
 
-    $http.get( app.wp + "menus/27" )
+    $http.get( app.wp + "menus/28" )
       .success(function(data, status, header, config) {
       $scope.panel_menu = data;
-      $scope.panel_menu.items.shift();
+      $scope.panel_menu.items[0].img = 'tap.png';
+      $scope.panel_menu.items[1].img = 'empty.png';
     })
       .error(function(data, status, header, config) {
       console.log("Error in $http.get() of PanelController (panel_menu)");
