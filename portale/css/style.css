@@ -1,15 +1,3 @@
-.header-links a
-{
-  width: 165px;
-  height: 165px;
-  margin: auto;
-  display: block;
-}
-.header-links a img
-{
-  max-width: 100%;
-}
-
 @font-face {
   font-family: ProximaNova-Bold;
   src: url('../fonts/ProximaNova-Bold.otf') format("opentype");
