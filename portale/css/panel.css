@@ -27,7 +27,11 @@
   color: #fff;
   background-color: #29809f;
 }
-.top-bar a { color: #fff; }
+.top-bar a {
+  color: #fff;
+  text-decoration: none;
+}
+.top-bar a:hover span { text-decoration: underline; }
 
 .top-bar .avatar {
   width: 44px;
