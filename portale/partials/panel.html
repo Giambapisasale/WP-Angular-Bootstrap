@@ -1,0 +1,67 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-2">
+      <div class="bg-panel-lateral">
+        <h1>{{name}}</h1>
+        <br>
+        <h5 class="text-center uppercase">Servizi Online</h5>
+        <h4 class="contracts-type uppercase" ng-repeat="panels in panel_menu.items"><img src="images/assets/tap.png"> {{panels.title}}</h4>
+      </div>
+    </div>
+    <div class="col-xs-10">
+      <div class="bg-panel">
+        <div class="top-bar">
+          <a href="#/home" class="pull-left uppercase">
+            <i class="fa fa-angle-left fa-13"></i> &nbsp; <span>Torna alla Home</span>
+          </a>
+          <div class="search pull-right">
+            &nbsp;&nbsp;&nbsp;
+            <input type="text" placeholder="Cerca nel sito" class="searchinput">
+            &nbsp;
+            <img src="images/assets/search-icon.png">
+          </div>
+
+          <span class="pull-right">
+            Benvenuto, <b class="uppercase">mario john doe</b> &nbsp;
+            <img src="images/assets/avatar.png" class="avatar"> <i class="fa fa-caret-down"></i>
+&nbsp;&nbsp;&nbsp;
+          </span>
+        </div>
+        <div class="contracts">
+          <br>
+          <h2 class="panel-title">I tuoi contratti</h2>
+          <br>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+          <h3 class="post-title">seleziona un contratto</h3>
+          <br>
+          <table class="contracts-data table table-striped">
+            <thead>
+              <tr>
+                <td><h4>Indirizzo di ubicazione</h4></td>
+                <td><h4>Categoria utilizzo</h4></td>
+                <td><h4>Matricola contatore</h4></td>
+                <td><h4>Data inizio contratto</h4></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="contract in contracts_.contracts" button-toggle="active"  ng-model="myModel['A']">
+                  <td><input type="checkbox" ng-model="myModel['A']" button-toggle="active"  ng-model="myModel['A']"><img src="images/assets/checkbox.png"><img src="images/assets/checkbox_checked.png"> &nbsp; {{contract.indirizzo}}</td>
+                  <td>{{contract.categoria}}</td>
+                  <td>{{contract.matricola}}</td>
+                  <td>{{contract.data}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <button class="uppercase">Avanti</button>
+          <br><br>
+          <div class="footer-panel">
+            <p class="pull-left">Copyright 2014-2015 Comune di Catania - Tutti i diritti riservati.</p>
+            <p class="pull-right">Segui il Comune di Catania su &nbsp;&nbsp;<i class="fa fa-facebook"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-twitter"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-youtube-play"></i></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

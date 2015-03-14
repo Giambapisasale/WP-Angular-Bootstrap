@@ -48,6 +48,18 @@
         }
       }
     })
+    .state('panel', {
+      url: '/panel',
+      data: {
+        css:  'css/panel.css'
+      },
+      views: {
+        '': {
+          controller: 'PanelController',
+          templateUrl: "partials/panel.html"
+        }
+      }
+    })
     .state('section.post', {
       url: 'post/:id',
       controller: 'PostController',
