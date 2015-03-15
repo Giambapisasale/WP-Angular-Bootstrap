@@ -59,8 +59,14 @@
 
 })()
 
+function close_modal() {
+	document.getElementsByClassName('modal')[0].click();
+}
+
 function update_storage(data) {
   var scope = angular.element(document.getElementById("storage")).scope();
   scope.$storage.token_ = data;
-  alert(scope.$storage.token_);
+  //alert(scope.$storage.token_);
+  close_modal();
+  location.href = '../#/panel';
 }
