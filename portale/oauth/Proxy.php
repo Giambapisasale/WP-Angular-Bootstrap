@@ -13,8 +13,8 @@ class Proxy {
 		try {
 			if(myData == NULL) return;
 			
-			$oauth = new OAuth ( $myData->key, $myData->secret, OAUTH_SIG_METHOD_HMACSHA1, OAUTH_AUTH_TYPE_AUTHORIZATION );
-			$oauth->setToken ( $myData->token, $myData->token_secret );
+			$oauth = new OAuth ( $this->myData["key"], $this->myData["secret"], OAUTH_SIG_METHOD_HMACSHA1, OAUTH_AUTH_TYPE_AUTHORIZATION );
+			$oauth->setToken ( $this->myData["token"], $this->myData["token_secret"] );
 			
 			$oauth->fetch ( $path );
 			
