@@ -44,8 +44,8 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="contract in contracts_.contracts" button-toggle="active"  ng-model="myModel['A']">
-                  <td><input type="checkbox" ng-model="myModel['A']" button-toggle="active"  ng-model="myModel['A']"><img src="images/assets/checkbox.png"><img src="images/assets/checkbox_checked.png"> &nbsp; {{contract.indirizzo}}</td>
+              <tr ng-repeat="contract in contracts_.contracts" OnClick="this.getElementsByTagName('input')[0].click();">
+                  <td><input type="radio" name="contract"><img src="images/assets/checkbox.png"><img src="images/assets/checkbox_checked.png"> &nbsp; {{contract.indirizzo}}</td>
                   <td>{{contract.categoria}}</td>
                   <td>{{contract.matricola}}</td>
                   <td>{{contract.data}}</td>

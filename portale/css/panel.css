@@ -99,10 +99,10 @@
   color: #005c81;
 }
 
-input[type="checkbox"] { display: none; }
-input[type="checkbox"] +img + img { display: none; }
-input[type="checkbox"]:checked + img { display: none; }
-input[type="checkbox"] + img, input[type="checkbox"]:checked + img + img
+input[type="radio"] { display: none; }
+input[type="radio"] +img + img { display: none; }
+input[type="radio"]:checked + img { display: none; }
+input[type="radio"] + img, input[type="radio"]:checked + img + img
 {
   display: inline-block;
   width: 16px;
