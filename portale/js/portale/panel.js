@@ -4,8 +4,12 @@ function Main($scope) {
 
 (function () {
   var app = angular.module('portale');
-
+  
+  
+  
   app.controller("PanelController", function($scope, $http, $sce) {
+	var scope = angular.element(document.getElementById("storage")).scope();
+	
     $http.get( app.wp )
       .success(function(data, status, header, config) {
       $scope.name = data.name;
@@ -24,8 +28,8 @@ function Main($scope) {
       console.log("Error in $http.get() of PanelController (panel_menu)");
     });
 
-
-    $http.get( "js/portale/contracts.json" )
+    // qui occorre passare l'ID dell'utente loggato
+    $http.get( "oauth/client.php?action=p&path=api/public/contratto/" + scope.$storage.token_.ID )
       .success(function(data, status, header, config) {
       $scope.contracts_ = data;
     })
