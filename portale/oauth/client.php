@@ -9,7 +9,8 @@ require_once ("Proxy.php");
 
 
 if( isset($_REQUEST['action']) && !empty($_REQUEST['action']) ) {
-
+	$action = $_REQUEST['action'];
+	
 	$test_consumer = new OAuthConsumer($key, $secret, NULL);
 	
 	$json_endpoint = file_get_contents($wp_json_url);
@@ -68,7 +69,8 @@ if( isset($_REQUEST['action']) && !empty($_REQUEST['action']) ) {
 			reportError("invalid token or token_secret");
 			exit();
 		}
-		
+		$token = $_REQUEST['token'];
+		$token_secret = $_REQUEST['token_secret'];
 		$test_token = new OAuthConsumer($token, $token_secret);
 		
 		$_SESSION['status'] = array(
@@ -172,7 +174,7 @@ if( isset($_REQUEST['action']) && !empty($_REQUEST['action']) ) {
 		
 		echo "<script>parent.update_storage('".$_SESSION['userData']."');</script>";
 		
-		exit();
+		return;
 
 	}else if ($action == "p") {
 		
