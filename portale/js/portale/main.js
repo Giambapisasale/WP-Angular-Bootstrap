@@ -65,7 +65,7 @@ function close_modal() {
 
 function update_storage(data) {
   var scope = angular.element(document.getElementById("storage")).scope();
-  scope.$storage.token_ = data;
+  scope.$storage.token_ = angular.fromJson(data);
   //alert(scope.$storage.token_);
   close_modal();
   location.href = '../#/panel';
