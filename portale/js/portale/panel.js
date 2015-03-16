@@ -11,6 +11,8 @@ function Main($scope) {
 	var scope = angular.element(document.getElementById("storage")).scope();
 	$rootScope.firstname = $rootScope.$storage.token_.first_name;
 	$rootScope.lastname = $rootScope.$storage.token_.last_name;
+    $rootScope.img = $rootScope.$storage.token_.avatar;
+
     $http.get( app.wp )
       .success(function(data, status, header, config) {
       $scope.name = data.name;
