@@ -12,7 +12,19 @@
     });
   });
 
-  app.controller('ModalDemoCtrl', function ($scope, $modal, $log) {
+  app.controller('ModalDemoCtrl', function ($scope, $modal, $log, $rootScope) {
+    $scope.username = "";
+    $scope.display = "";
+    $scope.img_src = "images/assets/login-icon.png";
+
+    if($rootScope.$storage.token_ != null)
+    {
+      var data = $rootScope.$storage.token_;
+      $scope.display = '{"display": "none"}';
+      $scope.username = data.username;
+      $scope.img_src = data.avatar;
+      $scope.dim_avatar = '{"width" : "32px", "height" : "32px", "vertical-align" : "middle"}';
+    }
 
     $scope.items = ['item1', 'item2', 'item3'];
     $scope.open = function (size) {
@@ -51,8 +63,8 @@
     };
   });
 
-  app.controller('StorageCtrl', function($scope, $localStorage) {
-    $scope.$storage = $localStorage.$default({
+  app.controller('StorageCtrl', function($scope, $localStorage, $rootScope) {
+    $rootScope.$storage = $localStorage.$default({
       token_: $scope.tokens
     });
   });
@@ -60,12 +72,12 @@
 })()
 
 function close_modal() {
-	document.getElementsByClassName('modal')[0].click();
+  document.getElementsByClassName('modal')[0].click();
 }
 
 function update_storage(data) {
   var scope = angular.element(document.getElementById("storage")).scope();
-  scope.$storage.token_ = data;
+  scope.$storage.token_ = JSON.parse(data);
   //alert(scope.$storage.token_);
   close_modal();
   location.href = '../#/panel';

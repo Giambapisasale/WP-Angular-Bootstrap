@@ -10,7 +10,8 @@
         </div>
       </div>
       <div ng-controller="ModalDemoCtrl" class="col-xs-2 pull-right text-right top-link login">
-        <a href="#" ng-click="open('lg')">Login</a>&nbsp;&nbsp;<img src="images/assets/login-icon.png">
+        <a href="#/panel">{{username}}</a>
+        <a href="#" ng-style="{{display}}" ng-click="open('lg')">Login</a>&nbsp;&nbsp;<img ng-style="{{dim_avatar}}" ng-src="{{img_src}}">
       </div>
     </div>
     <img class="img-responsive header-img" src="images/assets/logo-header.png">
