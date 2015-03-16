@@ -180,8 +180,8 @@ else if ($action == "access_token") {//step 3
 }else if ($action == "p") {
 	if(isset($_GET['path']) && !empty($_GET['path']) &&
 			isset($_SESSION['userData']) && isset($_SESSION['userKey']) ) {
-				
-		$proxy  = new Proxy($_SESSION['userKey']);
+		$function = $_GET['path'];
+		$proxy  = new Proxy($_SESSION['userKey'], substr( $function, 0, 4 ) === "api/" ? $domain : $wp_json_url );
 		$proxy->sendRequest($_GET['path']);
 	}
 }else if ($action == "status") {
