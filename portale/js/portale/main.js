@@ -32,7 +32,7 @@
     $scope.open = function (size) {
 
       var modalInstance = $modal.open({
-        template: '<iframe class="login_ifr" src="oauth/client.php"></iframe>',
+        template: '<iframe class="login_ifr" src="oauth/client.php?action=request_token"></iframe>',
         controller: 'ModalInstanceCtrl',
         size: size,
         resolve: {
