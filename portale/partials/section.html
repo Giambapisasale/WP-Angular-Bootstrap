@@ -1,7 +1,7 @@
 <div class="container-fluid sec-header">
   <div class="container">
     <div class="row top-links">
-      <div class="col-xs-7">
+      <div class="col-xs-6">
         <a href="#/home"><img src="images/assets/sec-logo.png" class="sec-logo"></a>
       </div>
       <div class="col-xs-3 pull-right">
@@ -12,8 +12,8 @@
           <img src="images/assets/search-icon.png">
         </div>
       </div>
-      <div ng-controller="ModalDemoCtrl" class="col-xs-2 pull-right text-right top-link login">
-        <a href="#/panel">{{username}}</a>
+      <div ng-controller="ModalDemoCtrl" class="col-xs-3 pull-right text-right top-link login">
+        <a href="#/panel">{{firstname}} {{lastname}}</a>
         <a href="#" ng-style="{{display}}" ng-click="open('lg')">Login</a>&nbsp;&nbsp;<img ng-style="{{dim_avatar}}" ng-src="{{img_src}}">
       </div>
     </div>

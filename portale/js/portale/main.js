@@ -13,7 +13,8 @@
   });
 
   app.controller('ModalDemoCtrl', function ($scope, $modal, $log, $rootScope) {
-    $scope.username = "";
+    $scope.firstname = "";
+    $scope.lastname = "";
     $scope.display = "";
     $scope.img_src = "images/assets/login-icon.png";
 
@@ -21,7 +22,8 @@
     {
       var data = $rootScope.$storage.token_;
       $scope.display = '{"display": "none"}';
-      $scope.username = data.username;
+      $scope.firstname = data.first_name;
+      $scope.lastname = data.last_name;
       $scope.img_src = data.avatar;
       $scope.dim_avatar = '{"width" : "32px", "height" : "32px", "vertical-align" : "middle"}';
     }
