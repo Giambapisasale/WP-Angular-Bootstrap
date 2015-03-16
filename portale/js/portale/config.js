@@ -48,18 +48,6 @@
         }
       }
     })
-    .state('panel', {
-      url: '/panel',
-      data: {
-        css:  'css/panel.css'
-      },
-      views: {
-        '': {
-          controller: 'PanelController',
-          templateUrl: "partials/panel.html"
-        }
-      }
-    })
     .state('section.post', {
       url: 'post/:id',
       controller: 'PostController',
@@ -74,6 +62,30 @@
       url: 'page/:id',
       controller: 'PageController',
       templateUrl: "partials/section.page.html"
+    })
+    .state('panel', {
+      url: '/panel/',
+      data: {
+        css:  'css/panel.css'
+      },
+      views: {
+        '': {
+          controller: 'PanelController',
+          templateUrl: "partials/panel.html"
+        }
+      }
+    })
+    .state('panel.contract', {
+      url: ':id',
+      data: {
+        css:  'css/panel.css'
+      },
+      views: {
+        '': {
+          controller: 'PanelContractCtrl',
+          templateUrl: "partials/panel.contract.html"
+        }
+      }
     });
   });
 

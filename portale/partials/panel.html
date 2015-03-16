@@ -5,7 +5,7 @@
         <h1>{{name}}</h1>
         <br>
         <h5 class="text-center uppercase">Servizi Online</h5>
-        <h4 class="contracts-type uppercase" ng-repeat="panels in panel_menu.items"><img src="images/assets/{{panels.img}}"> {{panels.title}}</h4>
+        <h4 class="contracts-type uppercase" ng-repeat="panels in panel_menu.items"><a href="#/panel/"><img src="images/assets/{{panels.img}}"> {{panels.title}}</a></h4>
       </div>
     </div>
     <div class="col-xs-10">
@@ -24,43 +24,44 @@
           <span class="pull-right">
             Benvenuto, <b class="uppercase">{{firstname}} {{lastname}}</b> &nbsp;
             <img ng-src="{{img}}" class="avatar"> <i class="fa fa-caret-down"></i>
-&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;
           </span>
         </div>
-        <div class="contracts">
-          <br>
-          <h2 class="panel-title">I tuoi contratti</h2>
-          <br>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-          <h3 class="post-title">seleziona un contratto</h3>
-          <br>
-          <table class="contracts-data table table-striped">
-            <thead>
-              <tr>
-                <td><h4>Indirizzo di ubicazione</h4></td>
-                <td><h4>Categoria utilizzo</h4></td>
-                <td><h4>Matricola contatore</h4></td>
-                <td><h4>Data inizio contratto</h4></td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr ng-repeat="contract in contracts_.contracts" OnClick="this.getElementsByTagName('input')[0].click();">
-                  <td><input type="radio" name="contract"><img src="images/assets/checkbox.png"><img src="images/assets/checkbox_checked.png"> &nbsp; {{contract.indirizzo}}</td>
+        <div ui-view>
+          <div class="contracts">
+            <br>
+            <h2 class="panel-title">I tuoi contratti</h2>
+            <br>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+            <h3 class="post-title">seleziona un contratto</h3>
+            <br>
+            <table class="contracts-data table table-striped">
+              <thead>
+                <tr>
+                  <td><h4>Indirizzo di ubicazione</h4></td>
+                  <td><h4>Categoria utilizzo</h4></td>
+                  <td><h4>Matricola contatore</h4></td>
+                  <td><h4>Data inizio contratto</h4></td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="contract in contracts_.contracts" OnClick="this.getElementsByTagName('input')[0].click();" ng-click="getid(contract.id)">
+                  <td><input type="radio" name="contract" id="{{contract.id}}"><img src="images/assets/checkbox.png"><img src="images/assets/checkbox_checked.png"> &nbsp; {{contract.indirizzo}}</td>
                   <td>{{contract.categoria}}</td>
                   <td>{{contract.matricola}}</td>
                   <td>{{contract.data}}</td>
-              </tr>
-            </tbody>
-          </table>
-          <button class="uppercase">Avanti</button>
-          <br><br>
-          <div class="footer-panel">
-            <p class="pull-left">Copyright 2014-2015 Comune di Catania - Tutti i diritti riservati.</p>
-            <p class="pull-right">Segui il Comune di Catania su &nbsp;&nbsp;<i class="fa fa-facebook"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-twitter"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-youtube-play"></i></p>
+                </tr>
+              </tbody>
+            </table>
+            <a ng-href="#/panel/{{id_}}"><button class="uppercase">Avanti</button></a>
+            <br><br>
+            <div class="footer-panel">
+              <p class="pull-left">Copyright 2014-2015 Comune di Catania - Tutti i diritti riservati.</p>
+              <p class="pull-right">Segui il Comune di Catania su &nbsp;&nbsp;<i class="fa fa-facebook"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-twitter"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-youtube-play"></i></p>
+            </div>
           </div>
         </div>
       </div>
-
     </div>
 
   </div>

@@ -2,10 +2,12 @@
 
 .bg-panel-lateral {
   height: 100vh;
+  width: 226px;
   margin: 0px -15px;
   padding: 26px 0px 0px 0px;
   background-color: #2b3d4f;
   color: #a6acb4;
+  position: fixed;
 }
 
 .bg-panel-lateral h1 {
@@ -74,12 +76,17 @@
   padding: 10px;
 }
 
+.bg-panel-lateral a { color: #fff !important; text-decoration: none; }
+
 .contracts-type img {
   width: 20px;
   height: 20px;
 }
 
-.contracts { padding: 0px 30px; }
+.contracts {
+  padding: 0px 30px;
+  background-color: #eceff2;
+}
 
 .contracts-data {
   border: 2px solid #ddd;
@@ -120,7 +127,12 @@ input[type="radio"] + img, input[type="radio"]:checked + img + img
   height: 50px;
 }
 
+.contract_detailed tr td:nth-child(even) {
+  color: #005c81;
+}
+
 .footer-panel {
   padding: 0px 30px;
   color: #005c81;
+  background-color: #eceff2;
 }

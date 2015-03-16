@@ -82,5 +82,5 @@ function update_storage(data) {
   scope.$storage.token_ = JSON.parse(data);
   //alert(scope.$storage.token_);
   close_modal();
-  location.href = '../#/panel';
+  location.href = '../#/panel/';
 }
