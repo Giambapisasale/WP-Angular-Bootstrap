@@ -7,9 +7,10 @@ function Main($scope) {
   
   
   
-  app.controller("PanelController", function($scope, $http, $sce) {
+  app.controller("PanelController", function($scope, $http, $sce, $rootScope) {
 	var scope = angular.element(document.getElementById("storage")).scope();
-	
+	$rootScope.firstname = $rootScope.$storage.token_.first_name;
+	$rootScope.lastname = $rootScope.$storage.token_.last_name;
     $http.get( app.wp )
       .success(function(data, status, header, config) {
       $scope.name = data.name;
