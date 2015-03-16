@@ -2,12 +2,12 @@
 
 .bg-panel-lateral {
   height: 100vh;
-  width: 226px;
+  /* width: 226px; */
   margin: 0px -15px;
   padding: 26px 0px 0px 0px;
   background-color: #2b3d4f;
   color: #a6acb4;
-  position: fixed;
+  /* position: fixed; */
 }
 
 .bg-panel-lateral h1 {

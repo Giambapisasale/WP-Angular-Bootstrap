@@ -1,0 +1,53 @@
+Release, istruzioni installazione
+
+1) copiare tutto il pacchetto in una cartella accessibile da apache
+2) configurare alias e virtualhost, ad esempio portale.local, per eseguire il portale nella root
+
+<Directory "C:/web/Halley/WP-Angular-Bootstrap">
+	Options Indexes FollowSymLinks
+    AllowOverride All
+	Order Deny,Allow   
+	Allow from all 
+	Require all granted	
+</Directory>
+
+<VirtualHost *:80>
+    ServerAdmin webmaster@dummy-host.example.com
+    DocumentRoot "C:/web/Halley/WP-Angular-Bootstrap"
+    ServerName portale.local
+    ServerAlias portale.local
+    ErrorLog "logs/portale.local-error.log"
+    CustomLog "logs/portale.local-access.log" common
+</VirtualHost>
+
+3) nella cartella /wordpress/dumpAndRestore si trova il dump completo del database, su linux si possono utilizzare gli script automatici
+setup.sh
+restore.sh (dopo averlo rinominato da restore.sh.dist)
+occorre modificare gli script e inserire i parametri corretti del database
+oppure effettuare il restore manualmente del file wordpress.sql
+
+4) configurare i puntamenti al database in wordpress/wp-config.php e api/config/database.php 
+
+5) su linux verificare permessi cartelle api e wordpress, verificare .htaccess
+
+6) per attivare il debug per Laravel salvare un nuovo file sotto /api/ chiamato ".env" con queste due righe:
+APP_DEBUG=TRUE
+APP_ENV=development
+
+7) Verifica dell'installazione:
+step 7.0 => http://portale.local/wordpress verificare che wordpress risponda correttamente 
+step 7.1 => http://portale.local/portale se si popolano correttamente articoli e menu la prima parte dell'installazione è andata a buon fine, 
+altrimenti l'installazione di wordpress non è stata completata con successo
+step 7.2 => http://portale.local/api/public pagina predefinita di Laravel 
+step 7.3 => http://portale.local/api/public/contratto/1 Laravel accede correttamente al database 
+step 7.4 => http://portale.local/wordpress/wp-admin pannello di amministrazione
+
+8) configurazione autenticazione
+Accedere al pannello di amministrazione di wordpress e dalla sezione Api Clients aggiungere una nuova coppia di API Keys
+Sostituire i valori ottenuti nel file /portale/oauth/common.inc.php e verificare altri parametri di configurazione nel file
+
+verifica, step 8.1 => http://portale.local/portale => click login => inserire dati account cittadino => click autorizza => si apre pannello cittadino con l'elenco contratti
+
+Utente : password
+admin : testadmin
+Cittadino_ : cittadino
