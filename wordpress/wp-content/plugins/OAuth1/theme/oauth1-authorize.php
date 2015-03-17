@@ -53,18 +53,59 @@ $url = site_url( 'wp-login.php?action=oauth1_authorize', 'login_post' );
     #oauth1_authorize_form {
       margin: 0px;
     }
+
+    .annulla {
+      text-transform: uppercase;
+      text-align: center;
+      font-weight: bold;
+      color: #005c81 !important;
+    }
+
+    .autorizza {
+      text-transform: uppercase;
+      text-align: center;
+      font-weight: bold;
+      color: #fff;
+      background-color: #005c81 !important;
+    }
+
+    .login-title {
+      text-transform: uppercase;
+      text-align: center;
+      color: #005c81;
+      font-size: 20px;
+      font-weight: bold;
+      font-family: Arial;
+    }
+
+    .login-info p {
+      color: #005c81;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .avatar {
+     float: none !important;
+    }
+
+    .submit {
+      width: 100%;
+      text-align: center !important;
+    }
+
+    .submit * { float: none !important; }
 </style>
 
 <form name="oauth1_authorize_form" id="oauth1_authorize_form" action="<?php echo esc_url( $url ); ?>" method="post">
 
-	<h2 class="login-title"><?php echo esc_html( sprintf( __('Connect %1$s'), $consumer->post_title ) ) ?></h2>
+	<h2 class="login-title">Connetti</h2>
 
 	<div class="login-info">
-
-		<?php echo get_avatar( $current_user->ID, '78' ); ?>
-
+      <center>
 		<p>Vuoi connetterti a <?= get_bloginfo( 'name' ) ?>?</p>
 
+		<?php echo get_avatar( $current_user->ID, '78' ); ?>
+      </center>
 	</div>
 
 	<?php
@@ -75,14 +116,13 @@ $url = site_url( 'wp-login.php?action=oauth1_authorize', 'login_post' );
 	 */
 	do_action( 'oauth1_authorize_form', $consumer ); ?>
 	<p class="submit">
-		<button type="submit" name="wp-submit" value="authorize" class="button button-primary button-large"><?php _e('Authorize'); ?></button>
-		<button type="submit" name="wp-submit" value="cancel" class="button button-large" OnClick="parent.close_modal();"><?php _e('Cancel'); ?></button>
+		<button type="submit" name="wp-submit" value="authorize" class="button button-primary button-large autorizza">Autorizza</button>
+		<button type="submit" name="wp-submit" value="cancel" class="button button-large annulla" OnClick="parent.close_modal();">Annulla</button>
 	</p>
 
 </form>
 
 <p id="nav">
-<a href="<?php echo esc_url( wp_login_url( $url, true ) ); ?>"><?php _e( 'Switch user' ) ?></a>
 <?php
 if ( get_option( 'users_can_register' ) ) :
 	$registration_url = sprintf( '<a href="%s">%s</a>', esc_url( wp_registration_url() ), __( 'Register' ) );
@@ -99,4 +139,3 @@ endif;
 </p>
 
 <?php
-login_footer();
