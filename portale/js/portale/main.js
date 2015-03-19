@@ -13,6 +13,12 @@
   });
 
   app.controller('ModalDemoCtrl', function ($scope, $modal, $log, $rootScope) {
+    $scope.logged = '{ "display" : "none" }';
+    if($rootScope.$storage.token_ != null)
+    {
+      $scope.logged = '{ "display" : "inline-block" }';
+    }
+
     $scope.firstname = "";
     $scope.lastname = "";
     $scope.display = "";

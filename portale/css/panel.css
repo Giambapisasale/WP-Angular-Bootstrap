@@ -2,12 +2,12 @@
 
 .bg-panel-lateral {
   height: 100vh;
-  /* width: 226px; */
+  width: 18%;
   margin: 0px -15px;
   padding: 26px 0px 0px 0px;
   background-color: #2b3d4f;
   color: #a6acb4;
-  /* position: fixed; */
+  position: fixed;
 }
 
 .bg-panel-lateral h1 {
@@ -15,6 +15,13 @@
   margin: 0px 10px;
   text-align: center;
 }
+
+.bg-panel-lateral a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.bg-panel-lateral h1 a { color: #a6acb4; }
 
 .bg-panel-lateral h5 {
   margin-left: 0px;
@@ -75,8 +82,6 @@
   font-weight: bold;
   padding: 10px;
 }
-
-.bg-panel-lateral a { color: #fff !important; text-decoration: none; }
 
 .contracts-type img {
   width: 20px;
