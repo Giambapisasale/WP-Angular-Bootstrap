@@ -49,7 +49,7 @@ function Main($scope) {
     $http.get( "oauth/client.php?action=p&path=api/public/contratto/" + $rootScope.$storage.token_.ID )
       .success(function(data, status, header, config) {
       $scope.contracts_ = data;
-      $scope.details = $scope.contracts_.contracts[$stateParams.id-1];
+      $scope.details = $scope.contracts_.contracts[0];
     })
       .error(function(data, status, header, config) {
       console.log("Error in $http.get() of PanelController (contracts)");
