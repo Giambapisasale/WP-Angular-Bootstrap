@@ -50,7 +50,7 @@ body {
 }
 
 .login a {
- text-decoration: none;
+  text-decoration: none;
 }
 
 .login_ifr {
@@ -58,6 +58,26 @@ body {
   height: 510px;
   border: none;
 }
+
+/* logout */
+.dropdown-menu {
+  padding: 0px;
+  line-height: 0;
+  font-weight: 0;
+  background-color: #29809f;
+  min-width: 135px;
+}
+.dropdown-menu > li > a {
+  color: #fff;
+  min-width: 135px;
+}
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+  color: #fff;
+  text-decoration: none;
+  background-color: #29809f;
+}
+
+.dropdown-menu > li { width: 50px; }
 
 .search {
   border-radius: 2em;
@@ -131,7 +151,7 @@ body {
 .bottom {
   background-color: #035c81;
 
-/*  padding-top: 45px;
+  /*  padding-top: 45px;
   padding-bottom: 45px;*/
   height: 125px;
   line-height: 125px;
@@ -144,5 +164,5 @@ body {
 }
 
 .underfooter i:hover {
- color: #c7c7c7; 
+  color: #c7c7c7; 
 }
