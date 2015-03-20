@@ -20,7 +20,7 @@
 // ** Impostazioni MySQL - E? possibile ottenere questoe informazioni
 // ** dal proprio fornitore di hosting ** //
 /** Il nome del database di WordPress */
-define('DB_NAME', 'wordpress');
+define('DB_NAME', 'portale');
 
 /** Nome utente del database MySQL */
 define('DB_USER', 'portale');

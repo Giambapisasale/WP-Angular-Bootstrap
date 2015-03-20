@@ -116,47 +116,10 @@ if( isset($_REQUEST['action']) && !empty($_REQUEST['action']) ) {
 		$_SESSION['userKey'] = $data;
 		$_SESSION['isLogged'] = true;
 		
-		// per effettuare una chiamata, recuperare dalla session i dati
-		// TODO verificare se sono ancora validi, la chiamata restituira' 401 e
-		// bisogna invalidare i dati attuali e ricominciare il processo di autorizzazione
-		$data = $_SESSION['userKey'];
-		$test_consumer = new OAuthConsumer($data["key"], $data["secret"], NULL);
-		$test_token = new OAuthConsumer($data["token"], $data["token_secret"]);
-		
-		// imposto i parametri della chiamata che devo effettuare
-		// in questo caso l'url lo conosco gia', ma un proxy deve poter rispondere
-		// a qualsiasi url
-		$options = array("type"=> "GET");
-		// array che conterra' gli headers della chiamata, aggiungiamo header autenticazione
-		// per adesso non e' usato perche' abbiamo direttamente la stringa dell'header completa
-		$headers = array();
-		// url della chiamata
-		$url = $wp_json_url."/users/me";
-		// parametri GET o POST aggiuntivi, devono arrivare dalla chiamata originaria
-		$parameters = array();
-		
-		$request = OAuthRequest::from_consumer_and_token($test_consumer, $test_token, $options['type'], $url, $parameters);
-		// costruisco la signature
-		$request->sign_request($sig_method, $test_consumer, $test_token);
-		
-		// costruisco header autenticazione
-		$header = $request->to_header();
-		//   // Strip leading 'Authorization:'
-		//   $header = trim( substr( $header, 14 ) );
-		//   trigger_error($header);
-		//   $headers['Authorization'] = trim( $header, ' ' );
-		
-		// creo il context con le opzioni corrette
-		$opts = array(
-		'http'=>array(
-				'method'=>"GET",
-				'header'=>$header
-		)
-		);
-		$context = stream_context_create($opts);
-		
-		// Open the file using the HTTP headers set above
-		$users_me_content = file_get_contents($url, false, $context);
+
+		$proxy  = new Proxy($data, $wp_json_url , $sig_method);
+
+		$users_me_content = $proxy->sendRequest("users/me");
 		
 		//   $oauth = new OAuth ( $data["key"], $data["secret"], OAUTH_SIG_METHOD_HMACSHA1, OAUTH_AUTH_TYPE_AUTHORIZATION );
 		//   $oauth->setToken ( $data["token"], $data["token_secret"] );

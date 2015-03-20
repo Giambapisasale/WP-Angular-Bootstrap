@@ -4,3 +4,5 @@
 /wordpress/.htaccess
 *.DS_Store
 /portale/oauth/common.inc.php
+/build.xml
+/testheader.php
