@@ -2,26 +2,37 @@
   var app = angular.module('portale');
 
   app.controller('ModalDemoCtrl', function ($scope, $modal, $log, $rootScope) {
-    $scope.logged = '{ "display" : "none" }';
-    if($rootScope.$storage.token_ != null)
-    {
-      $scope.logged = '{ "display" : "inline-block" }';
-    }
-
-    $scope.firstname = "";
-    $scope.lastname = "";
-    $scope.display = "";
-    $scope.img_src = "images/assets/login-icon.png";
+    $scope.userdata = {
+      "firstname" : "",
+      "lastname" : "",
+      "display" : "",
+      "img_src" : "images/assets/login-icon.png",
+      "logged" : '{ "display" : "none" }'
+    };
 
     if($rootScope.$storage.token_ != null)
     {
       var data = $rootScope.$storage.token_;
-      $scope.display = '{"display": "none"}';
-      $scope.firstname = data.first_name;
-      $scope.lastname = data.last_name;
-      $scope.img_src = data.avatar;
-      $scope.dim_avatar = '{"width" : "32px", "height" : "32px", "vertical-align" : "middle"}';
+      $scope.userdata.logged = '{ "display" : "inline-block" }';
+      $scope.userdata.display = '{"display": "none"}';
+      $scope.userdata.firstname = data.first_name;
+      $scope.userdata.lastname = data.last_name;
+      $scope.userdata.img_src = data.avatar;
+      $scope.userdata.dim_avatar = '{"width" : "32px", "height" : "32px", "vertical-align" : "middle"}';
     }
+
+    $scope.logout = function(loc) {
+      $rootScope.$storage.token_ = null;
+      $scope.userdata = {
+        "firstname" : "",
+        "lastname" : "",
+        "display" : "",
+        "img_src" : "images/assets/login-icon.png",
+        "logged" : '{ "display" : "none" }'
+      };
+      location.href = '#/home';
+      if(loc == "home") { /* refresh */ }
+    };
 
     $scope.items = ['item1', 'item2', 'item3'];
     $scope.open = function (size) {
