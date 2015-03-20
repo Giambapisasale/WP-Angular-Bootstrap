@@ -2,36 +2,40 @@
   var app = angular.module('portale');
 
   app.controller('ModalDemoCtrl', function ($scope, $modal, $log, $rootScope) {
-    $scope.userdata = {
-      "firstname" : "",
-      "lastname" : "",
-      "display" : "",
-      "img_src" : "images/assets/login-icon.png",
-      "logged" : '{ "display" : "none" }'
+    $rootScope.userdata = {
+      firstname : "",
+      lastname : "",
+      display : "",
+      img_src : "images/assets/login-icon.png",
+      logged : '{ "display" : "none" }',
+      dim_avatar : '{"width" : "16px", "height" : "16px", "vertical-align" : "middle"}'
     };
 
     if($rootScope.$storage.token_ != null)
     {
       var data = $rootScope.$storage.token_;
-      $scope.userdata.logged = '{ "display" : "inline-block" }';
-      $scope.userdata.display = '{"display": "none"}';
-      $scope.userdata.firstname = data.first_name;
-      $scope.userdata.lastname = data.last_name;
-      $scope.userdata.img_src = data.avatar;
-      $scope.userdata.dim_avatar = '{"width" : "32px", "height" : "32px", "vertical-align" : "middle"}';
+      $rootScope.userdata = {
+        logged : '{ "display" : "inline-block" }',
+        display : '{"display": "none"}',
+        firstname : data.first_name,
+        lastname : data.last_name,
+        img_src : data.avatar,
+        dim_avatar : '{"width" : "32px", "height" : "32px", "vertical-align" : "middle"}'
+      };
     }
 
     $scope.logout = function(loc) {
       $rootScope.$storage.token_ = null;
-      $scope.userdata = {
-        "firstname" : "",
-        "lastname" : "",
-        "display" : "",
-        "img_src" : "images/assets/login-icon.png",
-        "logged" : '{ "display" : "none" }'
-      };
-      location.href = '#/home';
-      if(loc == "home") { /* refresh */ }
+    $rootScope.userdata = {
+      firstname : "",
+      lastname : "",
+      display : "",
+      img_src : "images/assets/login-icon.png",
+      logged : '{ "display" : "none" }',
+      dim_avatar : '{"width" : "16px", "height" : "16px", "vertical-align" : "middle"}'
+    };
+      if(loc == "home") { setTimeout("location.reload();", 500);  }
+      else { location.href = '#/home'; }
     };
 
     $scope.items = ['item1', 'item2', 'item3'];
