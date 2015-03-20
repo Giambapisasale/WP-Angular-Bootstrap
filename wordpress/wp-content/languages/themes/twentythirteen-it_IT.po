@@ -101,17 +101,16 @@ msgstr "Lascia un commento"
 msgid "http://wordpress.org/"
 msgstr "http://wordpress.org/"
 
-#. Translators: If there are characters in your language that are not
-#. * supported by Bitter, translate this to 'off'. Do not translate into your
-#. * own language.
+#. Translators: If there are characters in your language that are not supported
+#. by Bitter, translate this to 'off'. Do not translate into your own language.
 #: functions.php:134
 msgctxt "Bitter font: on or off"
 msgid "on"
 msgstr "on"
 
-#. Translators: If there are characters in your language that are not
-#. * supported by Source Sans Pro, translate this to 'off'. Do not translate
-#. * into your own language.
+#. Translators: If there are characters in your language that are not supported
+#. by Source Sans Pro, translate this to 'off'. Do not translate into your own
+#. language.
 #: functions.php:128
 msgctxt "Source Sans Pro font: on or off"
 msgid "on"

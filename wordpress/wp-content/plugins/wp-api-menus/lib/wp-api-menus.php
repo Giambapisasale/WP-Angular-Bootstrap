@@ -6,13 +6,12 @@ if ( ! class_exists( 'WP_JSON_Menus' ) ) :
 	 * WP JSON Menus class
 	 *
 	 * @package WP API Menus
+	 *
 	 * @since 1.0.0
 	 */
 	class WP_JSON_Menus {
 
 		public function __construct() {
-
-			// nothin here for now
 
 		}
 
@@ -184,7 +183,7 @@ if ( ! class_exists( 'WP_JSON_Menus' ) ) :
 
 					$menu[$i] = $this->format_menu_item( $top_item, false );
 					if ( isset( $menu_items_with_children[$top_item->ID] ) )
-						$menu[$i]['children'] = $this->get_nav_menu_item_children( $top_item->ID, $menu_items );
+						$menu[$i]['children'] = $this->get_nav_menu_item_children( $top_item->ID, $menu_items, false );
 					else
 						$menu[$i]['children'] = array();
 
@@ -209,7 +208,7 @@ if ( ! class_exists( 'WP_JSON_Menus' ) ) :
 		 *
 		 * @return  array   returns filtered array of nav_menu_items
 		 */
-		private function get_nav_menu_item_children( $parent_id, $nav_menu_items, $depth = true ) {
+		public function get_nav_menu_item_children( $parent_id, $nav_menu_items, $depth = true ) {
 
 			$nav_menu_item_list = array();
 
@@ -231,6 +230,7 @@ if ( ! class_exists( 'WP_JSON_Menus' ) ) :
 			endforeach;
 
 			return $nav_menu_item_list;
+
 		}
 
 		/**
@@ -244,7 +244,7 @@ if ( ! class_exists( 'WP_JSON_Menus' ) ) :
 		 *
 		 * @return  array   a formatted menu item for JSON
 		 */
-		private function format_menu_item( $menu_item, $children = false, $menu = array() ) {
+		public function format_menu_item( $menu_item, $children = false, $menu = array() ) {
 
 			$item = (array) $menu_item;
 			$menu_item = array( 
@@ -267,7 +267,7 @@ if ( ! class_exists( 'WP_JSON_Menus' ) ) :
 			if ( $children === true && ! empty( $menu ) )
 				$menu_item['children'] = $this->get_nav_menu_item_children( $item['ID'], $menu );
 
-			return $menu_item;
+			return apply_filters( 'json_menus_format_menu_item', $menu_item );
 		}
 
 	}

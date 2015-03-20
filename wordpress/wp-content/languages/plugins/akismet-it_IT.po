@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2014-11-15 08:41:27+0000\n"
+"PO-Revision-Date: 2015-02-19 08:45:19+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,11 +10,23 @@ msgstr ""
 "X-Generator: GlotPress/1.0-alpha-1000\n"
 "Project-Id-Version: Development\n"
 
+#: views/notice.php:96
+msgid "Your Pro subscription allows the use of Akismet on only one site. Please <a href=\"http://docs.akismet.com/billing/add-more-sites/\">purchase additional Pro subscriptions</a> or upgrade to an Enterprise subscription that allows the use of Akismet on unlimited sites.<br /><br />If you have any questions, please get in touch with our support team."
+msgstr "L'abbonamento Pro permette l'utilizzo di Akismet su un solo sito. <a href=\"http://docs.akismet.com/billing/add-more-sites/\">Acquista degli abbonamenti Pro aggiuntivi</a> oppure aggiornalo ad un abbonamento Enterprise che consente l'utilizzo di Akismet su un numero illimitato di siti.<br /><br />Se hai una qualsiasi domanda, contatta il nostro team di supporto."
+
 #: views/config.php:97
-msgid "Spam in the <a href=\"%s\">spam folder</a> older than 1 day is deleted automatically."
+msgid "Spam in the <a href=\"%1$s\">spam folder</a> older than 1 day is deleted automatically."
 msgid_plural "Spam in the <a href=\"%1$s\">spam folder</a> older than %2$d days is deleted automatically."
-msgstr[0] "Lo spam contenuto nella <a href=\"%s\">cartella spam</a> più vecchio di 1 giorno verrà automaticamente cancellato."
-msgstr[1] "Lo spam contenuto nella <a href=\"%1$s\">cartella spam</a> più vecchio di %2$d giorni verrà automaticamente cancellato."
+msgstr[0] "Lo spam nella <a href=\"%1$s\">cartella spam</a> più vecchio di 1 giorno viene cancellato autoamticamente"
+msgstr[1] "Lo spam nella <a href=\"%1$s\">cartella spam</a> più vecchio di %2$d giorni viene cancellato autoamticamente"
+
+#. Description of the plugin/theme
+msgid "Used by millions, Akismet is quite possibly the best way in the world to <strong>protect your blog from comment and trackback spam</strong>. It keeps your site protected from spam even while you sleep. To get started: 1) Click the \"Activate\" link to the left of this description, 2) <a href=\"http://akismet.com/get/\">Sign up for an Akismet API key</a>, and 3) Go to your Akismet configuration page, and save your API key."
+msgstr "Utilizzato da milioni di persone, Akismet è probabilmente il metodo migliore al mondo per <strong>proteggere il tuo blog dai commenti e dai trackback di spam</strong>. Mantiene il tuo sito protetto dallo spam anche mentre dormi. Per iniziare: 1) Fare clic sul link \"Attiva\" alla sinistra di questa descrizione, 2) <a href=\"http://akismet.com/get/\">Registrati per ottenere un Akismet API key</a> e 3) Vai sulla pagina di configurazione di Akismet e salva la tua API key."
+
+#. Plugin URI of the plugin/theme
+msgid "http://akismet.com/"
+msgstr "http://akismet.com/"
 
 #: class.akismet-admin.php:700
 msgid "Please check your <a href=\"%s\">Akismet configuration</a> and contact your web host if problems persist."
@@ -107,10 +119,6 @@ msgstr "Il tuo abbonamento è mancante."
 #: views/notice.php:95
 msgid "You're using your Akismet key on more sites than your Pro subscription allows."
 msgstr "Stai usando la chiave Akismet su più siti di quanto permetta il tuo abbonamento Pro ."
-
-#: views/notice.php:96
-msgid "If you would like to use Akismet on more than 10 sites, you will need to <a href=\"%s\" target=\"_blank\">upgrade to an Enterprise subscription</a>. If you have any questions, please <a href=\"%s\" target=\"_blank\">get in touch with our support team</a>"
-msgstr "Se si desidera utilizzare Akismet su più di 10 siti, è necessario <a href=\"%s\" target=\"_blank\">un abbonamento Enterprise</a>. Se hai domande, <a href=\"%s\" target=\"_blank\"> contatta il nostro team di supporto</a>"
 
 #: views/notice.php:98
 msgid "You're using Akismet on far too many sites for your Pro subscription."
@@ -258,6 +266,14 @@ msgstr "Il tuo abbonamento per %s è sospeso"
 msgid "Your firewall may be blocking us. Please contact your host and refer to <a href=\"%s\" target=\"_blank\">our guide about firewalls</a>."
 msgstr "Il tuo firewall potrebbe bloccarci. Contatta il tuo host host e fai riferimento alla <a href=\"%s\" target=\"_blank\">nostra guida sui firewall</a>."
 
+#. Author URI of the plugin/theme
+msgid "http://automattic.com/wordpress-plugins/"
+msgstr "http://automattic.com/wordpress-plugins/"
+
+#. Author of the plugin/theme
+msgid "Automattic"
+msgstr "Automattic"
+
 #: views/notice.php:11
 msgid "Activate your Akismet account"
 msgstr "Attiva il tuo account Akismet"
@@ -374,6 +390,8 @@ msgstr "Akismet non ha potuto verificare questo commento (risposta: %s), verrà 
 msgid "View comment history"
 msgstr "Visualizzare la storia del commento"
 
+#. #-#-#-#-#  akismet.pot (Akismet 3.0.5b1)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
 #: class.akismet-admin.php:76 class.akismet-admin.php:78
 #: class.akismet-admin.php:757 views/config.php:3
 msgid "Akismet"

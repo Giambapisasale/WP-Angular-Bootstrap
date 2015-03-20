@@ -1,5 +1,5 @@
 Questa versione in italiano di WordPress è basata sulla versione di
-Wordpress 4.1 inglese rilasciata il 18/12/2014.
+Wordpress 4.1.1 inglese rilasciata il 19/02/2015.
 
 Nessuna responsabilità viene presa da wpitaly.it per eventuali problemi
 o malfunzionamenti derivanti dall'uso di questa distribuzione.
