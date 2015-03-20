@@ -1,75 +1,115 @@
-<div class="contracts">
-  <br>
-  <h2 class="panel-title">I tuoi contratti</h2>
-  <br>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-  <h3 class="post-title">Contratto Selezionato</h3>
-  <table class="contract_detailed">
-    <tr>
-      <td>Indirizzo di ubicazione:</td>
-      <td>{{details.indirizzo}}</td>
-    </tr>
-    <tr>
-      <td>Categoria utilizzo:</td>
-      <td>{{details.categoria}}</td>
-    </tr>
-    <tr>
-      <td>Matricola contatore:</td>
-      <td>{{details.matricola}}</td>
-    </tr>
-    <tr>
-      <td>Data inizio contratto:</td>
-      <td>{{details.data}}</td>
-    </tr>
-  </table>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-2">
+      <div class="bg-panel-lateral">
+        <h1><a href="#/home">{{name}}</a></h1>
+        <br>
+        <h5 class="text-center uppercase">Servizi Online</h5>
+        <h4 class="contracts-type uppercase" ng-repeat="panels in panel_menu.items"><a href="#/panel/"><img src="images/assets/{{panels.img}}"> {{panels.title}}</a></h4>
+      </div>
+    </div>
+    <div class="col-xs-10">
+      <div class="bg-panel">
+        <div class="top-bar">
+          <a href="#/home" class="pull-left uppercase">
+            <i class="fa fa-angle-left fa-13"></i> &nbsp; <span>Torna alla Home</span>
+          </a>
+          <div class="search pull-right">
+            &nbsp;&nbsp;&nbsp;
+            <input type="text" placeholder="Cerca nel sito" class="searchinput">
+            &nbsp;
+            <img src="images/assets/search-icon.png">
+          </div>
 
-  <br>
-  <h3 class="post-title">Dettaglio letture</h3>
-  <table class="contracts-data table table-striped">
-    <thead>
-      <tr>
-        <td><h4>Data lettura</h4></td>
-        <td><h4>Lettura</h4></td>
-        <td><h4>Consumo</h4></td>
-        <td><h4>Tipo lettura</h4></td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="detail in contratto.letture">
-        <td>{{detail.data_lettura}}</td>
-        <td>Lorem Ipsum</td>
-        <td>{{details.matricola}}</td>
-        <td>{{detail.tipo_lettura}}</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 class="post-title">Documenti Emessi</h3>
-  <table class="contracts-data table table-striped">
-    <thead>
-      <tr>
-        <td><h4>Numero fattura</h4></td>
-        <td><h4>Data</h4></td>
-        <td><h4>Importo emesso</h4></td>
-        <td><h4>Scadenza</h4></td>
-        <td><h4>Importo versato</h4></td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="detail in contratto.documenti">
-        <td>{{detail.numero_fattura}}</td>
-        <td>{{detail.data_fattura}}</td>
-        <td>{{detail.importo_fattura}}</td>
-        <td>{{detail.date_scadenza}}</td>
-        <td>€ XX,00 €</td>
-      </tr>
-    </tbody>
-  </table>
-  <a ng-href="#/panel/{{id_}}"><button class="uppercase">Avanti</button></a>
-  <br><br>
-  <div class="footer-panel">
-    <p class="pull-left">Copyright 2014-2015 Comune di Catania - Tutti i diritti riservati.</p>
-    <p class="pull-right">Segui il Comune di Catania su &nbsp;&nbsp;<i class="fa fa-facebook"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-twitter"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-youtube-play"></i></p>
-    <br>
-    <br>
+          <div ng-controller="ModalDemoCtrl" class="pull-right text-right">
+            <div class="btn-group" dropdown>
+              <a href="#/panel/">{{userdata.firstname}} {{userdata.lastname}}</a>
+              &nbsp;&nbsp;<img ng-style="{{userdata.dim_avatar}}" ng-src="{{userdata.img_src}}">
+              <a href="#" dropdown-toggle>&nbsp;<i class="fa fa-caret-down" ng-style="{{userdata.logged}}"></i></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#" class="logout" ng-click="logout('panel')">Esci</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="contracts">
+          <br>
+          <h2 class="panel-title">I tuoi contratti</h2>
+          <br>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+          <h3 class="post-title">Contratto Selezionato</h3>
+          <table class="contract_detailed">
+            <tr>
+              <td>Indirizzo di ubicazione:</td>
+              <td>{{details.indirizzo}}</td>
+            </tr>
+            <tr>
+              <td>Categoria utilizzo:</td>
+              <td>{{details.categoria}}</td>
+            </tr>
+            <tr>
+              <td>Matricola contatore:</td>
+              <td>{{details.matricola}}</td>
+            </tr>
+            <tr>
+              <td>Data inizio contratto:</td>
+              <td>{{details.data}}</td>
+            </tr>
+          </table>
+
+          <br>
+          <h3 class="post-title">Dettaglio letture</h3>
+          <table class="contracts-data table table-striped">
+            <thead>
+              <tr>
+                <td><h4>Data lettura</h4></td>
+                <td><h4>Lettura</h4></td>
+                <td><h4>Consumo</h4></td>
+                <td><h4>Tipo lettura</h4></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="detail in contratto.letture">
+                <td>{{detail.data_lettura}}</td>
+                <td>Lorem Ipsum</td>
+                <td>{{details.matricola}}</td>
+                <td>{{detail.tipo_lettura}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <h3 class="post-title">Documenti Emessi</h3>
+          <table class="contracts-data table table-striped">
+            <thead>
+              <tr>
+                <td><h4>Numero fattura</h4></td>
+                <td><h4>Data</h4></td>
+                <td><h4>Importo emesso</h4></td>
+                <td><h4>Scadenza</h4></td>
+                <td><h4>Importo versato</h4></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="detail in contratto.documenti">
+                <td>{{detail.numero_fattura}}</td>
+                <td>{{detail.data_fattura}}</td>
+                <td>{{detail.importo_fattura}}</td>
+                <td>{{detail.date_scadenza}}</td>
+                <td>€ XX,00 €</td>
+              </tr>
+            </tbody>
+          </table>
+          <a ng-href="#/panel/{{id_}}"><button class="uppercase">Avanti</button></a>
+          <br><br>
+          <div class="footer-panel">
+            <p class="pull-left">Copyright 2014-2015 Comune di Catania - Tutti i diritti riservati.</p>
+            <p class="pull-right">Segui il Comune di Catania su &nbsp;&nbsp;<i class="fa fa-facebook"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-twitter"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-youtube-play"></i></p>
+            <br>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>

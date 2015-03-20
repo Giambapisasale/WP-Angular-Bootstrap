@@ -16,7 +16,7 @@
     $urlRouterProvider.otherwise("/home");
 
     $stateProvider
-    .state('home', {
+      .state('home', {
       url: '/home',
       data: {
         css: 'css/home.css'
@@ -32,7 +32,7 @@
         }
       }
     })
-    .state('section', {
+      .state('section', {
       url: '/section/:menu/',
       data: {
         css: 'css/section.css'
@@ -48,22 +48,22 @@
         }
       }
     })
-    .state('section.post', {
+      .state('section.post', {
       url: 'post/:id',
       controller: 'PostController',
       templateUrl: "partials/section.post.html"
     })
-    .state('section.category', {
+      .state('section.category', {
       url: 'category/:id',
       controller: 'CategoryController',
       templateUrl: "partials/section.category.html",
     })
-    .state('section.page', {
+      .state('section.page', {
       url: 'page/:id',
       controller: 'PageController',
       templateUrl: "partials/section.page.html"
     })
-    .state('panel', {
+      .state('panel', {
       url: '/panel/',
       data: {
         css:  'css/panel.css'
@@ -75,7 +75,19 @@
         }
       }
     })
-    .state('panel.contract', {
+      .state('panel.admin', {
+      url: 'admin',
+      data: {
+        css:  'css/panel.css'
+      },
+      views: {
+        '': {
+          controller: 'PanelContractCtrl',
+          templateUrl: "partials/panel.admin.html"
+        }
+      }
+    })
+      .state('panel.contract', {
       url: ':id',
       data: {
         css:  'css/panel.css'

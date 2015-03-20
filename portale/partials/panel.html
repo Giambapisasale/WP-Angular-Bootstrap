@@ -1,38 +1,38 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-xs-2">
-      <div class="bg-panel-lateral">
-        <h1><a href="#/home">{{name}}</a></h1>
-        <br>
-        <h5 class="text-center uppercase">Servizi Online</h5>
-        <h4 class="contracts-type uppercase" ng-repeat="panels in panel_menu.items"><a href="#/panel/"><img src="images/assets/{{panels.img}}"> {{panels.title}}</a></h4>
+<div ui-view>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-2">
+        <div class="bg-panel-lateral">
+          <h1><a href="#/home">{{name}}</a></h1>
+          <br>
+          <h5 class="text-center uppercase">Servizi Online</h5>
+          <h4 class="contracts-type uppercase" ng-repeat="panels in panel_menu.items"><a href="#/panel/"><img src="images/assets/{{panels.img}}"> {{panels.title}}</a></h4>
+        </div>
       </div>
-    </div>
-    <div class="col-xs-10">
-      <div class="bg-panel">
-        <div class="top-bar">
-          <a href="#/home" class="pull-left uppercase">
-            <i class="fa fa-angle-left fa-13"></i> &nbsp; <span>Torna alla Home</span>
-          </a>
-          <div class="search pull-right">
-            &nbsp;&nbsp;&nbsp;
-            <input type="text" placeholder="Cerca nel sito" class="searchinput">
-            &nbsp;
-            <img src="images/assets/search-icon.png">
-          </div>
+      <div class="col-xs-10">
+        <div class="bg-panel">
+          <div class="top-bar">
+            <a href="#/home" class="pull-left uppercase">
+              <i class="fa fa-angle-left fa-13"></i> &nbsp; <span>Torna alla Home</span>
+            </a>
+            <div class="search pull-right">
+              &nbsp;&nbsp;&nbsp;
+              <input type="text" placeholder="Cerca nel sito" class="searchinput">
+              &nbsp;
+              <img src="images/assets/search-icon.png">
+            </div>
 
-          <div ng-controller="ModalDemoCtrl" class="pull-right text-right">
-            <div class="btn-group" dropdown>
-              <a href="#/panel/">{{userdata.firstname}} {{userdata.lastname}}</a>
-              &nbsp;&nbsp;<img ng-style="{{userdata.dim_avatar}}" ng-src="{{userdata.img_src}}">
-              <a href="#" dropdown-toggle>&nbsp;<i class="fa fa-caret-down" ng-style="{{userdata.logged}}"></i></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#" class="logout" ng-click="logout('panel')">Esci</a></li>
-              </ul>
+            <div ng-controller="ModalDemoCtrl" class="pull-right text-right">
+              <div class="btn-group" dropdown>
+                <a href="#/panel/">{{userdata.firstname}} {{userdata.lastname}}</a>
+                &nbsp;&nbsp;<img ng-style="{{userdata.dim_avatar}}" ng-src="{{userdata.img_src}}">
+                <a href="#" dropdown-toggle>&nbsp;<i class="fa fa-caret-down" ng-style="{{userdata.logged}}"></i></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="#" class="logout" ng-click="logout('panel')">Esci</a></li>
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
-        <div ui-view>
           <div class="contracts">
             <br>
             <h2 class="panel-title">I tuoi contratti</h2>
@@ -66,6 +66,9 @@
             </div>
           </div>
         </div>
+
+
+
       </div>
     </div>
 

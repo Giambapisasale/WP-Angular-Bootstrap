@@ -1,0 +1,78 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-2">
+      <div class="bg-panel-lateral admin-lateral">
+        <h1><a href="#/home">{{name}}</a></h1>
+        <br>
+        <h5 class="text-center uppercase">Servizi Online</h5>
+        <h4 class="contracts-type uppercase"><a href="#/panel/admin"><img src="images/assets/{{panel_menu.items[0].img}}"> {{panel_menu.items[0].title}}</a></h4>
+        <a href="#"><h4 class="disabled">I tuoi contratti</h4></a>
+        <a href="#"><h4>Inserisci nuova lettura</h4></a>
+      </div>
+    </div>
+    <div class="col-xs-10">
+      <div class="bg-panel">
+        <div class="top-bar">
+          <a href="#/home" class="pull-left uppercase">
+            <i class="fa fa-angle-left fa-13"></i> &nbsp; <span>Torna alla Home</span>
+          </a>
+          <div class="search pull-right">
+            &nbsp;&nbsp;&nbsp;
+            <input type="text" placeholder="Cerca nel sito" class="searchinput">
+            &nbsp;
+            <img src="images/assets/search-icon.png">
+          </div>
+
+          <div ng-controller="ModalDemoCtrl" class="pull-right text-right">
+            <div class="btn-group" dropdown>
+              <a href="#/panel/">{{userdata.firstname}} {{userdata.lastname}}</a>
+              &nbsp;&nbsp;<img ng-style="{{userdata.dim_avatar}}" ng-src="{{userdata.img_src}}">
+              <a href="#" dropdown-toggle>&nbsp;<i class="fa fa-caret-down" ng-style="{{userdata.logged}}"></i></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#" class="logout" ng-click="logout('panel')">Esci</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="contracts">
+          <br>
+          <h2 class="panel-title">Inserisci nuova lettura</h2>
+          <br>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+
+          <div class="panel-admin">
+
+            <h4>Seleziona utente</h4>
+            <div>
+              <input type="text" class="search-user" placeholder="Cerca Utente">
+              <i class="fa fa-search"></i>
+            </div>
+
+            <h4>Data lettura</h4>
+            <input type="text" placeholder="gg/mm/aa">
+
+            <h4>Lettura</h4>
+            <input type="text" placeholder="Lettura">
+
+            <h4>Consumo</h4>
+            <input type="text" placeholder="0001234556789">
+
+            <br><br>
+
+            <a ng-href="#"><button class="uppercase">Inserisci</button></a>
+          </div>
+
+          <br><br>
+          <br><br>
+          <div class="footer-panel">
+            <p class="pull-left">Copyright 2014-2015 Comune di Catania - Tutti i diritti riservati.</p>
+            <p class="pull-right">Segui il Comune di Catania su &nbsp;&nbsp;<i class="fa fa-facebook"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-twitter"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-youtube-play"></i></p>
+            <br>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
