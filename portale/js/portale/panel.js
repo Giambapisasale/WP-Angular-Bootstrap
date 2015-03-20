@@ -34,6 +34,18 @@ function Main($scope) {
     // qui occorre passare l'ID dell'utente loggato
     $http.get( "oauth/client.php?action=p&path=api/public/contratto/" + $rootScope.$storage.token_.ID )
       .success(function(data, status, header, config) {
+      $scope.radio = "";
+      if(data.contracts == "")
+      {
+        data.contracts = new Array();
+        data.contracts[0] = {
+          indirizzo : "Nessun Contratto Trovato",
+          categoria : "",
+          matricola : "",
+          data : ""
+        };
+        $scope.radio = "{ 'display' : 'none' }";
+      }
       $scope.contracts_ = data;
     })
       .error(function(data, status, header, config) {
