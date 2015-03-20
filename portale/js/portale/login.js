@@ -30,7 +30,7 @@
       firstname : "",
       lastname : "",
       display : "",
-      img_src : "images/assets/login-icon.png",
+      img_src : "",
       logged : '{ "display" : "none" }',
       dim_avatar : '{"width" : "16px", "height" : "16px", "vertical-align" : "middle"}'
     };
