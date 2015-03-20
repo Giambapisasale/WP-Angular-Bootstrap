@@ -24,7 +24,7 @@ Release, istruzioni installazione
 setup.sh
 restore.sh (dopo averlo rinominato da restore.sh.dist)
 occorre modificare gli script e inserire i parametri corretti del database
-oppure effettuare il restore manualmente del file wordpress.sql
+oppure effettuare il restore manualmente del file wordpress.sql (sostitendo poi le righe di wp_options relative a siteurl e home)
 
 4) configurare i puntamenti al database in wordpress/wp-config.php e api/config/database.php 
 
