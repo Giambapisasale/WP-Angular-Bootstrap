@@ -5,9 +5,6 @@ require_once("common.inc.php");
 require_once ("Proxy.php");
 
 
-// testare inclusione in iframe?
-
-
 if( isset($_REQUEST['action']) && !empty($_REQUEST['action']) ) {
 	$action = $_REQUEST['action'];
 	
@@ -23,10 +20,9 @@ if( isset($_REQUEST['action']) && !empty($_REQUEST['action']) ) {
 	}
 	
 	
-	
 	$sig_method = $hmac_method;
 
-	if (  $_REQUEST['action'] == "request_token" ) {
+	if ( $action == "request_token" ) {
 		//update status
 		$_SESSION['status'] = array(
 				"percentage"=> 20,
@@ -70,7 +66,7 @@ if( isset($_REQUEST['action']) && !empty($_REQUEST['action']) ) {
 		Header("Location: $auth_url"); //invio al cliente header per il redirect
 		
 
-	} else if ( $_REQUEST['action'] == "access_token" ) {
+	} else if ( $action == "access_token" ) {
 		
 		if ( !(isset($_REQUEST['token']) && !empty($_REQUEST['token']) && 
 				isset($_REQUEST['token_secret']) && !empty($_REQUEST['token_secret'])) ) {
@@ -148,32 +144,44 @@ if( isset($_REQUEST['action']) && !empty($_REQUEST['action']) ) {
 		return;
 
 	}else if ($action == "p") {
+		// action proxy, utilizzo il path solo se sono loggato
 		
 		if(isset($_GET['path']) && !empty($_GET['path']) &&
 				isset($_SESSION['userData']) && isset($_SESSION['userKey']) ) {
 					
 			$function = $_GET['path'];
 			if( isset($_SESSION['isLogged']) && $_SESSION['isLogged'] ) {
-				
-				if ( substr( $function, 0, 4 ) === "api/" )
+				//chiamata alle API
+				if ( substr( $function, 0, 4 ) === "api/" ){
 					$proxy  = new Proxy($_SESSION['userKey'], $domain, $sig_method);
-				else
+				}
+				else {
 					$proxy  = new Proxy($_SESSION['userKey'], $wp_json_url , $sig_method);
+				}
 				
-			} else 
+			} else {
 				header('HTTP/1.1 401 Unauthorized', true, 401);
-				
+				return;
+			}				
 			
 			echo $proxy->sendRequest($_GET['path']);
 		}
-	}else if ($action == "status") {
+	} else if ($action == "status") {
 		
 		if(isset($_SESSION['status'])) {
 			header('Content-Type: application/json');
 			echo json_encode($_SESSION['status']);
 		}
-	} else
-		return reportError("no any action found");
+	} else if ($action == "logout") {
+		// Desetta tutte le variabili di sessione.
+		session_unset();
+		// Infine , distrugge la sessione.
+		session_destroy();
+		
+	} else {
+	
+		return reportError("Error");
+	}
 	
 }
 
