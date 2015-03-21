@@ -13,8 +13,16 @@ if( isset($_REQUEST['action']) && !empty($_REQUEST['action']) ) {
 	
 	$test_consumer = new OAuthConsumer($key, $secret, NULL);
 	
-	$json_endpoint = file_get_contents($wp_json_url);
-	$json_endpoint = json_decode($json_endpoint);
+	$json_endpoint = null;
+	if(!empty($_SESSION['endpoints'])) {
+		$json_endpoint = $_SESSION['endpoints'];
+	} else {
+		$json_endpoint = file_get_contents($wp_json_url);
+		$json_endpoint = json_decode($json_endpoint);
+		$_SESSION['endpoints'] = $json_endpoint;
+	}
+	
+	
 	
 	$sig_method = $hmac_method;
 
