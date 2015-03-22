@@ -1,7 +1,7 @@
 (function () {
   var app = angular.module('portale');
 
-  app.controller('ModalDemoCtrl', function ($scope, $modal, $log, $rootScope) {
+  app.controller('ModalDemoCtrl', function ($scope, $modal, $log, $rootScope, $http) {
     $rootScope.userdata = {
       firstname : "",
       lastname : "",
@@ -26,16 +26,31 @@
 
     $scope.logout = function(loc) {
       $rootScope.$storage.token_ = null;
-    $rootScope.userdata = {
-      firstname : "",
-      lastname : "",
-      display : "",
-      img_src : "",
-      logged : '{ "display" : "none" }',
-      dim_avatar : '{"width" : "16px", "height" : "16px", "vertical-align" : "middle"}'
-    };
-      if(loc == "home") { setTimeout("location.reload();", 500);  }
-      else { location.href = '#/home'; }
+      $rootScope.userdata = {
+        firstname : "",
+        lastname : "",
+        display : "",
+        img_src : "",
+        logged : '{ "display" : "none" }',
+        dim_avatar : '{"width" : "16px", "height" : "16px", "vertical-align" : "middle"}'
+      };
+
+      $http.get( "../wordpress/wp-logout" )
+        .success(function(data, status, header, config) {
+      })
+        .error(function(data, status, header, config) {
+        console.log("Error in $http.get() of ModalDemoCtrl (logout)");
+      });
+
+      $http.get( "oauth/client.php?action=logout" )
+        .success(function(data, status, header, config) {
+        if(loc == "home") { setTimeout("location.reload();", 500);  }
+        else { location.href = '#/home'; }
+      })
+        .error(function(data, status, header, config) {
+        console.log("Error in $http.get() of ModalDemoCtrl (logout)");
+      });
+
     };
 
     $scope.items = ['item1', 'item2', 'item3'];
