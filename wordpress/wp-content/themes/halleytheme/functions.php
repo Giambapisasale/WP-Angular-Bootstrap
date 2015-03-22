@@ -5,10 +5,10 @@ function theme_enqueue_styles() {
 
 }
 
-add_filter( 'auth_cookie_expiration', 'keep_me_logged_in_for_1_minute' );
+add_filter( 'auth_cookie_expiration', 'keep_me_logged_in_for_5_minute' );
 
-function keep_me_logged_in_for_1_minute( $expirein ) {
-  return 60;
+function keep_me_logged_in_for_5_minute( $expirein ) {
+  return 300;
 }
 
 function my_login_logo() { ?>
@@ -32,13 +32,13 @@ function my_login_stylesheet() {
 
     var login_text = document.createElement("p");
     login_text.className = "uppercase login-text";
-    login_text.innerHTML = "Login";
+    login_text.innerHTML = "";
 
     var login = document.getElementById("loginform");
     login.insertBefore(login_text, login.firstChild);
 
-    document.getElementById("user_login").placeholder = "Il tuo nome";
-    document.getElementById("user_pass").placeholder = "La tua password";
+    document.getElementById("user_login").placeholder = "Username";
+    document.getElementById("user_pass").placeholder = "Password ";
 
     var remember_input = document.getElementById("rememberme");
     var checkbox = document.createElement("img");
@@ -50,11 +50,11 @@ function my_login_stylesheet() {
     remember_input.parentNode.insertBefore(checkbox, remember_input.nextSibling);
     remember_input.parentNode.insertBefore(checked, remember_input.nextSibling);
 
-    document.getElementById("wp-submit").value = "Entra";
+    document.getElementById("wp-submit").value = "Login";
 
     var nav = document.getElementById("nav");
     login.appendChild(nav);
-    nav.getElementsByTagName("a")[0].innerHTML = "Hai dimenticato la password?";
+    nav.getElementsByTagName("a")[0].innerHTML = "<?php _e( 'Lost your password?' ); ?>";
   };
 </script>
 
