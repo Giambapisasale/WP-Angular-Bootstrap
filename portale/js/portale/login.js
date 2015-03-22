@@ -1,7 +1,7 @@
 (function () {
   var app = angular.module('portale');
 
-  app.controller('ModalDemoCtrl', function ($scope, $modal, $log, $rootScope, $http) {
+  app.controller('ModalDemoCtrl', function ($scope, $modal, $rootScope, $http, $interval) {
     $rootScope.userdata = {
       firstname : "",
       lastname : "",
@@ -53,41 +53,37 @@
       });
     };
 
-    $scope.items = ['item1', 'item2', 'item3'];
     $scope.open = function (size) {
-
       var modalInstance = $modal.open({
-        template: '<iframe class="login_ifr" src="oauth/client.php?action=request_token"></iframe>',
+        template: '<iframe class="login_ifr" src="oauth/client.php?action=request_token"></iframe><div class="col-xs-12"><progressbar value="percent" type="info">{{percent}}%</progressbar></div>',
         controller: 'ModalInstanceCtrl',
-        size: size,
-        resolve: {
-          items: function () {
-            return $scope.items;
-          }
-        }
+        size: size
       });
 
-      modalInstance.result.then(function (selectedItem) {
-        $scope.selected = selectedItem;
-      }, function () {
-        $log.info('Modal dismissed at: ' + new Date());
-      });
+      var req_status = $interval(function() {
+        $http.get( "oauth/client.php?action=status" )
+          .success(function(data, status, header, config) {
+          $rootScope.percent = data.percentage;
+          if($rootScope.percent == 100) { $scope.killstatus(); }
+        })
+          .error(function(data, status, header, config) {
+          console.log("Error in $http.get() of ModalDemoCtrl (status)");
+        });
+      }, 1000);
+
+      $scope.killstatus = function() {
+        if(angular.isDefined(req_status))
+        {
+          $interval.cancel(req_status);
+          req_status = undefined;
+        }
+      };
+
     };
   });
 
-  app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
-    $scope.items = items;
-    $scope.selected = {
-      item: $scope.items[0]
-    };
-
-    $scope.ok = function () {
-      $modalInstance.close($scope.selected.item);
-    };
-
-    $scope.cancel = function () {
-      $modalInstance.dismiss('cancel');
-    };
+  app.controller('ModalInstanceCtrl', function ($scope, $rootScope) {
+    $rootScope.percent = '';
   });
 
   app.controller('StorageCtrl', function($scope, $localStorage, $rootScope) {
