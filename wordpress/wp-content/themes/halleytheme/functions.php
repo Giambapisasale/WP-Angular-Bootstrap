@@ -35,26 +35,30 @@ function my_login_stylesheet() {
     login_text.innerHTML = "";
 
     var login = document.getElementById("loginform");
-    login.insertBefore(login_text, login.firstChild);
+    if(login) {
+    	login.insertBefore(login_text, login.firstChild);
+    
 
-    document.getElementById("user_login").placeholder = "Username";
-    document.getElementById("user_pass").placeholder = "Password ";
-
-    var remember_input = document.getElementById("rememberme");
-    var checkbox = document.createElement("img");
-    checkbox.src = "../portale/images/assets/checkbox.png";
-
-    var checked = document.createElement("img");
-    checked.src = "../portale/images/assets/checkbox_checked.png";
-
-    remember_input.parentNode.insertBefore(checkbox, remember_input.nextSibling);
-    remember_input.parentNode.insertBefore(checked, remember_input.nextSibling);
-
-    document.getElementById("wp-submit").value = "Login";
-
-    var nav = document.getElementById("nav");
-    login.appendChild(nav);
-    nav.getElementsByTagName("a")[0].innerHTML = "<?php _e( 'Lost your password?' ); ?>";
+	    document.getElementById("user_login").placeholder = "Username";
+	    document.getElementById("user_pass").placeholder = "Password ";
+	
+	    var remember_input = document.getElementById("rememberme");
+	    var checkbox = document.createElement("img");
+	    checkbox.src = "../portale/images/assets/checkbox.png";
+	
+	    var checked = document.createElement("img");
+	    checked.src = "../portale/images/assets/checkbox_checked.png";
+	
+	   
+	    remember_input.parentNode.insertBefore(checkbox, remember_input.nextSibling);
+	    remember_input.parentNode.insertBefore(checked, remember_input.nextSibling);
+	
+    	document.getElementById("wp-submit").value = "Login";
+    
+	    var nav = document.getElementById("nav");
+	    login.appendChild(nav);
+	    nav.getElementsByTagName("a")[0].innerHTML = "<?php _e( 'Lost your password?' ); ?>";
+    }
   };
 </script>
 
