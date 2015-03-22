@@ -39,18 +39,18 @@
         .success(function(data, status, header, config) {
       })
         .error(function(data, status, header, config) {
-        console.log("Error in $http.get() of ModalDemoCtrl (logout)");
-      });
 
-      $http.get( "oauth/client.php?action=logout" )
-        .success(function(data, status, header, config) {
-        if(loc == "home") { setTimeout("location.reload();", 500);  }
-        else { location.href = '#/home'; }
-      })
-        .error(function(data, status, header, config) {
-        console.log("Error in $http.get() of ModalDemoCtrl (logout)");
-      });
+        $http.get( "oauth/client.php?action=logout" )
+          .success(function(data, status, header, config) {
 
+          if(loc == "home") { setTimeout("location.reload();", 500);  }
+          else { location.href = '#/home'; }
+        })
+          .error(function(data, status, header, config) {
+          console.log("Error in $http.get() of ModalDemoCtrl (logout)");
+        });
+
+      });
     };
 
     $scope.items = ['item1', 'item2', 'item3'];
