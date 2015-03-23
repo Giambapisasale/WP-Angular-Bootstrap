@@ -17,18 +17,22 @@ if( isset($_REQUEST['action']) && !empty($_REQUEST['action']) ) {
 		$json_endpoint = file_get_contents($wp_json_url);
 		$json_endpoint = json_decode($json_endpoint);
 		$_SESSION['endpoints'] = $json_endpoint;
+		
 	}
+	session_write_close();
 	
 	
 	$sig_method = $hmac_method;
 
 	if ( $action == "request_token" ) {
 		//update status
+		session_start();
 		$_SESSION['status'] = array(
 				"percentage"=> 20,
 				"tip" => "request token",
 				"FIN" => false,
 		);
+		session_write_close();
 		
 		$request_ep = $json_endpoint->authentication->oauth1->request;
 		
@@ -52,11 +56,13 @@ if( isset($_REQUEST['action']) && !empty($_REQUEST['action']) ) {
 			reportError("failed to retrieve token in request token");
 		}
 		//update status
+		session_start();		
 		$_SESSION['status'] = array(
 				"percentage"=> 40,
 				"tip" => "auth url",
 				"FIN" => false,
 		);
+		session_write_close();
 		
 		$authorize_ep = $json_endpoint->authentication->oauth1->authorize;
 		
@@ -76,12 +82,13 @@ if( isset($_REQUEST['action']) && !empty($_REQUEST['action']) ) {
 		$token = $_REQUEST['token'];
 		$token_secret = $_REQUEST['token_secret'];
 		$test_token = new OAuthConsumer($token, $token_secret);
-		
+		session_start();
 		$_SESSION['status'] = array(
 				"percentage"=> 60,
 				"tip" => "access token",
 				"FIN" => false,
 		);
+		session_write_close();
 		
 		$acc_res = NULL;
 		
@@ -110,7 +117,7 @@ if( isset($_REQUEST['action']) && !empty($_REQUEST['action']) ) {
 				"token" => $oauth_token,
 				"token_secret" => $oauth_token_secret
 		);
-		
+		session_start();
 		$_SESSION['status'] = array(
 				"percentage"=> 80,
 				"tip" => "acquiring data key",
@@ -120,7 +127,7 @@ if( isset($_REQUEST['action']) && !empty($_REQUEST['action']) ) {
 		$_SESSION['userKey'] = $data;
 		$_SESSION['isLogged'] = true;
 		
-
+		session_write_close();
 		$proxy  = new Proxy($data, $wp_json_url , $sig_method);
 
 		$users_me_content = $proxy->sendRequest("users/me");
@@ -132,20 +139,21 @@ if( isset($_REQUEST['action']) && !empty($_REQUEST['action']) ) {
 		//   $response_info = $oauth->getLastResponseInfo();
 		
 		//   $_SESSION['userData'] = $oauth->getLastResponse();
+		session_start();
 		$_SESSION['userData'] =   $users_me_content;
 		$_SESSION['status'] = array(
 				"percentage"=> 100,
 				"tip" => "complete",
 				"FIN" => true,
 		);
-		
+		session_write_close();
 		echo "<script>parent.update_storage('".$_SESSION['userData']."');</script>";
 		
 		return;
 
 	}else if ($action == "p") {
 		// action proxy, utilizzo il path solo se sono loggato
-		
+		session_start();
 		if(isset($_GET['path']) && !empty($_GET['path']) &&
 				isset($_SESSION['userData']) && isset($_SESSION['userKey']) ) {
 					
@@ -166,12 +174,21 @@ if( isset($_REQUEST['action']) && !empty($_REQUEST['action']) ) {
 			
 			echo $proxy->sendRequest($_GET['path']);
 		}
+		session_write_close();
 	} else if ($action == "status") {
 		
-		if(isset($_SESSION['status'])) {
-			header('Content-Type: application/json');
-			echo json_encode($_SESSION['status']);
+		if(!isset($_SESSION['status'])) {
+			session_start();
+			$_SESSION['status'] = array(
+					"percentage"=> 10,
+					"tip" => "Start",
+					"FIN" => false,
+			);
+			session_write_close();
 		}
+		header('Content-Type: application/json');
+		echo json_encode($_SESSION['status']);
+		
 	} else if ($action == "logout") {
 		// Desetta tutte le variabili di sessione.
 		session_unset();

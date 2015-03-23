@@ -55,29 +55,49 @@
 
     $scope.open = function (size) {
       var modalInstance = $modal.open({
-        template: '<iframe class="login_ifr" src="oauth/client.php?action=request_token"></iframe><div class="col-xs-12"><progressbar value="percent" type="info">{{percent}}%</progressbar></div>',
+        template: '<iframe class="login_ifr" src="oauth/client.php?action=request_token"></iframe>' 
+        	+ '<div class="col-xs-12"><progressbar value="percent" type="info">{{percent}}%</progressbar></div>',
         controller: 'ModalInstanceCtrl',
         size: size
       });
 
-      var req_status = $interval(function() {
-        $http.get( "oauth/client.php?action=status" )
+      var status_update = function() {
+    	  $http.get( "oauth/client.php?action=status", {cache:false} )
           .success(function(data, status, header, config) {
-          $rootScope.percent = data.percentage;
-          if($rootScope.percent == 100) { $scope.killstatus(); }
-        })
+        	  console.log(data);
+        	  if(data.percentage) {
+        		  $rootScope.percent = data.percentage; 
+        		  if(data.percentage < 100) {
+        			  window.setTimeout(status_update, 1000); 
+        		  }
+        	  }          
+           
+          })
           .error(function(data, status, header, config) {
-          console.log("Error in $http.get() of ModalDemoCtrl (status)");
-        });
-      }, 1000);
-
-      $scope.killstatus = function() {
-        if(angular.isDefined(req_status))
-        {
-          $interval.cancel(req_status);
-          req_status = undefined;
-        }
-      };
+            console.log("Error in $http.get() of ModalDemoCtrl (status)");
+          });
+      }
+      console.log("launch status update");
+      window.setTimeout(status_update, 1000); 
+      
+//      var req_status = $interval(function() {
+//        $http.get( "oauth/client.php?action=status" )
+//        .success(function(data, status, header, config) {
+//          $rootScope.percent = data.percentage;
+//          if($rootScope.percent == 100) { $scope.killstatus(); }
+//        })
+//        .error(function(data, status, header, config) {
+//          console.log("Error in $http.get() of ModalDemoCtrl (status)");
+//        });
+//      }, 1000);
+//
+//      $scope.killstatus = function() {
+//        if(angular.isDefined(req_status))
+//        {
+//          $interval.cancel(req_status);
+//          req_status = undefined;
+//        }
+//      };
 
     };
   });
