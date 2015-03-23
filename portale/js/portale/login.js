@@ -56,7 +56,7 @@
     $scope.open = function (size) {
       var modalInstance = $modal.open({
         template: '<iframe class="login_ifr" src="oauth/client.php?action=request_token"></iframe>' 
-        	+ '<div class="col-xs-12"><progressbar value="percent" type="info">{{percent}}%</progressbar></div>',
+        	+ '<div class=""><progressbar value="percent" type="info">{{percent}}%</progressbar></div>',
         controller: 'ModalInstanceCtrl',
         size: size
       });
