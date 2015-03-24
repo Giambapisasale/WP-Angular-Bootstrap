@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Portale</title>
 
+    <link href='css/loading-bar.css' rel='stylesheet' />
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
@@ -17,6 +18,7 @@
     <script src="js/lib/angular-locale_it-it.js"></script>
     <script src="js/lib/ui-router-styles.js"></script>
     <script src="js/lib/ngStorage.js"></script>
+    <script src="js/lib/loading-bar.js"></script>
 
     <script src="js/portale/main.js"></script>
     <script src="js/portale/config.js"></script>
@@ -33,6 +35,6 @@
   </head>
   <body>
     <div id="storage" ng-controller="StorageCtrl"></div>
-    <div id="view" ui-view autoscroll="true"></div>
+    <div id="view" ui-view autoscroll="true" ng-controller="LoadingBarCtrl"></div>
   </body>
 </html>

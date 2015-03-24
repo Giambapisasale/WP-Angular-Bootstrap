@@ -1,5 +1,5 @@
 (function () {
-  var app = angular.module('portale', ['ui.router', 'ui.bootstrap', 'ngSanitize', 'uiRouterStyles', 'ngStorage']);
+  var app = angular.module('portale', ['ui.router', 'ui.bootstrap', 'ngSanitize', 'uiRouterStyles', 'ngStorage', 'chieffancypants.loadingBar']);
 
   app.controller("HomeController", function($scope, $stateParams, $http, $sce) {
     $http.get( app.wp + "posts/" )
@@ -11,5 +11,30 @@
       console.log("Error in $http.get() of HomeController");
     });
   });
+
+  //loading bar
+  app.config(function(cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.includeSpinner = true;
+  });
+
+  app.controller('LoadingBarCtrl', function ($scope, $http, $timeout, cfpLoadingBar) {
+    $scope.start = function() {
+      cfpLoadingBar.start();
+    };
+
+    $scope.complete = function () {
+      cfpLoadingBar.complete();
+    }
+
+    // fake the initial load so first time users can see it right away:
+    $scope.start();
+    $scope.fakeIntro = true;
+    $timeout(function() {
+      $scope.complete();
+      $scope.fakeIntro = false;
+    }, 750);
+
+  });
+
 
 })()
