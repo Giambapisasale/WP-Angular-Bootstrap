@@ -101,7 +101,7 @@
       .success(function(data, status, header, config) {
       for(var i = 0; i < data.length; i++)
       {
-        if(data[i].sticky == false)
+        if(i == 3 || data[i].sticky == false)
           break;
         else
           $scope.stickyposts[i] = data[i];
