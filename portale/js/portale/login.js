@@ -53,51 +53,58 @@
       });
     };
 
+    $scope.call_status = false;
     $scope.open = function (size) {
+      $scope.call_status = true;
       var modalInstance = $modal.open({
         template: '<iframe class="login_ifr" src="oauth/client.php?action=request_token"></iframe>' 
-        	+ '<div class=""><progressbar value="percent" type="info">{{percent}}%</progressbar></div>',
+        + '<div class=""><progressbar value="percent" type="info">{{percent}}%</progressbar></div>',
         controller: 'ModalInstanceCtrl',
         size: size
       });
 
+      modalInstance.result.then(function () {
+      }, function () {
+        $scope.call_status = false;
+      });
+
       var status_update = function() {
-    	  $http.get( "oauth/client.php?action=status", {cache:false} )
+        $http.get( "oauth/client.php?action=status", {cache:false} )
           .success(function(data, status, header, config) {
-        	  console.log(data);
-        	  if(data.percentage) {
-        		  $rootScope.percent = data.percentage; 
-        		  if(data.percentage < 100) {
-        			  window.setTimeout(status_update, 1000); 
-        		  }
-        	  }          
-           
-          })
+          console.log(data);
+          if(data.percentage) {
+            $rootScope.percent = data.percentage;
+            if($scope.call_status == true && data.percentage < 100) {
+              window.setTimeout(status_update, 1000);
+            }
+          }
+
+        })
           .error(function(data, status, header, config) {
-            console.log("Error in $http.get() of ModalDemoCtrl (status)");
-          });
+          console.log("Error in $http.get() of ModalDemoCtrl (status)");
+        });
       }
       console.log("launch status update");
       window.setTimeout(status_update, 1000); 
-      
-//      var req_status = $interval(function() {
-//        $http.get( "oauth/client.php?action=status" )
-//        .success(function(data, status, header, config) {
-//          $rootScope.percent = data.percentage;
-//          if($rootScope.percent == 100) { $scope.killstatus(); }
-//        })
-//        .error(function(data, status, header, config) {
-//          console.log("Error in $http.get() of ModalDemoCtrl (status)");
-//        });
-//      }, 1000);
-//
-//      $scope.killstatus = function() {
-//        if(angular.isDefined(req_status))
-//        {
-//          $interval.cancel(req_status);
-//          req_status = undefined;
-//        }
-//      };
+
+      //      var req_status = $interval(function() {
+      //        $http.get( "oauth/client.php?action=status" )
+      //        .success(function(data, status, header, config) {
+      //          $rootScope.percent = data.percentage;
+      //          if($rootScope.percent == 100) { $scope.killstatus(); }
+      //        })
+      //        .error(function(data, status, header, config) {
+      //          console.log("Error in $http.get() of ModalDemoCtrl (status)");
+      //        });
+      //      }, 1000);
+      //
+      //      $scope.killstatus = function() {
+      //        if(angular.isDefined(req_status))
+      //        {
+      //          $interval.cancel(req_status);
+      //          req_status = undefined;
+      //        }
+      //      };
 
     };
   });
