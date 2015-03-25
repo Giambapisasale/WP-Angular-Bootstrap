@@ -55,6 +55,18 @@ function Main($scope) {
     $scope.getid = function(id) {
       $scope.id_ = id;
     };
+
+    $scope.shows = [];
+    $scope.show_sub = function(id) {
+
+      for (var i in $scope.shows)
+        $scope.shows[i] = false;
+
+      if($scope.shows[id])
+        $scope.shows[id] = false;
+      else
+        $scope.shows[id] = true;
+    };
   });
 
   app.controller("PanelContractCtrl", function($scope, $http, $sce, $rootScope, $stateParams) {

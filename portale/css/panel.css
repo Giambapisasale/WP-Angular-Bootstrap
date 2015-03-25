@@ -168,6 +168,7 @@ input[type="radio"] + img, input[type="radio"]:checked + img + img
   width: 332px;
 }
 
+/*
 .admin-lateral .contracts-type {
   background-color: #2a82a1;
   margin: 0px;
@@ -185,6 +186,7 @@ input[type="radio"] + img, input[type="radio"]:checked + img + img
 }
 
 .admin-lateral .disabled { color: #a6acb4;}
+*/
 
 .footer-panel {
   padding: 0px 30px;

@@ -24,6 +24,14 @@
       };
     }
 
+/*
+    var test = $rootScope.$storage.token_;
+    alert(test.roles);
+    if(test.roles == "") { alert('Profilo: Utente'); }
+    else if(test.roles == "contributor") { alert('Profilo: Contributore'); }
+    else if(test.roles == "administrator") { alert('Profilo: Amministratore'); }
+*/
+
     $scope.logout = function(loc) {
       $rootScope.$storage.token_ = null;
       $rootScope.userdata = {
