@@ -87,7 +87,7 @@
     });
 
     //lista utenti
-    $http.get( "js/portale/users.json" )
+    $http.get( "oauth/client.php?action=p&path=users" )
       .success(function(data, status, header, config) {
       $scope.users = data;
     })
