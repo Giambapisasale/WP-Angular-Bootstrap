@@ -24,14 +24,6 @@
       };
     }
 
-/*
-    var test = $rootScope.$storage.token_;
-    alert(test.roles);
-    if(test.roles == "") { alert('Profilo: Utente'); }
-    else if(test.roles == "contributor") { alert('Profilo: Contributore'); }
-    else if(test.roles == "administrator") { alert('Profilo: Amministratore'); }
-*/
-
     $scope.logout = function(loc) {
       $rootScope.$storage.token_ = null;
       $rootScope.userdata = {
@@ -79,7 +71,6 @@
       var status_update = function() {
         $http.get( "oauth/client.php?action=status", {cache:false} )
           .success(function(data, status, header, config) {
-          console.log(data);
           if(data.percentage) {
             $rootScope.percent = data.percentage;
             if($scope.call_status == true && data.percentage < 100) {
@@ -93,26 +84,7 @@
         });
       }
       console.log("launch status update");
-      window.setTimeout(status_update, 1000); 
-
-      //      var req_status = $interval(function() {
-      //        $http.get( "oauth/client.php?action=status" )
-      //        .success(function(data, status, header, config) {
-      //          $rootScope.percent = data.percentage;
-      //          if($rootScope.percent == 100) { $scope.killstatus(); }
-      //        })
-      //        .error(function(data, status, header, config) {
-      //          console.log("Error in $http.get() of ModalDemoCtrl (status)");
-      //        });
-      //      }, 1000);
-      //
-      //      $scope.killstatus = function() {
-      //        if(angular.isDefined(req_status))
-      //        {
-      //          $interval.cancel(req_status);
-      //          req_status = undefined;
-      //        }
-      //      };
+      window.setTimeout(status_update, 1000);
 
     };
   });

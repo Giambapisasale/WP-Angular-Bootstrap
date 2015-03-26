@@ -86,6 +86,19 @@
       console.log("Error in $http.get() of PanelContractCtrl (contracts)");
     });
 
+    //lista utenti
+    $http.get( "js/portale/users.json" )
+      .success(function(data, status, header, config) {
+      $scope.users = data;
+    })
+      .error(function(data, status, header, config) {
+      console.log("Error in $http.get() of PanelContractCtrl (users)");
+    });
+
+    $scope.permission = false;
+    var data = $rootScope.$storage.token_;
+    if(data.roles == "administrator") { $scope.permission = true; }
+
   });
 
 })()

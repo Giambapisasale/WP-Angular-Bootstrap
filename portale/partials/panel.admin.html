@@ -6,9 +6,12 @@
 
   <div class="panel-admin">
 
-    <h4>Seleziona utente</h4>
-    <div>
-      <input type="text" class="search-user" placeholder="Cerca Utente">
+    <h4 ng-show="permission">Seleziona utente</h4>
+    <div ng-show="permission">
+      <input type="text" class="search-user" placeholder="Cerca Utente" list="utenti" autocomplete="off">
+      <datalist id="utenti">
+        <option ng-repeat="user in users" value="{{user.first_name}}">
+      </datalist>
       <i class="fa fa-search"></i>
     </div>
 
