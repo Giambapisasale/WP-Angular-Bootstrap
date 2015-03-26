@@ -1,11 +1,5 @@
-function Main($scope) {
-  $scope.myModel = {};
-}
-
 (function () {
   var app = angular.module('portale');
-
-
 
   app.controller("PanelController", function($scope, $http, $sce, $rootScope, $stateParams) {
     $scope.id = $stateParams.id;
@@ -57,15 +51,20 @@ function Main($scope) {
     };
 
     $scope.shows = [];
+    $scope.admin = [];
     $scope.show_sub = function(id) {
 
       for (var i in $scope.shows)
+      {
         $scope.shows[i] = false;
+        $scope.admin[i] = "";
+      }
 
-      if($scope.shows[id])
-        $scope.shows[id] = false;
-      else
+      if(!$scope.shows[id])
+      {
         $scope.shows[id] = true;
+        $scope.admin[id] = "admin-lateral";
+      }
     };
   });
 

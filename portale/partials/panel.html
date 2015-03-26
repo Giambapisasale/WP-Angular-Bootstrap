@@ -5,13 +5,13 @@
         <h1><a href="#/home">{{name}}</a></h1>
         <br>
         <h5 class="text-center uppercase">Servizi Online</h5>
-        <div ng-repeat="panels in panel_menu.items track by $index">
+        <div ng-repeat="panels in panel_menu.items track by $index" ng-class="admin[$index]">
           <h4 class="contracts-type uppercase">
             <a href="#/panel/" ng-click="show_sub($index)"><img ng-src="images/assets/{{panels.img}}"> {{panels.title}}</a>
           </h4>
           <div ng-show="shows[$index]">
-            <h4><a>I tuoi contratti</a></h4>
-            <h4><a>Inserisci nuova lettura</a></h4>
+            <h4 class="contracts-type"><a href="#">I tuoi contratti</a></h4>
+            <h4 class="contracts-type"><a href="#">Inserisci nuova lettura</a></h4>
           </div>
         </div>
       </div>
