@@ -30,22 +30,22 @@
 
 <div class="container-fluid sec-header-menu">
   <div class="container">
-    <a ng-href="./#/section/{{ menu1 }}/">
-      <div id="{{ menu1 }}" class="col-xs-3 sec-header-submenu" ng-class="{ active: selectedMenu == menu1 }">
+    <a ng-href="./#/section/{{ menus[0].ID }}/">
+      <div id="{{ menus[0].ID }}" class="col-xs-3 sec-header-submenu" ng-class="{ active: selectedMenu == menus[0].ID }">
         <div class="comune"></div>
-        &nbsp;&nbsp;<h6 class="inline">Il Comune Informa</h6>
+        &nbsp;&nbsp;<h6 class="inline">{{menus[0].title}}</h6>
       </div>
     </a>
-    <a ng-href="./#/section/{{ menu2 }}/">
-      <div id="{{ menu2 }}" class="col-xs-3 sec-header-submenu" ng-class="{ active: selectedMenu == menu2 }">
+    <a ng-href="./#/section/{{ menus[1].ID }}/">
+      <div id="{{ menus[1].ID }}" class="col-xs-3 sec-header-submenu" ng-class="{ active: selectedMenu == menus[1].ID }">
         <div class="cultura"></div>
-        &nbsp;&nbsp;<h6 class="inline">Cultura e Turismo</h6>
+        &nbsp;&nbsp;<h6 class="inline">{{menus[1].title}}</h6>
       </div>
     </a>
-    <a ng-href="./#/section/{{ menu3 }}/">
-      <div id="{{ menu3 }}" class="col-xs-3 sec-header-submenu" ng-class="{ active: selectedMenu == menu3 }">
+    <a ng-href="./#/section/{{ menus[2].ID }}/">
+      <div id="{{ menus[2].ID }}" class="col-xs-3 sec-header-submenu" ng-class="{ active: selectedMenu == menus[2].ID }">
         <div class="servizi"></div>
-        &nbsp;&nbsp;<h6 class="inline">Servizi Online</h6>
+        &nbsp;&nbsp;<h6 class="inline">{{menus[2].title}}</h6>
       </div>
     </a>
   </div>

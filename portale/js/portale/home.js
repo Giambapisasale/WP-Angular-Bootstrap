@@ -1,17 +1,30 @@
 (function () {
   var app = angular.module('portale');
 
-  app.controller("HomeController", function($scope, $http, $sce) {
-    $scope.menu1 = app.comune_informa;
-    $scope.menu2 = app.cultura_turismo;
-    $scope.menu3 = app.servizi_online;
+  app.controller("HomeController", function($scope, $rootScope, $http, $sce) {
 
-    // Il Comune Informa
-    $http.get( app.wp + "menus/" + app.comune_informa )
+    $http.get( app.wp + "menus/29" )
       .success(function(data, status, header, config) {
+      $rootScope.menus = [];
+      var j = 0;
 
+      for (var i  = 0; i < data.items.length && j < 3; i++)
+      {
+        if(data.items[i].parent == 0)
+        {
+          $rootScope.menus[j] = data.items[i];
+          j++;
+        }
+      }
+
+      // ID menu principali
+      app.comune_informa  = $rootScope.menus[0].ID;
+      app.cultura_turismo = $rootScope.menus[1].ID;
+      app.servizi_online  = $rootScope.menus[2].ID;
+
+      // Il Comune Informa
       $scope.menu_comune_informa = Array();
-      var root_parent = data.items[0].ID;
+      var root_parent = $rootScope.menus[0].ID;
       var j = 0;
 
       for (var i = 0; i < data.items.length; i++)
@@ -26,17 +39,9 @@
         }
       }
 
-    })
-      .error(function(data, status, header, config) {
-      console.log("Error in $http.get() of HomeController (menu comune_informa)");
-    });
-
-    // Cultura e Turismo
-    $http.get( app.wp + "menus/" + app.cultura_turismo )
-      .success(function(data, status, header, config) {
-
+      // Cultura e Turismo
       $scope.cultura_turismo = Array();
-      var root_parent = data.items[0].ID;
+      var root_parent = $rootScope.menus[1].ID;
       var j = 0;
 
       for (var i = 0; i < data.items.length; i++)
@@ -51,17 +56,9 @@
         }
       }
 
-    })
-      .error(function(data, status, header, config) {
-      console.log("Error in $http.get() of HomeController (menu cultura_turismo)");
-    });
-
-    // Servizi Online
-    $http.get( app.wp + "menus/" + app.servizi_online )
-      .success(function(data, status, header, config) {
-
+      // Servizi Online
       $scope.servizi_online = Array();
-      var root_parent = data.items[0].ID;
+      var root_parent = $rootScope.menus[2].ID;
       var j = 0;
 
       for (var i = 0; i < data.items.length; i++)
@@ -78,7 +75,7 @@
 
     })
       .error(function(data, status, header, config) {
-      console.log("Error in $http.get() of HomeController (menu servizi_online)");
+      console.log("Error in $http.get() of HomeController (menus)");
     });
 
     // News
@@ -97,6 +94,7 @@
     });
 
     $scope.stickyposts = Array();
+    var j = 0;
     $http.get( app.wp + "posts/" )
       .success(function(data, status, header, config) {
       for(var i = 0; i < data.length; i++)
@@ -104,7 +102,10 @@
         if(i == 3 || data[i].sticky == false)
           break;
         else
+        {
           $scope.stickyposts[i] = data[i];
+          j++;
+        }
       }
     })
       .error(function(data, status, header, config) {

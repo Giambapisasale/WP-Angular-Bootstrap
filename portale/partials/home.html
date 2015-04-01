@@ -26,10 +26,10 @@
 
     <div class="row header-links text-center">
       <div class="col-sm-4">
-        <a ng-href="./#/section/{{ menu1 }}/">
+        <a ng-href="./#/section/{{ menus[0].ID }}/">
           <img class="img-responsive header-icon" src="images/assets/comune-icon.png">
         </a>
-        <p class="header-link-title"><a ng-href="./#/section/{{ menu1 }}/">Il Comune<br>informa</a></p>
+        <p class="header-link-title"><a ng-href="./#/section/{{ menus[0].ID }}/">{{menus[0].title}}</a></p>
 
         <p class="header-link-description">
           <span ng-repeat="item in menu_comune_informa">
@@ -38,10 +38,10 @@
         </p>
       </div>
       <div class="col-sm-4">
-        <a ng-href="./#/section/{{ menu2 }}/">
+        <a ng-href="./#/section/{{ menus[1].ID }}/">
           <img class="img-responsive header-icon" src="images/assets/cultura-icon.png">
         </a>
-        <p class="header-link-title"><a ng-href="./#/section/{{ menu2 }}/">Cultura<br>e turismo</a></p>
+        <p class="header-link-title"><a ng-href="./#/section/{{ menus[1].ID }}/">{{menus[1].title}}</a></p>
         <p class="header-link-description">
           <span ng-repeat="item in cultura_turismo">
             <a ng-href="./#/{{ item.url }}">{{ item.title }}</a>{{ $last ? '' : '&nbsp;&nbsp;|&nbsp;&nbsp;' }}
@@ -49,10 +49,10 @@
         </p>
       </div>
       <div class="col-sm-4">
-        <a ng-href="./#/section/{{ menu3 }}/">
+        <a ng-href="./#/section/{{ menus[2].ID }}/">
           <img class="img-responsive header-icon" src="images/assets/servizi-icon.png">
         </a>
-        <p class="header-link-title"><a ng-href="./#/section/{{ menu3 }}/">Servizi<br>online</a></p>
+        <p class="header-link-title"><a ng-href="./#/section/{{ menus[2].ID }}/">{{menus[2].title}}</a></p>
         <p class="header-link-description">
           <span ng-repeat="item in servizi_online">
             <a ng-href="./#/{{ item.url }}">{{ item.title }}</a>{{ $last ? '' : '&nbsp;&nbsp;|&nbsp;&nbsp;' }}
@@ -69,7 +69,7 @@
 
       <div ng-repeat="post in posts">
         <p class="post-title">
-          <a ng-href="#/section/25/post/{{ post.ID }}" ng-bind-html="post.title"></a>
+          <a ng-href="#/section/{{ menus[0].ID }}/post/{{ post.ID }}" ng-bind-html="post.title"></a>
         </p>
         <p class="post-date">
           <img class="calendar" src="images/assets/calendar-icon.png"> Pubblicato il {{ post.date | date : "shortDate" }}
@@ -87,7 +87,7 @@
       <p class="news-main-title">In evidenza</p>
 
       <div ng-repeat="sticky in stickyposts">
-        <a class="featured-img-link" href="./#/section/26/post/{{sticky.ID}}">
+        <a class="featured-img-link" ng-href="./#/section/{{ menus[0].ID }}/post/{{sticky.ID}}">
           <div class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
               <div class="item active">
