@@ -17,6 +17,12 @@ class Proxy {
 		$this->test_consumer = new OAuthConsumer($data["key"], $data["secret"], NULL);
 		$this->test_token = new OAuthConsumer($data["token"], $data["token_secret"]);
 		
+		set_error_handler(
+			create_function(
+			'$severity, $message, $file, $line',
+			'throw new ErrorException($message, $severity, $severity, $file, $line);'
+				)
+		);
 	}
 	
 	function sendRequest($path) {
@@ -57,7 +63,11 @@ class Proxy {
 			
 			// Open the file using the HTTP headers set above
 			$content = file_get_contents($url, false, $context);
-			return $content;
+			if($content !== false ) {
+				return $content;
+			} else {
+				return "{\"error\" : \"generic for url ".$url."\"}";
+			}
 			
 			
 // 			$oauth = new OAuth ( $this->myData["key"], $this->myData["secret"], OAUTH_SIG_METHOD_HMACSHA1, OAUTH_AUTH_TYPE_AUTHORIZATION );
@@ -69,9 +79,7 @@ class Proxy {
 // 			header ( "Content-Type: {$response_info["content_type"]}" );
 // 			echo $oauth->getLastResponse ();
 		} catch ( OAuthException $E ) {
-			echo "Exception caught: ". $E->getMessage();
+			return "{\"error\" : \"Exception caught: ". $E->getMessage() . "\"}";
 		}
 	}
 }
-
-?>
