@@ -86,6 +86,8 @@ class WP_JSON_Users {
 
 	/**
 	 * Retrieve the current user
+	 * ##GBP patch - patchato da Giambattista Pisasale, non aggiornare il plugin finche' 
+	 * non si trova soluzione migliore
 	 *
 	 * @param string $context
 	 * @return mixed See
