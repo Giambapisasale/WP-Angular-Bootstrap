@@ -26,10 +26,10 @@
 
     <div class="row header-links text-center">
       <div class="col-sm-4">
-        <a ng-href="./#/section/{{ menus[0].ID }}/">
+        <a ng-href="./#/section/{{ menus[0].ID }}/{{ menus[0].object }}/{{ menus[0].object_id }}">
           <img class="img-responsive header-icon" src="images/assets/comune-icon.png">
         </a>
-        <p class="header-link-title"><a ng-href="./#/section/{{ menus[0].ID }}/">{{menus[0].title}}</a></p>
+        <p class="header-link-title"><a ng-href="./#/section/{{ menus[0].ID }}/{{ menus[0].object }}/{{ menus[0].object_id }}">{{menus[0].title}}</a></p>
 
         <p class="header-link-description">
           <span ng-repeat="item in menu_comune_informa">
@@ -38,10 +38,10 @@
         </p>
       </div>
       <div class="col-sm-4">
-        <a ng-href="./#/section/{{ menus[1].ID }}/">
+        <a ng-href="./#/section/{{ menus[1].ID }}/{{ menus[1].object }}/{{ menus[1].object_id }}">
           <img class="img-responsive header-icon" src="images/assets/cultura-icon.png">
         </a>
-        <p class="header-link-title"><a ng-href="./#/section/{{ menus[1].ID }}/">{{menus[1].title}}</a></p>
+        <p class="header-link-title"><a ng-href="./#/section/{{ menus[1].ID }}/{{ menus[1].object }}/{{ menus[1].object_id }}">{{menus[1].title}}</a></p>
         <p class="header-link-description">
           <span ng-repeat="item in cultura_turismo">
             <a ng-href="./#/{{ item.url }}">{{ item.title }}</a>{{ $last ? '' : '&nbsp;&nbsp;|&nbsp;&nbsp;' }}
@@ -49,10 +49,10 @@
         </p>
       </div>
       <div class="col-sm-4">
-        <a ng-href="./#/section/{{ menus[2].ID }}/">
+        <a ng-href="./#/section/{{ menus[2].ID }}/{{ menus[2].object }}/{{ menus[2].object_id }}">
           <img class="img-responsive header-icon" src="images/assets/servizi-icon.png">
         </a>
-        <p class="header-link-title"><a ng-href="./#/section/{{ menus[2].ID }}/">{{menus[2].title}}</a></p>
+        <p class="header-link-title"><a ng-href="./#/section/{{ menus[2].ID }}/{{ menus[2].object }}/{{ menus[2].object_id }}">{{menus[2].title}}</a></p>
         <p class="header-link-description">
           <span ng-repeat="item in servizi_online">
             <a ng-href="./#/{{ item.url }}">{{ item.title }}</a>{{ $last ? '' : '&nbsp;&nbsp;|&nbsp;&nbsp;' }}

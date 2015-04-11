@@ -30,19 +30,19 @@
 
 <div class="container-fluid sec-header-menu">
   <div class="container">
-    <a ng-href="./#/section/{{ menus[0].ID }}/">
+    <a ng-href="./#/section/{{ menus[0].ID }}/{{ menus[0].object }}/{{ menus[0].object_id }}">
       <div id="{{ menus[0].ID }}" class="col-xs-3 sec-header-submenu" ng-class="{ active: selectedMenu == menus[0].ID }">
         <div class="comune"></div>
         &nbsp;&nbsp;<h6 class="inline">{{menus[0].title}}</h6>
       </div>
     </a>
-    <a ng-href="./#/section/{{ menus[1].ID }}/">
+    <a ng-href="./#/section/{{ menus[1].ID }}/{{ menus[1].object }}/{{ menus[1].object_id }}">
       <div id="{{ menus[1].ID }}" class="col-xs-3 sec-header-submenu" ng-class="{ active: selectedMenu == menus[1].ID }">
         <div class="cultura"></div>
         &nbsp;&nbsp;<h6 class="inline">{{menus[1].title}}</h6>
       </div>
     </a>
-    <a ng-href="./#/section/{{ menus[2].ID }}/">
+    <a ng-href="./#/section/{{ menus[2].ID }}/{{ menus[2].object }}/{{ menus[2].object_id }}">
       <div id="{{ menus[2].ID }}" class="col-xs-3 sec-header-submenu" ng-class="{ active: selectedMenu == menus[2].ID }">
         <div class="servizi"></div>
         &nbsp;&nbsp;<h6 class="inline">{{menus[2].title}}</h6>
