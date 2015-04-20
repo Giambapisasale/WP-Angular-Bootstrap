@@ -1,12 +1,12 @@
 <div class="container-fluid header">
   <div class="container">
     <div class="row top-links">
-      <div class="col-xs-3 pull-right">
-        <div class="search">
+      <div class="col-xs-4 pull-right box-search">
+        <div>
           &nbsp;&nbsp;&nbsp;
-          <input type="text" placeholder="Cerca nel sito" class="searchinput">
+          <input type="text" placeholder="Cerca nel sito" class="searchinput search">
           &nbsp;
-          <img src="images/assets/search-icon.png">
+          <!-- <img src="images/assets/search-icon.png"> -->
         </div>
       </div>
 
@@ -26,7 +26,7 @@
 
     <div class="row header-links text-center">
       <div class="col-sm-4">
-        <a ng-href="./#/section/{{ menus[0].ID }}/{{ menus[0].object }}/{{ menus[0].object_id }}">
+        <a ng-href="./#/section/{{ menus[0].ID }}/{{ menus[0].object }}/{{ menus[0].object_id }}" class="icon-menu">
           <img class="img-responsive header-icon" src="images/assets/comune-icon.png">
         </a>
         <p class="header-link-title"><a ng-href="./#/section/{{ menus[0].ID }}/{{ menus[0].object }}/{{ menus[0].object_id }}">{{menus[0].title}}</a></p>
@@ -38,7 +38,7 @@
         </p>
       </div>
       <div class="col-sm-4">
-        <a ng-href="./#/section/{{ menus[1].ID }}/{{ menus[1].object }}/{{ menus[1].object_id }}">
+        <a ng-href="./#/section/{{ menus[1].ID }}/{{ menus[1].object }}/{{ menus[1].object_id }}" class="icon-menu">
           <img class="img-responsive header-icon" src="images/assets/cultura-icon.png">
         </a>
         <p class="header-link-title"><a ng-href="./#/section/{{ menus[1].ID }}/{{ menus[1].object }}/{{ menus[1].object_id }}">{{menus[1].title}}</a></p>
@@ -49,7 +49,7 @@
         </p>
       </div>
       <div class="col-sm-4">
-        <a ng-href="./#/section/{{ menus[2].ID }}/{{ menus[2].object }}/{{ menus[2].object_id }}">
+        <a ng-href="./#/section/{{ menus[2].ID }}/{{ menus[2].object }}/{{ menus[2].object_id }}" class="icon-menu">
           <img class="img-responsive header-icon" src="images/assets/servizi-icon.png">
         </a>
         <p class="header-link-title"><a ng-href="./#/section/{{ menus[2].ID }}/{{ menus[2].object }}/{{ menus[2].object_id }}">{{menus[2].title}}</a></p>
