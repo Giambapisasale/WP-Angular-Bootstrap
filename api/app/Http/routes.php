@@ -28,3 +28,7 @@ Route::resource('contratto', 'ContrattoController');
 Route::group(array('prefix'=>'contratto'),function(){
 	Route::get('dettaglio/{contratto}',array('uses'=>'ContrattoController@dettaglio'));
 });
+
+Route::group(array('prefix'=>'letture'),function(){
+	Route::post('insert',array('uses'=>'ContrattoController@store'));
+});

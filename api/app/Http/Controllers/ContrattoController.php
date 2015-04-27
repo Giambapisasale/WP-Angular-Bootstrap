@@ -37,9 +37,12 @@ class ContrattoController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		$data = $request->input("data");
+		$lettura = $request->input("lettura");
+		$consumo = $request->input("consumo");
+		return array($data,$lettura,$consumo);
 	}
 
 	
