@@ -83,25 +83,27 @@
       <div class="showAll text-center"><a href="#/home">Mostra tutti</a></div>
 
     </div>
-    <div class="col-xs-4">
-      <p class="news-main-title">In evidenza</p>
+    <div class="col-sm-4 col-xs-12">
+      <center>
+        <p class="news-main-title">In evidenza</p>
 
-      <div ng-repeat="sticky in stickyposts">
-        <a class="featured-img-link" ng-href="./#/section/{{ menus[0].ID }}/post/{{sticky.ID}}">
-          <div class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-              <div class="item active">
-              <img class="img-responsive featured-img" ng-src="{{sticky.featured_image.source}}" alt="{{sticky.title}}">
-                <div class="carousel-caption featured-img-text" ng-bind-html="sticky.title">
+        <div ng-repeat="sticky in stickyposts">
+          <a class="featured-img-link" ng-href="./#/section/{{ menus[0].ID }}/post/{{sticky.ID}}">
+            <div class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="item active">
+                  <img class="img-responsive featured-img" ng-src="{{sticky.featured_image.source}}" alt="{{sticky.title}}">
+                  <div class="carousel-caption featured-img-text" ng-bind-html="sticky.title">
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </a>
-        <br>
-      </div>
+          </a>
+          <br>
+        </div>
 
-      <br>
+        <br>
+      </center>
     </div>
   </div>
 
