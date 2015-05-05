@@ -122,13 +122,19 @@ input[type="radio"] + img, input[type="radio"]:checked + img + img
   margin-top: -2px;
 }
 
-.contracts button {
+.contracts button, .contracts input[type='submit'] {
   color: #fff;
   background-color: #005c81;
   border: none;
   font-size: 18px;
   font-weight: bold;
   width: 216px;
+  height: 50px;
+}
+
+.contracts button, .contracts input[type='submit'] {
+  padding: 5px;
+  width: 332px;
   height: 50px;
 }
 

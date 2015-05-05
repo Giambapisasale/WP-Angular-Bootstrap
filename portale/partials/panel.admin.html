@@ -5,28 +5,29 @@
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
 
   <div class="panel-admin">
+    <form action="oauth/client.php?action=p&path=api/letture/insert" method="post">
+      <h4 ng-show="permission">Seleziona utente</h4>
+      <div ng-show="permission">
+        <input type="text" class="search-user" placeholder="Cerca Utente" list="utenti" autocomplete="off">
+        <datalist id="utenti">
+          <option ng-repeat="user in users" value="{{user.first_name}}">
+        </datalist>
+        <i class="fa fa-search"></i>
+      </div>
 
-    <h4 ng-show="permission">Seleziona utente</h4>
-    <div ng-show="permission">
-      <input type="text" class="search-user" placeholder="Cerca Utente" list="utenti" autocomplete="off">
-      <datalist id="utenti">
-        <option ng-repeat="user in users" value="{{user.first_name}}">
-      </datalist>
-      <i class="fa fa-search"></i>
-    </div>
+      <h4>Data lettura</h4>
+      <input name="data" type="text" placeholder="gg/mm/aa">
 
-    <h4>Data lettura</h4>
-    <input name="data" type="text" placeholder="gg/mm/aa">
+      <h4>Lettura</h4>
+      <input name="lettura" type="text" placeholder="Lettura">
 
-    <h4>Lettura</h4>
-    <input name="lettura" type="text" placeholder="Lettura">
+      <h4>Consumo</h4>
+      <input name="consumo" type="text" placeholder="0001234556789">
 
-    <h4>Consumo</h4>
-    <input name="consumo" type="text" placeholder="0001234556789">
+      <br><br>
 
-    <br><br>
-
-    <a ng-href="#"><button class="uppercase">Inserisci</button></a>
+      <input type="submit" value="Inserisci" class="uppercase">
+    </form>
   </div>
 
   <br><br>
