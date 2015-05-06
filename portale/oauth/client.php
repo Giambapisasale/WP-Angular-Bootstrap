@@ -203,12 +203,11 @@ if( isset($_REQUEST['action']) && !empty($_REQUEST['action']) ) {
 					"FIN" => false,
 			);
 			session_write_close();
-		} else {
-			header('Content-Type: application/json');
-			echo json_encode("status Error");
 		}
+		
 		header('Content-Type: application/json');
 		echo json_encode($_SESSION['status']);
+		
 		
 	} else if ($action == "logout") {
 		// Desetta tutte le variabili di sessione.
