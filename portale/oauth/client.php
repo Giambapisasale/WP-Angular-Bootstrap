@@ -125,7 +125,17 @@ if( isset($_REQUEST['action']) && !empty($_REQUEST['action']) ) {
 		);
 		
 		$_SESSION['userKey'] = $data;
-		$_SESSION['isLogged'] = true;
+		
+		if ( empty($data['key']) || empty($data['secret']) || empty($data['token']) || empty($data['token_secret']) ) {
+		
+			reportError("Autenticazione fallita: uno dei campi data è vuoto");
+			$_SESSION['isLogged'] = false;
+			
+		} else {
+		
+			$_SESSION['isLogged'] = true;
+		}
+		
 		
 		session_write_close();
 		$proxy  = new Proxy($data, $wp_json_url , $sig_method);
@@ -151,29 +161,37 @@ if( isset($_REQUEST['action']) && !empty($_REQUEST['action']) ) {
 		
 		return;
 
-	}else if ($action == "p") {
+	} else if ($action == "p") {
 		// action proxy, utilizzo il path solo se sono loggato
 		session_start();
-		if(isset($_GET['path']) && !empty($_GET['path']) &&
-				isset($_SESSION['userData']) && isset($_SESSION['userKey']) ) {
+		if( isset($_REQUEST['path']) && !empty($_REQUEST['path']) &&
+				isset($_SESSION['isLogged']) && $_SESSION['isLogged'] ) {
 					
-			$function = $_GET['path'];
-			if( isset($_SESSION['isLogged']) && $_SESSION['isLogged'] ) {
+			$function = $_REQUEST['path'];
+			 
 				//chiamata alle API
-				if ( substr( $function, 0, 4 ) === "api/" ){
-					$proxy  = new Proxy($_SESSION['userKey'], $domain, $sig_method);
-				}
-				else {
-					$proxy  = new Proxy($_SESSION['userKey'], $wp_json_url , $sig_method);
-				}
+			if ( substr( $function, 0, 4 ) === "api/" ){
+				$proxy  = new Proxy($_SESSION['userKey'], $domain, $sig_method);
+			}
+			else {
+				$proxy  = new Proxy($_SESSION['userKey'], $wp_json_url , $sig_method);
+			} 
 				
-			} else {
-				header('HTTP/1.1 401 Unauthorized', true, 401);
-				return;
-			}				
 			
-			echo $proxy->sendRequest($_GET['path']);
+			echo $proxy->sendRequest($_REQUEST['path']);
+			
+		} else if ( !isset($_REQUEST['path']) || empty($_REQUEST['path']) ) {
+		
+			reportError("Path non valorizzato correttamente");
+		
+		} else if ( !isset($_SESSION['isLogged']) || !$_SESSION['isLogged'] ) {
+		
+			header('HTTP/1.1 401 Unauthorized', true, 401);
+			return;
+		} else {
+			reportError("Generic Error on action p");
 		}
+			
 		session_write_close();
 	} else if ($action == "status") {
 		
@@ -185,19 +203,39 @@ if( isset($_REQUEST['action']) && !empty($_REQUEST['action']) ) {
 					"FIN" => false,
 			);
 			session_write_close();
+		} else {
+			header('Content-Type: application/json');
+			echo json_encode("status Error");
 		}
 		header('Content-Type: application/json');
 		echo json_encode($_SESSION['status']);
 		
 	} else if ($action == "logout") {
 		// Desetta tutte le variabili di sessione.
+		session_start(); //fix
 		session_unset();
-		// Infine , distrugge la sessione.
+		// Infine , distrugge la sessione.		
 		session_destroy();
+		header('Content-Type: application/json');
+		echo json_encode("logout successfull");
 		
+		
+		
+	} else if ($action == "isLogged") {
+	
+		if( isset($_SESSION['isLogged']) && $_SESSION['isLogged'] ) {
+			header('Content-Type: application/json');
+			echo json_encode("isLogged: Yes");
+		
+		} else {
+			header('Content-Type: application/json');
+			echo json_encode("isLogged: No");	
+		}
+	
+	
 	} else {
 	
-		return reportError("Error");
+		return reportError("Error: nessuna action specificata");
 	}
 	
 }
