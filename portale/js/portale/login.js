@@ -53,6 +53,16 @@
       });
     };
 
+    $http.get( "oauth/client.php?action=isLogged" )
+      .success(function(data, status, header, config) {
+      if(!(data.indexOf("Yes") > -1) && $rootScope.$storage.token_ != null)
+      {
+        $scope.logout("home");
+      }
+    })
+      .error(function(data, status, header, config) {
+    });
+
     $scope.call_status = false;
     $scope.open = function (size) {
       $scope.call_status = true;
