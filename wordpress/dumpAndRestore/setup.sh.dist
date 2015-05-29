@@ -17,7 +17,7 @@ home="http://localhost/WP-Angular-Bootstrap/wordpress/"
 mysql="mysql"
 
 # database
-database="wordpress"
+database="portale"
 
 # crea database se non esiste
 $mysql --user=$user --password=$password --execute="CREATE DATABASE IF NOT EXISTS $database;"

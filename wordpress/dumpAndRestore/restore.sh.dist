@@ -17,7 +17,7 @@ home="http://localhost/WP-Angular-Bootstrap/wordpress/"
 mysql="mysql"
 
 # database
-database="wordpress"
+database="portale"
 
 # importa dump
 $mysql --user=$user --password=$password  $database < wordpress.sql
