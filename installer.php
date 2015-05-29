@@ -14,6 +14,9 @@ else
 $query = sprintf("CREATE DATABASE IF NOT EXISTS %s", $db_name);
 execute($query);
 
+$query = sprintf("GRANT ALL PRIVILEGES ON %s.* To 'portale'@'localhost' IDENTIFIED BY 'fragole'", $db_name);
+execute($query);
+
 function execute($query)
 {
   global $connection;
