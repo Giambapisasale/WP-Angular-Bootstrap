@@ -78,7 +78,7 @@ class Proxy {
 // 			$response_info = $oauth->getLastResponseInfo ();
 // 			header ( "Content-Type: {$response_info["content_type"]}" );
 // 			echo $oauth->getLastResponse ();
-		} catch ( OAuthException $E ) {
+		} catch ( Exception $E ) {
 			return "{\"error\" : \"Exception caught: ". $E->getMessage() . "\"}";
 		}
 	}

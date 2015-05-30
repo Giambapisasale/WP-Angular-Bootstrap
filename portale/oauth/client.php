@@ -177,8 +177,18 @@ if( isset($_REQUEST['action']) && !empty($_REQUEST['action']) ) {
 				$proxy  = new Proxy($_SESSION['userKey'], $wp_json_url , $sig_method);
 			} 
 				
-			
-			echo $proxy->sendRequest($_REQUEST['path']);
+			if ($_SERVER['REQUEST_METHOD'] == "POST") {
+				$keysValue = "";
+				foreach ($_POST as $key => $value) {
+					$keysValue = $keysValue."".$key."=".$value."&";
+				}
+				$keysValue = substr($keysValue,0 ,-1);
+				$keysValue = str_replace("/", "%", $keysValue);
+				//echo $keysValue;
+				echo $proxy->sendRequest($_REQUEST['path']."/".$keysValue);
+			} else {
+				echo $proxy->sendRequest($_REQUEST['path']);
+			}
 			
 		} else if ( !isset($_REQUEST['path']) || empty($_REQUEST['path']) ) {
 		
@@ -237,11 +247,14 @@ if( isset($_REQUEST['action']) && !empty($_REQUEST['action']) ) {
 		return reportError("Error: nessuna action specificata");
 	}
 	
+} else {
+	return reportError("Error: nessuno parametro specificato");
 }
 
 function reportError($error) {
-	header('Content-Type: application/json');
-	echo json_encode($error);
+ 	header('Content-Type: application/json');
+ 	echo json_encode($error);
+	
 }
 
 
