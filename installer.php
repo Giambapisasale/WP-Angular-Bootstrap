@@ -1,5 +1,22 @@
 <?php
 
+/* Configurazione Utente */
+
+$db_username  = "root"; // nome utente root, necessario per creare utente "portale"
+$db_password  = "";     // password dell'utente root
+
+$mysql        = "/usr/bin/mysql"; // path di mysql
+
+$new_path     = ""; // path di installazione del portale
+
+
+/* Configurazione Sviluppatore */
+
+$db_name      = "portale";
+$old_path     = "http://localhost/WP-Angular-Bootstrap/wordpress/";
+$sql_dump     = "wordpress/dumpAndRestore/wordpress.sql";
+
+
 /* Funzioni */
 
 function execute($query)
@@ -12,12 +29,6 @@ function execute($query)
     die("Errore nella query: " . $query);
 }
 
-/* Configurazione */
-
-$db_username  = "root"; // necessario per creare utente "portale"
-$db_password  = "";
-$db_name      = "portale";
-$mysql        = "/usr/local/mysql/bin/mysql";
 
 /* Installazione Database */
 
@@ -34,7 +45,11 @@ execute($query);
 $query = sprintf("GRANT ALL PRIVILEGES ON %s.* To 'portale'@'localhost' IDENTIFIED BY 'fragole'", $db_name);
 execute($query);
 
-$import = sprintf("%s --user=portale --password=fragole --host=localhost %s < '%s/wordpress/dumpAndRestore/wordpress.sql'",
+$new_dump = file_get_contents($sql_dump);
+$new_dump = str_replace($old_path, $new_path, $new_dump);
+file_put_contents('new_dump.sql', $new_dump);
+
+$import = sprintf("%s --user=portale --password=fragole --host=localhost %s < '%s/new_dump.sql'",
                   $mysql,
                   $db_name,
                   getcwd());
