@@ -68,7 +68,7 @@ echo exec($import, $output, $retvar);
 if ($retvar == 0)
   echo "Database installato con successo!<br>\n";
 else
-  die("Errore nell'installazione del database<br>\n");
+  die("Errore nell'installazione del database! Assicurarsi di aver impostato correttamente i permessi della cartella del progetto e le variabili di configurazione utente.<br>\n");
 
 
 /* Installazione Oauth */
