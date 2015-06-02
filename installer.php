@@ -82,6 +82,11 @@ if ($localhost_pos !== false)
 
   $new_common_inc = file_get_contents($common_inc);
 
+  if ($new_common_inc == false)
+  {
+    die( "Errore! Assicurarsi di aver impostato correttamente i permessi della cartella del progetto.<br>\n" );
+  }
+
   $new_common_inc = str_replace("\$path = \"\";", "\$path = \"" . $oauth_path . "\";", $new_common_inc);
   file_put_contents($common_inc_dest, $new_common_inc);
 }
