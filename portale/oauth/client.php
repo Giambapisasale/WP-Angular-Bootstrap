@@ -171,7 +171,7 @@ if( isset($_REQUEST['action']) && !empty($_REQUEST['action']) ) {
 			 
 				//chiamata alle API
 			if ( substr( $function, 0, 4 ) === "api/" ){
-				$proxy  = new Proxy($_SESSION['userKey'], $domain, $sig_method);
+				$proxy  = new Proxy($_SESSION['userKey'], $domain . $path, $sig_method);
 			}
 			else {
 				$proxy  = new Proxy($_SESSION['userKey'], $wp_json_url , $sig_method);
