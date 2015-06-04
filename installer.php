@@ -2,12 +2,7 @@
 
 /* Configurazione Utente */
 
-$db_username  = "root"; // nome utente root, necessario per creare utente "portale"
-$db_password  = "";     // password dell'utente root
-
-$mysql        = "/usr/bin/mysql"; // path di mysql
-
-$new_path     = ""; // path di installazione del portale
+require_once("config.php");
 
 
 /* Configurazione Sviluppatore */
