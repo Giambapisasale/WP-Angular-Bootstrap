@@ -66,7 +66,18 @@ $import = sprintf("%s --user=portale --password=fragole --host=localhost %s < '%
 echo exec($import, $output, $retvar);
 
 if ($retvar == 0)
-  echo "Database installato con successo!<br>\n";
+{
+  $file = $new_path . "wordpress/wp-json/";
+  $file_headers = @get_headers($file);
+  if($file_headers[0] == 'HTTP/1.1 404 Not Found')
+  {
+    die( "Il database e' stato installato, tuttavia sembra che i permalink non siano abilitati. Abilitare i permalink e riavviare lo script di installazione.<br>\n" );
+  }
+  else
+  {
+    echo "Database installato con successo!<br>\n";
+  }
+}
 else
   die("Errore nell'installazione del database<br>\n");
 
