@@ -5,6 +5,11 @@ $db_password  = "";     // password dell'utente root
 
 $mysql        = "/usr/bin/mysql"; // path di mysql
 
-$new_path     = ""; // path di installazione del portale
+/* non modificare queste variabili! */
+$protocol = isset($_SERVER['HTTPS']) ? "https://" : "http://";
+$domain = $protocol . $_SERVER['HTTP_HOST'];
+/* non modificare queste variabili! */
+
+$new_path     = $domain . "/WP-Angular-Bootstrap/"; // path di installazione del portale
 
 ?>
