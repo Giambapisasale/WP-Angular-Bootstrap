@@ -79,23 +79,17 @@ else
 
 /* Installazione Oauth */
 
-$localhost_pos = strpos($new_path, 'localhost');
+$oauth_path = substr($new_path, strlen($domain), $new_path.length-1);
 
-if ($localhost_pos !== false)
+$new_common_inc = file_get_contents($common_inc);
+
+if ($new_common_inc == false)
 {
-  $oauth_path = substr($new_path, $localhost_pos + 9);
-  $oauth_path = substr($oauth_path, 0, $oauth_path-1);
-
-  $new_common_inc = file_get_contents($common_inc);
-
-  if ($new_common_inc == false)
-  {
-    die( "Errore! Assicurarsi di aver impostato correttamente i permessi della cartella del progetto.<br>\n" );
-  }
-
-  $new_common_inc = str_replace("\$path = \"\";", "\$path = \"" . $oauth_path . "\";", $new_common_inc);
-  file_put_contents($common_inc_dest, $new_common_inc);
+  die( "Errore! Assicurarsi di aver impostato correttamente i permessi della cartella del progetto.<br>\n" );
 }
+
+$new_common_inc = str_replace("\$path = \"\";", "\$path = \"" . $oauth_path . "\";", $new_common_inc);
+file_put_contents($common_inc_dest, $new_common_inc);
 
 echo "Oauth installato con successo!<br>\n";
 
