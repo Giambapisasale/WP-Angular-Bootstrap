@@ -13,5 +13,3 @@ RUN rm /etc/apache2/apache2.conf
 RUN cp /var/www/html/WP-Angular-Bootstrap/docker/apache2.conf /etc/apache2/apache2.conf
 RUN a2enmod rewrite
 RUN php5enmod mcrypt
-CMD source /etc/apache2/envvars
-CMD /usr/sbin/apache2 -V
