@@ -8,3 +8,4 @@
 /testheader.php
 new_dump.sql
 config.php
+api/vendor/services.json
