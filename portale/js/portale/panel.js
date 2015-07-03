@@ -47,7 +47,7 @@
       $scope.contracts_ = data;
     })
       .error(function(data, status, header, config) {
-      console.log("Error in $http.get() of PanelController (contracts)");
+      console.log("Error in $http.get() of PanelController (contracts) 1");
     });
 
     $scope.getid = function(id) {
@@ -80,7 +80,7 @@
       $scope.details = $scope.contracts_.contracts[0];
     })
       .error(function(data, status, header, config) {
-      console.log("Error in $http.get() of PanelController (contracts)");
+      console.log("Error in $http.get() of PanelController (contracts) 2");
     });
 
     $http.get( "oauth/client.php?action=p&path=api/public/contratto/dettaglio/" + $stateParams.id)
@@ -88,7 +88,7 @@
       $scope.contratto = data;
     })
       .error(function(data, status, header, config) {
-      console.log("Error in $http.get() of PanelContractCtrl (contracts)");
+      console.log("Error in $http.get() of PanelContractCtrl (contracts) 3");
     });
 
     $scope.permission = false;
