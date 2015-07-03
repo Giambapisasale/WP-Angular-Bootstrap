@@ -1,4 +1,8 @@
+/*jslint nomen: true, browser: true, white: true, plusplus: true, eqeq: true, es5: true, forin: true */
+/*global angular, console, alert, scrolltomenu*/
+
 (function () {
+  'use strict';
   var app = angular.module('portale');
 
   app.controller("PanelController", function($scope, $http, $sce, $rootScope, $stateParams) {
@@ -29,9 +33,9 @@
     $http.get( "oauth/client.php?action=p&path=api/public/contratto/" + $rootScope.$storage.token_.ID )
       .success(function(data, status, header, config) {
       $scope.radio = "";
-      if(data.contracts == "")
+      if (data.contracts == "")
       {
-        data.contracts = new Array();
+        data.contracts = [];
         data.contracts[0] = {
           indirizzo : "Nessun Contratto Trovato",
           categoria : "",
@@ -53,14 +57,15 @@
     $scope.shows = [];
     $scope.admin = [];
     $scope.show_sub = function(id) {
+      var i;
 
-      for (var i in $scope.shows)
+      for (i in $scope.shows)
       {
         $scope.shows[i] = false;
         $scope.admin[i] = "";
       }
 
-      if(!$scope.shows[id])
+      if (!$scope.shows[id])
       {
         $scope.shows[id] = true;
         $scope.admin[id] = "admin-lateral";
@@ -88,7 +93,7 @@
 
     $scope.permission = false;
     var data = $rootScope.$storage.token_;
-    if(data.roles == "administrator")
+    if (data.roles == "administrator")
     {
       $scope.permission = true;
 
@@ -104,4 +109,4 @@
 
   });
 
-})()
+}());

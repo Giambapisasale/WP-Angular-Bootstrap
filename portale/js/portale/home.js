@@ -1,16 +1,23 @@
+/*jslint browser: true, white: true, plusplus: true, eqeq: true, es5: true, forin: true */
+/*global angular, console, alert*/
+
 (function () {
+  'use strict';
+
   var app = angular.module('portale');
 
   app.controller("HomeController", function($scope, $rootScope, $http, $sce) {
 
     $http.get( app.wp + "menus/29" )
       .success(function(data, status, header, config) {
-      $rootScope.menus = [];
-      var j = 0;
+      var i, j, root_parent;
 
-      for (var i  = 0; i < data.items.length && j < 3; i++)
+      $rootScope.menus = [];
+      j = 0;
+
+      for (i  = 0; i < data.items.length && j < 3; i++)
       {
-        if(data.items[i].parent == 0)
+        if (data.items[i].parent == 0)
         {
           $rootScope.menus[j] = data.items[i];
           j++;
@@ -23,11 +30,11 @@
       app.servizi_online  = $rootScope.menus[2].ID;
 
       // Il Comune Informa
-      $scope.menu_comune_informa = Array();
-      var root_parent = $rootScope.menus[0].ID;
-      var j = 0;
+      $scope.menu_comune_informa = [];
+      root_parent = $rootScope.menus[0].ID;
+      j = 0;
 
-      for (var i = 0; i < data.items.length; i++)
+      for (i = 0; i < data.items.length; i++)
       {
         if (data.items[i].parent == root_parent)
         {
@@ -40,11 +47,11 @@
       }
 
       // Cultura e Turismo
-      $scope.cultura_turismo = Array();
-      var root_parent = $rootScope.menus[1].ID;
-      var j = 0;
+      $scope.cultura_turismo = [];
+      root_parent = $rootScope.menus[1].ID;
+      j = 0;
 
-      for (var i = 0; i < data.items.length; i++)
+      for (i = 0; i < data.items.length; i++)
       {
         if (data.items[i].parent == root_parent)
         {
@@ -57,11 +64,11 @@
       }
 
       // Servizi Online
-      $scope.servizi_online = Array();
-      var root_parent = $rootScope.menus[2].ID;
-      var j = 0;
+      $scope.servizi_online = [];
+      root_parent = $rootScope.menus[2].ID;
+      j = 0;
 
-      for (var i = 0; i < data.items.length; i++)
+      for (i = 0; i < data.items.length; i++)
       {
         if (data.items[i].parent == root_parent)
         {
@@ -79,12 +86,14 @@
     });
 
     // News
-    var call = "posts?filter[posts_per_page]=2&filter[order]=DESC";
+    var j,
+        call = "posts?filter[posts_per_page]=2&filter[order]=DESC";
 
     $http.get( app.wp + call )
       .success(function(data, status, header, config) {
+      var i;
       $scope.posts = data;
-      for (var i in $scope.posts)
+      for (i in $scope.posts)
       {
         $scope.posts[i].content = $sce.trustAsHtml(data[i].content);
       }
@@ -93,14 +102,17 @@
       console.log("Error in $http.get() of HomeController (news)");
     });
 
-    $scope.stickyposts = Array();
-    var j = 0;
+    $scope.stickyposts = [];
+    j = 0;
     $http.get( app.wp + "posts/" )
       .success(function(data, status, header, config) {
-      for(var i = 0; i < data.length; i++)
+      var i;
+      for(i = 0; i < data.length; i++)
       {
-        if(i == 3 || data[i].sticky == false)
+        if (i == 3 || data[i].sticky == false)
+        {
           break;
+        }
         else
         {
           $scope.stickyposts[i] = data[i];
@@ -114,4 +126,4 @@
 
   });
 
-})()
+}());

@@ -1,4 +1,8 @@
+/*jslint nomen: true, devel: true, browser: true, white: true, plusplus: true, eqeq: true, es5: true, forin: true */
+/*global angular, console, alert*/
+
 (function () {
+  'use strict';
   var app = angular.module('portale');
 
   app.controller('ModalDemoCtrl', function ($scope, $modal, $rootScope, $http, $interval) {
@@ -11,7 +15,7 @@
       dim_avatar : '{"width" : "16px", "height" : "16px", "vertical-align" : "middle"}'
     };
 
-    if($rootScope.$storage.token_ != null)
+    if ($rootScope.$storage.token_ != null)
     {
       var data = $rootScope.$storage.token_;
       $rootScope.userdata = {
@@ -43,7 +47,10 @@
         $http.get( "oauth/client.php?action=logout" )
           .success(function(data, status, header, config) {
 
-          if(loc == "home") { setTimeout("location.reload();", 500);  }
+          if (loc == "home") { setTimeout(function() {
+            location.reload();
+          },
+                                         500);  }
           else { location.href = '#/home'; }
         })
           .error(function(data, status, header, config) {
@@ -55,7 +62,8 @@
 
     $http.get( "oauth/client.php?action=isLogged" )
       .success(function(data, status, header, config) {
-      if(!(data.indexOf("Yes") > -1) && $rootScope.$storage.token_ != null)
+
+      if ((data.indexOf("Yes") < 0) && $rootScope.$storage.token_ != null)
       {
         $scope.logout("home");
       }
@@ -65,8 +73,10 @@
 
     $scope.call_status = false;
     $scope.open = function (size) {
+      var modalInstance, status_update;
+
       $scope.call_status = true;
-      var modalInstance = $modal.open({
+      modalInstance = $modal.open({
         template: '<iframe class="login_ifr" src="oauth/client.php?action=request_token"></iframe>' 
         + '<div class=""><progressbar value="percent" type="info">{{percent}}%</progressbar></div>',
         controller: 'ModalInstanceCtrl',
@@ -78,12 +88,12 @@
         $scope.call_status = false;
       });
 
-      var status_update = function() {
+      status_update = function() {
         $http.get( "oauth/client.php?action=status", {cache:false} )
           .success(function(data, status, header, config) {
-          if(data.percentage) {
+          if (data.percentage) {
             $rootScope.percent = data.percentage;
-            if($scope.call_status == true && data.percentage < 100) {
+            if ($scope.call_status == true && data.percentage < 100) {
               window.setTimeout(status_update, 1000);
             }
           }
@@ -92,7 +102,7 @@
           .error(function(data, status, header, config) {
           console.log("Error in $http.get() of ModalDemoCtrl (status)");
         });
-      }
+      };
       console.log("launch status update");
       window.setTimeout(status_update, 1000);
 
@@ -105,17 +115,19 @@
 
   app.controller('StorageCtrl', function($scope, $localStorage, $rootScope) {
     $rootScope.$storage = $localStorage.$default({
-      token_: $scope.tokens
+      token: $scope.tokens
     });
   });
-})()
+}());
 
 
 function close_modal() {
+  'use strict';
   document.getElementsByClassName('modal')[0].click();
 }
 
 function update_storage(data) {
+  'use strict';
   var scope = angular.element(document.getElementById("storage")).scope();
   scope.$storage.token_ = JSON.parse(data);
   //alert(scope.$storage.token_);

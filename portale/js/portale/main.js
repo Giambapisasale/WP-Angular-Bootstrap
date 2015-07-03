@@ -1,4 +1,8 @@
+/*jslint browser: true, white: true, plusplus: true, eqeq: true, es5: true, forin: true */
+/*global angular, console, alert*/
+
 (function () {
+  'use strict';
   var app = angular.module('portale', ['ui.router', 'ui.bootstrap', 'ngSanitize', 'uiRouterStyles', 'ngStorage', 'chieffancypants.loadingBar']);
 
   app.controller("HomeController", function($scope, $stateParams, $http, $sce) {
@@ -24,7 +28,7 @@
 
     $scope.complete = function () {
       cfpLoadingBar.complete();
-    }
+    };
 
     // fake the initial load so first time users can see it right away:
     $scope.start();
@@ -36,5 +40,4 @@
 
   });
 
-
-})()
+}());
