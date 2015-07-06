@@ -21,9 +21,40 @@
 
     $http.get( app.wp + "menus/28" )
       .success(function(data, status, header, config) {
-      $scope.panel_menu = data;
-      $scope.panel_menu.items[0].img = 'tap.png';
-      $scope.panel_menu.items[1].img = 'empty.png';
+
+      if (data.items === undefined) {
+        console.log("Warning: there are no menus");
+        return;
+      }
+
+      var i, j, menu, submenu;
+      $scope.menus = [];
+
+
+      for (i = 0; i < data.items.length; i++) {
+        menu = data.items[i];
+
+        if (menu.parent === 0) {
+          menu.submenus = [];
+
+          for (j = 0; j < data.items.length; j++) {
+            submenu = data.items[j];
+
+            if (submenu.parent == menu.ID) {
+              if (submenu.url.startsWith("#")) {
+                submenu.url = submenu.url.substring(1, submenu.url.length);
+              } else {
+                console.log("Error: URL of submenu " + submenu.title + " is not properly formatted");
+              }
+
+              menu.submenus.push(submenu);
+            }
+          }
+
+          $scope.menus.push(menu);
+        }
+      }
+
     })
       .error(function(data, status, header, config) {
       console.log("Error in $http.get() of PanelController (panel_menu)");
