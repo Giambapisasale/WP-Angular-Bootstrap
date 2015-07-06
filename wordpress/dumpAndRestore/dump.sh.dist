@@ -12,4 +12,4 @@ host="localhost"
 # path di mysqldump, esempio: /path/to/mysqldump
 mysqldump="mysqldump"
 
-$mysqldump --user=$user --password=$password --host=$host wordpress > wordpress.sql
+$mysqldump --user=$user --password=$password --host=$host portale > wordpress.sql
