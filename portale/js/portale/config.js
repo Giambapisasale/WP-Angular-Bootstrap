@@ -74,27 +74,30 @@
         }
       }
     })
-      .state('panel.admin', {
-      url: 'admin',
-      data: {
-        css:  'css/panel.css'
-      },
+      .state('panel.contratti-acquedotto', {
+      url: 'contratti-acquedotto/',
       views: {
         '': {
-          controller: 'PanelContractCtrl',
-          templateUrl: "partials/panel.admin.html"
+          controller: 'AcquedottoCtrl',
+          templateUrl: "partials/panel.contratti-acquedotto.html"
         }
       }
     })
-      .state('panel.contract', {
-      url: ':id',
-      data: {
-        css:  'css/panel.css'
-      },
+      .state('panel.inserisci-contratto-acquedotto', {
+      url: 'inserisci-contratto-acquedotto/',
       views: {
         '': {
-          controller: 'PanelContractCtrl',
-          templateUrl: "partials/panel.contract.html"
+          controller: 'AcquedottoCtrl',
+          templateUrl: "partials/panel.inserisci-contratto-acquedotto.html"
+        }
+      }
+    })
+      .state('panel.contratto-acquedotto', {
+      url: 'contratti-acquedotto/:id',
+      views: {
+        '': {
+          controller: 'AcquedottoCtrl',
+          templateUrl: "partials/panel.contratto-acquedotto.html"
         }
       }
     });

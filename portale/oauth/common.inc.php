@@ -10,7 +10,7 @@ $domain = $protocol.$_SERVER['HTTP_HOST'];
 // lasciare vuoto se si utilizza il virtualhost
 // altrimenti impostare come il path tra http://localhost e l'istanza del progetto
 // esempio: "/WP-Angular-Bootstrap"
-$path = "";
+$path = "/WP-Angular-Bootstrap";
 
 $base = $path . "/portale/oauth";
 

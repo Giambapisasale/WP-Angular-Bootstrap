@@ -73,14 +73,14 @@
     };
   });
 
-  app.controller("PanelContractCtrl", function($scope, $http, $sce, $rootScope, $stateParams) {
+  app.controller("AcquedottoCtrl", function($scope, $http, $sce, $rootScope, $stateParams) {
     $http.get( "oauth/client.php?action=p&path=api/public/contratto/" + $rootScope.$storage.token_.ID )
       .success(function(data, status, header, config) {
       $scope.contracts_ = data;
       $scope.details = $scope.contracts_.contracts[0];
     })
       .error(function(data, status, header, config) {
-      console.log("Error in $http.get() of PanelController (contracts) 2");
+      console.log("Error in $http.get() of AcquedottoCtrl (contracts) 2");
     });
 
     $http.get( "oauth/client.php?action=p&path=api/public/contratto/dettaglio/" + $stateParams.id)
@@ -88,7 +88,7 @@
       $scope.contratto = data;
     })
       .error(function(data, status, header, config) {
-      console.log("Error in $http.get() of PanelContractCtrl (contracts) 3");
+      console.log("Error in $http.get() of AcquedottoCtrl (contracts) 3");
     });
 
     $scope.permission = false;
@@ -103,7 +103,7 @@
         $scope.users = data;
       })
         .error(function(data, status, header, config) {
-        console.log("Error in $http.get() of PanelContractCtrl (users)");
+        console.log("Error in $http.get() of AcquedottoCtrl (users)");
       });
     }
 

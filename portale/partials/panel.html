@@ -10,8 +10,8 @@
             <a href="#/panel/" ng-click="show_sub($index)"><img ng-src="images/assets/{{panels.img}}"> {{panels.title}}</a>
           </h4>
           <div ng-show="shows[$index]">
-            <h4 class="contracts-type"><a href="#/panel/">I tuoi contratti</a></h4>
-            <h4 class="contracts-type"><a href="#/panel/admin">Inserisci nuova lettura</a></h4>
+            <h4 class="contracts-type"><a href="#/panel/contratti-acquedotto/">I tuoi contratti</a></h4>
+            <h4 class="contracts-type"><a href="#/panel/inserisci-contratto-acquedotto/">Inserisci nuova lettura</a></h4>
           </div>
         </div>
       </div>
@@ -41,40 +41,7 @@
           </div>
         </div>
 
-        <div ui-view>
-          <div class="contracts">
-            <br>
-            <h2 class="panel-title">I tuoi contratti</h2>
-            <br>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-            <h3 class="post-title">seleziona un contratto</h3>
-            <br>
-            <table class="contracts-data table table-striped">
-              <thead>
-                <tr>
-                  <td><h4>Indirizzo di ubicazione</h4></td>
-                  <td><h4>Categoria utilizzo</h4></td>
-                  <td><h4>Matricola contatore</h4></td>
-                  <td><h4>Data inizio contratto</h4></td>
-                </tr>
-              </thead>
-              <tbody>
-                <tr ng-repeat="contract in contracts_.contracts" OnClick="this.getElementsByTagName('input')[0].click();" ng-click="getid(contract.id)">
-                  <td><input type="radio" name="contract" id="{{contract.id}}"><img src="images/assets/checkbox.png" ng-style="{{radio}}"><img src="images/assets/checkbox_checked.png" ng-style="{{radio}}"> &nbsp; {{contract.indirizzo}}</td>
-                  <td>{{contract.categoria}}</td>
-                  <td>{{contract.matricola}}</td>
-                  <td>{{contract.data}}</td>
-                </tr>
-              </tbody>
-            </table>
-            <a ng-href="#/panel/{{id_}}"><button class="uppercase">Avanti</button></a>
-            <br><br>
-            <div class="footer-panel">
-              <p class="pull-left">Copyright 2014-2015 Comune di Catania - Tutti i diritti riservati.</p>
-              <p class="pull-right">Segui il Comune di Catania su &nbsp;&nbsp;<i class="fa fa-facebook"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-twitter"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-youtube-play"></i></p>
-            </div>
-          </div>
-        </div>
+        <div ui-view></div>
 
       </div>
 
