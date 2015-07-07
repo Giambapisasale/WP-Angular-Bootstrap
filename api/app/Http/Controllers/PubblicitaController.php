@@ -53,7 +53,11 @@ class PubblicitaController extends Controller {
 
     public function dettaglio($id)
     {
-        // TODO
+        $pubblicita = \DB::table("vista_pubblicita_dichiazioni_completa")
+            ->where("vista_pubblicita_dichiazioni_completa.idtpub_tbl_utenza", "=", $id)
+            ->get();
+
+        return array("pubblicita" => $pubblicita);
     }
 
     /**
