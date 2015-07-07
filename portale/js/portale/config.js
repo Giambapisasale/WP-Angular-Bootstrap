@@ -100,6 +100,24 @@
           templateUrl: "partials/panel.contratto-acquedotto.html"
         }
       }
+    })
+    .state('panel.pubblicita', {
+      url: 'pubblicita/',
+      views: {
+        '': {
+          controller: 'PubblicitaCtrl',
+          templateUrl: "partials/panel.pubblicita.html"
+        }
+      }
+    })
+    .state('panel.pubblicita-dettaglio', {
+      url: 'pubblicita/:id',
+      views: {
+        '': {
+          controller: 'PubblicitaDettaglioCtrl',
+          templateUrl: "partials/panel.pubblicita-dettaglio.html"
+        }
+      }
     });
   });
 

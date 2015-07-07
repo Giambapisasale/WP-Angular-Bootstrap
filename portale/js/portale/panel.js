@@ -140,14 +140,30 @@
 
   });
 
-  app.controller("PubblicitaController", function($scope, $http, $sce, $rootScope, $stateParams) {
+  app.controller("PubblicitaCtrl", function($scope, $http, $sce, $rootScope, $stateParams) {
 
-    $http.get( "oauth/client.php?action=p&path=api/public/pubblicita/" + $rootScope.$storage.token_.ID)
+    $http.get( "oauth/client.php?action=p&path=api/public/pubblicita/" + $rootScope.$storage.token_.ID )
       .success(function(data, status, header, config) {
       $scope.pubblicita = data;
     })
       .error(function(data, status, header, config) {
-      console.log("Error in $http.get() of PubblicitaController 1");
+      console.log("Error in $http.get() of PubblicitaController");
+    });
+
+  });
+
+  app.controller("PubblicitaDettaglioCtrl", function($scope, $http, $sce, $rootScope, $stateParams) {
+
+    $http.get( "oauth/client.php?action=p&path=api/public/pubblicita/dettaglio/" + $stateParams.id )
+      .success(function(data, status, header, config) {
+      if (data.length > 0) {
+        $scope.pubblicita = data[0];
+      } else {
+        console.log("Pubblicità " + $stateParams.id + " non esistente");
+      }
+    })
+      .error(function(data, status, header, config) {
+      console.log("Error in $http.get() of PubblicitaDettaglioController");
     });
 
   });
