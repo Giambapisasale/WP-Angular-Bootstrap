@@ -32,3 +32,5 @@ Route::group(array('prefix'=>'contratto'),function(){
 Route::group(array('prefix'=>'letture'),function(){
 	Route::post('insert',array('uses'=>'ContrattoController@store'));
 });
+
+Route::resource('pubblicita', 'PubblicitaController');
