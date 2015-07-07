@@ -34,3 +34,7 @@ Route::group(array('prefix'=>'letture'),function(){
 });
 
 Route::resource('pubblicita', 'PubblicitaController');
+
+Route::group(array('prefix'=>'pubblicita'),function(){
+	Route::get('dettaglio/{id}',array('uses'=>'PubblicitaController@dettaglio'));
+});
