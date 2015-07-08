@@ -8,17 +8,22 @@
   <table class="contracts-data table table-striped">
     <thead>
       <tr>
-        <td><h4>TODO</h4></td>
-        <td><h4>TODO</h4></td>
-        <td><h4>TODO</h4></td>
+        <td><h4></h4></td>
+        <td><h4>idtco_contribuente</h4></td>
+        <td><h4>idgestore</h4></td>
+        <td><h4>contribuente</h4></td>
+        <td><h4>categoria</h4></td>
+        <td><h4>durata</h4></td>
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="pub in pubblicita" OnClick="this.getElementsByTagName('input')[0].click();" ng-click="getid(contract.id)">
-        <td><input type="radio" name="contract" id="{{contract.id}}"><img src="images/assets/checkbox.png" ng-style="{{radio}}"><img src="images/assets/checkbox_checked.png" ng-style="{{radio}}"> &nbsp; {{contract.indirizzo}}</td>
+      <tr ng-repeat="pub in pubblicita" OnClick="this.getElementsByTagName('input')[0].click();" ng-click="getid(pub.idtpub_tbl_utenza )">
+        <td><input type="radio" name="contract" id="{{contract.id}}"><img src="images/assets/checkbox.png" ng-style="{{radio}}"><img src="images/assets/checkbox_checked.png" ng-style="{{radio}}"> &nbsp; {{pub.idtpub_tbl_utenza }}</td>
+        <td>{{ pub.idtco_contribuente }}</td>
+        <td>{{ pub.idgestore }}</td>
+        <td>{{ pub.contribuente }}</td>
         <td>{{ pub.categoria }}</td>
-        <td>{{ pub.matricola }}</td>
-        <td>{{ pub.data }}</td>
+        <td>{{ pub.durata }}</td>
       </tr>
     </tbody>
   </table>
