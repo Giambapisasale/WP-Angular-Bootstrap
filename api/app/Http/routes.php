@@ -38,3 +38,14 @@ Route::resource('pubblicita', 'PubblicitaController');
 Route::group(array('prefix'=>'pubblicita'),function(){
 	Route::get('dettaglio/{id}',array('uses'=>'PubblicitaController@dettaglio'));
 });
+Route::resource('pubblicita', 'PubblicitaController');
+
+Route::group(array('prefix'=>'pubblicita'),function(){
+	Route::get('dettaglio/{id}',array('uses'=>'PubblicitaController@dettaglio'));
+});
+
+Route::resource('affissioni', 'AffissioniController');
+
+Route::group(array('prefix'=>'affissioni'),function(){
+	Route::get('dettaglio/{id}',array('uses'=>'AffissioniController@dettaglio'));
+});
