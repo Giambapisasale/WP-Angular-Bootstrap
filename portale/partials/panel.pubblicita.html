@@ -5,20 +5,20 @@
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
   <h3 class="post-title">seleziona una riga</h3>
   <br>
-  <table class="contracts-data table table-striped">
+  <table class="contracts-data table table-striped text-center">
     <thead>
       <tr>
-        <td><h4></h4></td>
-        <td><h4>idtco_contribuente</h4></td>
-        <td><h4>idgestore</h4></td>
-        <td><h4>contribuente</h4></td>
-        <td><h4>categoria</h4></td>
-        <td><h4>durata</h4></td>
+        <td><h4>#</h4></td>
+        <td><h4>ID Contribuente</h4></td>
+        <td><h4>ID Gestore</h4></td>
+        <td><h4>Contribuente</h4></td>
+        <td><h4>Categoria</h4></td>
+        <td><h4>Durata</h4></td>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="pub in pubblicita" OnClick="this.getElementsByTagName('input')[0].click();" ng-click="getid(pub.idtpub_tbl_utenza )">
-        <td><input type="radio" name="contract" id="{{contract.id}}"><img src="images/assets/checkbox.png" ng-style="{{radio}}"><img src="images/assets/checkbox_checked.png" ng-style="{{radio}}"> &nbsp; {{pub.idtpub_tbl_utenza }}</td>
+        <td><input type="radio" name="contract" id="{{contract.id}}"><img src="images/assets/checkbox.png" ng-style="{{radio}}"><img src="images/assets/checkbox_checked.png" ng-style="{{radio}}"></td>
         <td>{{ pub.idtco_contribuente }}</td>
         <td>{{ pub.idgestore }}</td>
         <td>{{ pub.contribuente }}</td>
