@@ -6,8 +6,8 @@
         <br>
         <h5 class="text-center uppercase">Servizi Online</h5>
         <div ng-repeat="menu in menus track by $index" ng-class="admin[$index]">
-          <h4 class="contracts-type uppercase">
-            <a href="#/panel/" ng-click="show_sub($index)"><img ng-src="images/assets/{{ menu.attr }}"> {{ menu.title }}</a>
+          <h4 class="contracts-type uppercase" ng-click="show_sub($index)" style="cursor: pointer;">
+            <a><img ng-src="images/assets/{{ menu.attr }}"> {{ menu.title }}</a>
           </h4>
           <div ng-show="shows[$index]">
             <h4 ng-repeat="submenu in menu.submenus" class="contracts-type"><a href="#/panel/{{ submenu.url }}/">{{ submenu.title }}</a></h4>
