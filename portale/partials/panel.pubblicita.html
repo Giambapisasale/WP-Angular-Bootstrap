@@ -14,14 +14,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="pub in pubblicita" OnClick="this.getElementsByTagName('input')[0].click();" ng-click="getid(TODO.id)">
-        <td><input type="radio" name="TODO" id="{{ TODO.id }}"><img src="images/assets/checkbox.png" ng-style="{{ radio }}"><img src="images/assets/checkbox_checked.png" ng-style="{{ radio }}"> &nbsp; {{ TODO.TODO }}</td>
-        <td>TODO</td>
-        <td>TODO</td>
+      <tr ng-repeat="pub in pubblicita" OnClick="this.getElementsByTagName('input')[0].click();" ng-click="getid(contract.id)">
+        <td><input type="radio" name="contract" id="{{contract.id}}"><img src="images/assets/checkbox.png" ng-style="{{radio}}"><img src="images/assets/checkbox_checked.png" ng-style="{{radio}}"> &nbsp; {{contract.indirizzo}}</td>
+        <td>{{ pub.categoria }}</td>
+        <td>{{ pub.matricola }}</td>
+        <td>{{ pub.data }}</td>
       </tr>
     </tbody>
   </table>
-  <a ng-href="#/panel/pubblicita/{{id_}}"><button class="uppercase">Avanti</button></a>
+  <a ng-href="#/panel/pubblicita/{{ id_ }}"><button class="uppercase">Avanti</button></a>
   <br><br>
   <div class="footer-panel">
     <p class="pull-left">Copyright 2014-2015 Comune di Catania - Tutti i diritti riservati.</p>

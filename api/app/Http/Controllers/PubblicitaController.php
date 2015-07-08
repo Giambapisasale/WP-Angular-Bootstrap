@@ -48,7 +48,7 @@ class PubblicitaController extends Controller {
             ->where("vista_pubblicita_dichiazioni_completa.idtco_contribuente", "=", $id)
             ->get();
 
-        return array("pubblicita" => $pubblicita);
+        return $pubblicita;
     }
 
     public function dettaglio($id)
