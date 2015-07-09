@@ -30,10 +30,8 @@ Il parametro -p 5000:80 serve a mappare la porta 80 del container sulla porta 50
 
 Adesso avviamo apache2 e mysql digitando:
 
-```
-service apache2 start
-service mysql start
-```
+```service apache2 start```
+```service mysql start```
 
 Da questo momento in poi è possibile avviare lo script **installer.php* tramite browser, digitando il seguente indirizzo:
 
