@@ -118,6 +118,24 @@
           templateUrl: "partials/panel.pubblicita-dettaglio.html"
         }
       }
+    })
+    .state('panel.affissioni', {
+      url: 'affissioni/',
+      views: {
+        '': {
+          controller: 'AffissioniCtrl',
+          templateUrl: "partials/panel.affissioni.html"
+        }
+      }
+    })
+    .state('panel.affissioni-dettaglio', {
+      url: 'affissioni/:id',
+      views: {
+        '': {
+          controller: 'AffissioniDettaglioCtrl',
+          templateUrl: "partials/panel.affissioni-dettaglio.html"
+        }
+      }
     });
   });
 

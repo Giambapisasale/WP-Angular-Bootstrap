@@ -168,4 +168,32 @@
 
   });
 
+  app.controller("AffissioniCtrl", function($scope, $http, $sce, $rootScope, $stateParams) {
+
+    $http.get( "oauth/client.php?action=p&path=api/public/affissioni/" + $rootScope.$storage.token_.ID )
+      .success(function(data, status, header, config) {
+      $scope.affissioni = data;
+    })
+      .error(function(data, status, header, config) {
+      console.log("Error in $http.get() of AffissioniCtrl");
+    });
+
+  });
+
+  app.controller("AffissioniDettaglioCtrl", function($scope, $http, $sce, $rootScope, $stateParams) {
+
+    $http.get( "oauth/client.php?action=p&path=api/public/affissioni/dettaglio/" + $stateParams.id )
+      .success(function(data, status, header, config) {
+      if (data.length > 0) {
+        $scope.affissioni = data[0];
+      } else {
+        console.log("Pubblicità " + $stateParams.id + " non esistente");
+      }
+    })
+      .error(function(data, status, header, config) {
+      console.log("Error in $http.get() of AffissioniDettaglioCtrl");
+    });
+
+  });
+
 }());
