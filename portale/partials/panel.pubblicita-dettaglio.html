@@ -5,200 +5,155 @@
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
   <br>
   <h3 class="post-title">Dettaglio pubblicità</h3>
-  <table class="contracts-data table table-striped text-center" style="max-width: 300px">
+  <table class="contracts-data table table-striped text-center">
     <thead>
       <tr>
-        <td><h4>idtpub_tbl_utenza</h4></td>
-        <td><h4>{{ pubblicita.idtpub_tbl_utenza }}</h4></td>
+        <th>idtco_contribuente</th>
+        <th>idgestore</th>
+        <th>contribuente</th>
+        <th>gestore</th>
+        <th>data_cessazione</th>
+        <th>numero_autorizzazione</th>
+        <th>numero_cessazione</th>
+        <th>data_autorizzazione</th>
+        <th>categoria</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>idtco_contribuente</td>
         <td>{{ pubblicita.idtco_contribuente }}</td>
-      </tr>
-      <tr>
-        <td>idgestore</td>
         <td>{{ pubblicita.idgestore }}</td>
-      </tr>
-      <tr>
-        <td>contribuente</td>
         <td>{{ pubblicita.contribuente }}</td>
-      </tr>
-      <tr>
-        <td>gestore</td>
         <td>{{ pubblicita.gestore }}</td>
-      </tr>
-      <tr>
-        <td>data_cessazione</td>
         <td>{{ pubblicita.data_cessazione }}</td>
-      </tr>
-      <tr>
-        <td>numero_autorizzazione</td>
         <td>{{ pubblicita.numero_autorizzazione }}</td>
-      </tr>
-      <tr>
-        <td>numero_cessazione</td>
         <td>{{ pubblicita.numero_cessazione }}</td>
-      </tr>
-      <tr>
-        <td>data_autorizzazione</td>
         <td>{{ pubblicita.data_autorizzazione }}</td>
-      </tr>
-      <tr>
-        <td>categoria</td>
         <td>{{ pubblicita.categoria }}</td>
       </tr>
+    </tbody>
+  </table>
+  <table class="contracts-data table table-striped text-center">
+    <thead>
       <tr>
-        <td>durata</td>
+        <th>durata</th>
+        <th>data_inizio</th>
+        <th>data_fine</th>
+        <th>indirizzo</th>
+        <th>giorni</th>
+        <th>mesi</th>
+        <th>mezzo</th>
+        <th>caratteristica</th>
+        <th>messaggio</th>
+        <th>lati</th>
+        <th>base</th>
+        <th>altezza</th>
+        <th>superficie_mq</th>
+        <th>totale_mq</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
         <td>{{ pubblicita.durata }}</td>
-      </tr>
-      <tr>
-        <td>data_inizio</td>
         <td>{{ pubblicita.data_inizio }}</td>
-      </tr>
-      <tr>
-        <td>data_fine</td>
         <td>{{ pubblicita.data_fine }}</td>
-      </tr>
-      <tr>
-        <td>indirizzo</td>
         <td>{{ pubblicita.indirizzo }}</td>
-      </tr>
-      <tr>
-        <td>giorni</td>
         <td>{{ pubblicita.giorni }}</td>
-      </tr>
-      <tr>
-        <td>mesi</td>
         <td>{{ pubblicita.mesi }}</td>
-      </tr>
-      <tr>
-        <td>mezzo</td>
         <td>{{ pubblicita.mezzo }}</td>
-      </tr>
-      <tr>
-        <td>caratteristica</td>
         <td>{{ pubblicita.caratteristica }}</td>
-      </tr>
-      <tr>
-        <td>messaggio</td>
         <td>{{ pubblicita.messaggio }}</td>
-      </tr>
-      <tr>
-        <td>lati</td>
         <td>{{ pubblicita.lati }}</td>
-      </tr>
-      <tr>
-        <td>base</td>
         <td>{{ pubblicita.base }}</td>
-      </tr>
-      <tr>
-        <td>altezza</td>
         <td>{{ pubblicita.altezza }}</td>
-      </tr>
-      <tr>
-        <td>superficie_mq</td>
         <td>{{ pubblicita.superficie_mq }}</td>
-      </tr>
-      <tr>
-        <td>totale_mq</td>
         <td>{{ pubblicita.totale_mq }}</td>
       </tr>
+    </tbody>
+  </table>
+  <table class="contracts-data table table-striped text-center">
+    <thead>
       <tr>
-        <td>tipo_veicolo</td>
+        <th>tipo_veicolo</th>
+        <th>uso_veicolo</th>
+        <th>targa</th>
+        <th>mezzi_interni</th>
+        <th>mq_interni</th>
+        <th>mezzi_esterni</th>
+        <th>mq_esterni</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
         <td>{{ pubblicita.tipo_veicolo }}</td>
-      </tr>
-      <tr>
-        <td>uso_veicolo</td>
         <td>{{ pubblicita.uso_veicolo }}</td>
-      </tr>
-      <tr>
-        <td>targa</td>
         <td>{{ pubblicita.targa }}</td>
-      </tr>
-      <tr>
-        <td>mezzi_interni</td>
         <td>{{ pubblicita.mezzi_interni }}</td>
-      </tr>
-      <tr>
-        <td>mq_interni</td>
         <td>{{ pubblicita.mq_interni }}</td>
-      </tr>
-      <tr>
-        <td>mezzi_esterni</td>
         <td>{{ pubblicita.mezzi_esterni }}</td>
-      </tr>
-      <tr>
-        <td>mq_esterni</td>
         <td>{{ pubblicita.mq_esterni }}</td>
-      </tr>
+    </tbody>
+  </table>
+  <table class="contracts-data table table-striped text-center">
+    <thead>
       <tr>
-        <td>num_autoveicolo_min_3000</td>
+        <th>num_autoveicolo_min_3000</th>
+        <th>num_autoveicolo_magg_3000</th>
+        <th>num_autoveicolo_altri</th>
+        <th>destinazione</th>
+        <th>numero_mezzi</th>
+        <th>imposta</th>
+        <th>flag_esercizio</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
         <td>{{ pubblicita.num_autoveicolo_min_3000 }}</td>
-      </tr>
-      <tr>
-        <td>num_autoveicolo_magg_3000</td>
         <td>{{ pubblicita.num_autoveicolo_magg_3000 }}</td>
-      </tr>
-      <tr>
-        <td>num_autoveicolo_altri</td>
         <td>{{ pubblicita.num_autoveicolo_altri }}</td>
-      </tr>
-      <tr>
-        <td>destinazione</td>
         <td>{{ pubblicita.destinazione }}</td>
-      </tr>
-      <tr>
-        <td>numero_mezzi</td>
         <td>{{ pubblicita.numero_mezzi }}</td>
-      </tr>
-      <tr>
-        <td>imposta</td>
         <td>{{ pubblicita.imposta }}</td>
-      </tr>
-      <tr>
-        <td>flag_esercizio</td>
         <td>{{ pubblicita.flag_esercizio }}</td>
       </tr>
+    </tbody>
+  </table>
+  <table class="contracts-data table table-striped text-center">
+    <thead>
       <tr>
-        <td>data_fine_autorizzazione</td>
+        <th>data_fine_autorizzazione</th>
+        <th>stato</th>
+        <th>data_accertamento</th>
+        <th>num_rimorchio_autoveicolo_altri</th>
+        <th>num_rimorchio_autoveicolo_magg_3000</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
         <td>{{ pubblicita.data_fine_autorizzazione }}</td>
-      </tr>
-      <tr>
-        <td>stato</td>
         <td>{{ pubblicita.stato }}</td>
-      </tr>
-      <tr>
-        <td>data_accertamento</td>
         <td>{{ pubblicita.data_accertamento }}</td>
-      </tr>
-      <tr>
-        <td>num_rimorchio_autoveicolo_altri</td>
         <td>{{ pubblicita.num_rimorchio_autoveicolo_altri }}</td>
-      </tr>
-      <tr>
-        <td>num_rimorchio_autoveicolo_magg_3000</td>
         <td>{{ pubblicita.num_rimorchio_autoveicolo_magg_3000 }}</td>
       </tr>
+    </tbody>
+  </table>
+    <table class="contracts-data table table-striped text-center">
+    <thead>
       <tr>
-        <td>num_rimorchio_autoveicolo_min_3000</td>
+        <th>num_rimorchio_autoveicolo_min_3000</th>
+        <th>tot_mq_esterni</th>
+        <th>tot_mq_interni</th>
+        <th>data_regolarizzazione</th>
+        <th>numero_protocollo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
         <td>{{ pubblicita.num_rimorchio_autoveicolo_min_3000 }}</td>
-      </tr>
-      <tr>
-        <td>tot_mq_esterni</td>
         <td>{{ pubblicita.tot_mq_esterni }}</td>
-      </tr>
-      <tr>
-        <td>tot_mq_interni</td>
         <td>{{ pubblicita.tot_mq_interni }}</td>
-      </tr>
-      <tr>
-        <td>data_regolarizzazione</td>
         <td>{{ pubblicita.data_regolarizzazione }}</td>
-      </tr>
-      <tr>
-        <td>numero_protocollo</td>
         <td>{{ pubblicita.numero_protocollo }}</td>
       </tr>
     </tbody>
