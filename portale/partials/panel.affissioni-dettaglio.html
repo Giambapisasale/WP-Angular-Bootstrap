@@ -1,0 +1,70 @@
+<div class="contracts">
+  <br>
+  <h2 class="panel-title">Affissione {{ affissioni.idtaffissione_dichiarazione }}</h2>
+  <br>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+  <br>
+  <h3 class="post-title">Dettaglio affissione</h3>
+  <table class="contracts-data table table-striped text-center">
+    <thead>
+      <tr>
+        <th>ID Ente</th>
+        <th>Numero Dichiarazione</th>
+        <th>Data Dichiarazione</th>
+        <th>ID Presentante</th>
+        <th>ID Utente</th>
+        <th>Titolo</th>
+        <th>Descrizione</th>
+        <th>Tipo Riduzione</th>
+        <th>Data Esposizione</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ affissioni.idgen_ente }}</td>
+        <td>{{ affissioni.numero_dichiarazione }}</td>
+        <td>{{ affissioni.data_dichiarazione }}</td>
+        <td>{{ affissioni.idtco_presentante }}</td>
+        <td>{{ affissioni.idtco_utente }}</td>
+        <td>{{ affissioni.titolo }}</td>
+        <td>{{ affissioni.descrizione }}</td>
+        <td>{{ affissioni.tipo_riduzione }}</td>
+        <td>{{ affissioni.data_esposizione }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="contracts-data table table-striped text-center">
+    <thead>
+      <tr>
+        <th>Numero Giorni</th>
+        <th>Importo Totale</th>
+        <th>Importo Arrotondamento</th>
+        <th>Periodo Stage</th>
+        <th>Diritto Urgenza</th>
+        <th>Stato</th>
+        <th>Contribuente</th>
+        <th>Presentante</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ affissioni.numero_giorni }}</td>
+        <td>{{ affissioni.importo_totale }}</td>
+        <td>{{ affissioni.importo_arrotondamento }}</td>
+        <td>{{ affissioni.flag_periodo_stag }}</td>
+        <td>{{ affissioni.flag_diritto_urgenza }}</td>
+        <td>{{ affissioni.stato }}</td>
+        <td>{{ affissioni.contribuente }}</td>
+        <td>{{ affissioni.presentante }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <br>
+  <div class="footer-panel">
+    <p class="pull-left">Copyright 2014-2015 Comune di Catania - Tutti i diritti riservati.</p>
+    <p class="pull-right">Segui il Comune di Catania su &nbsp;&nbsp;<i class="fa fa-facebook"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-twitter"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-youtube-play"></i></p>
+    <br>
+    <br>
+  </div>
+</div>

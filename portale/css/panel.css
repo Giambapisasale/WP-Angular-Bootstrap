@@ -101,6 +101,11 @@
   background-color: #e5e5e5;
 }
 
+.contracts-data th {
+  white-space: nowrap;
+  text-align: center;
+}
+
 .contracts-data tbody tr td {
   padding: 20px 15px;
 }
