@@ -133,8 +133,8 @@ Nel nostro caso, aggiungiamo due nuove route per le view Affissioni e relativo d
 
 Il metodo .state() prende in input una stringa che rappresenta il nome della route:
 
-```'panel.affissioni'```
-```'panel.affissioni-dettaglio'```
+```panel.affissioni```
+```panel.affissioni-dettaglio```
 
 (il prefisso ```panel.``` indica che tali route fanno parte delle route del pannello utente)
 
