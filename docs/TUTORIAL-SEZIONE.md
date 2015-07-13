@@ -34,7 +34,57 @@ L'obiettivo è creare una view contenenti la lista di affissioni per l'utente co
 
 ## 2) Back-end Laravel
 
-TODO
+Per poter leggere dal database i dati necessari e fornirli ad AngularJS in formato JSON, è necessario realizzare un nuovo controller Laravel.
+
+Per prima cosa aggiungiamo le route necessarie nel file **api/app/Http/routes.php** come segue:
+
+```
+Route::resource('affissioni', 'AffissioniController');
+
+Route::group(array('prefix'=>'affissioni'),function(){
+	Route::get('dettaglio/{id}',array('uses'=>'AffissioniController@dettaglio'));
+});
+```
+
+In questo modo stiamo aggiungendo una nuova route **/affissioni** e la stiamo associando al controller **AffissioniController** e stiamo inoltre creando una sottoroute **/affissioni/dettaglio/**.
+
+La prima servirà a recuperare tutte le Affissioni di un determinato utente ```idtco_utente```, mentre con la sottoroute **dettaglio** abbiamo la possibilità di recuperare una determinata affissione, il tutto in formato JSON.
+
+Per far questo dobbiamo quindi creare il controller **AffissioniController**, piazzandolo in un nuovo file **/api/app/Http/Controllers/AffissioniController.php**.
+
+Il codice dell'intero file è reperibile [qui](https://github.com/Giambapisasale/WP-Angular-Bootstrap/blob/master/api/app/Http/Controllers/AffissioniController.php), focalizziamo l'attenzione sulle parti più importanti:
+
+```
+public function show($id)
+{
+    $affissioni = \DB::table("vista_affissioni_dichiazioni_completa")
+        ->where("vista_affissioni_dichiazioni_completa.idtco_utente", "=", $id)
+        ->get();
+    return $affissioni;
+}
+```
+
+con questo metodo stiamo implementando la route principale **/affissioni/id** che dato un valore numerico **id**, restituisce tutte le affissioni di un determinato utente **id**.
+
+Più in dettaglio, con la seguente riga stiamo selezionando una query SELECT sulla tabella *vista_affissioni_dichiazioni_completa*:
+
+````
+$affissioni = \DB::table("vista_affissioni_dichiazioni_completa")
+```
+
+gli associamo la clausola WHERE:
+
+```
+->where("vista_affissioni_dichiazioni_completa.idtco_utente", "=", $id)
+```
+
+ed infine la eseguiamo e restituiamo il risultato:
+
+```
+->get();
+    return $affissioni
+```
+
 
 ## 3) Front-end AngularJS
 
