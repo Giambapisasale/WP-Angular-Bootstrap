@@ -187,7 +187,7 @@
       if (data.length > 0) {
         $scope.affissioni = data[0];
       } else {
-        console.log("Pubblicità " + $stateParams.id + " non esistente");
+        console.log("Affissione " + $stateParams.id + " non esistente");
       }
     })
       .error(function(data, status, header, config) {
