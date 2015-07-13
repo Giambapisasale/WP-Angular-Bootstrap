@@ -66,13 +66,13 @@ public function show($id)
 
 con questo metodo stiamo implementando la route principale **/affissioni/id** che dato un valore numerico **id**, restituisce tutte le affissioni di un determinato utente **id**.
 
-Più in dettaglio, con la seguente riga stiamo selezionando una query SELECT sulla tabella *vista_affissioni_dichiazioni_completa*:
+Più in dettaglio, con la seguente riga stiamo selezionando una query *SELECT* sulla tabella *vista_affissioni_dichiazioni_completa*:
 
 ````
 $affissioni = \DB::table("vista_affissioni_dichiazioni_completa")
 ```
 
-gli associamo la clausola WHERE:
+gli associamo la clausola *WHERE*:
 
 ```
 ->where("vista_affissioni_dichiazioni_completa.idtco_utente", "=", $id)
@@ -84,6 +84,22 @@ ed infine la eseguiamo e restituiamo il risultato:
 ->get();
     return $affissioni
 ```
+
+In maniera del tutto analoga implementiamo anche il metodo per il dettaglio:
+
+```
+public function dettaglio($id)
+{
+    $affissioni = \DB::table("vista_affissioni_dichiazioni_completa")
+        ->where("vista_affissioni_dichiazioni_completa.idtaffissione_dichiarazione", "=", $id)
+        ->get();
+    return $affissioni;
+}
+```
+
+l'unica differenza è chiaramente nella clausola *WHERE*.
+
+Per approfondire le route ed i controller di Laravel si raccomanda di leggere la [documentazione](http://laravel.com/docs).
 
 
 ## 3) Front-end AngularJS
