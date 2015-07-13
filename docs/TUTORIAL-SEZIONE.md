@@ -3,7 +3,7 @@
 Questo documento serve come riferimento per creare una nuova sezione all'interno del pannello utente del portale. A questo scopo viene di seguito spiegata in dettaglio la creazione della sezione *Affissioni* del pannello.
 
 
-1) Premessa e DataBase
+## 1) Premessa e DataBase
 
 All'interno del database abbiamo una tabella ````vista_affissioni_dichiazioni_completa```` avente la seguente struttura:
 
@@ -32,14 +32,14 @@ All'interno del database abbiamo una tabella ````vista_affissioni_dichiazioni_co
 L'obiettivo è creare una view contenenti la lista di affissioni per l'utente corrente, identificato dal campo ```idtco_utente```, che mostra pochi campi per ogni riga, con la possibilità di selezionare una riga ed accedere ad una seconda view contenente tutti i campi della riga selezionata.
 
 
-2) Back-end Laravel
+## 2) Back-end Laravel
 
 TODO
 
-3) Front-end AngularJS
+## 3) Front-end AngularJS
 
 TODO
 
-4) Menu Wordpress
+## 4) Menu Wordpress
 
 TODO
