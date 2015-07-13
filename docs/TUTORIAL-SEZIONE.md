@@ -133,8 +133,13 @@ Nel nostro caso, aggiungiamo due nuove route per le view Affissioni e relativo d
 
 Il metodo .state() prende in input una stringa che rappresenta il nome della route:
 
-```panel.affissioni```
-```panel.affissioni-dettaglio```
+```
+panel.affissioni
+```
+
+```
+panel.affissioni-dettaglio
+```
 
 (il prefisso ```panel.``` indica che tali route fanno parte delle route del pannello utente)
 
@@ -167,7 +172,7 @@ app.controller("AffissioniCtrl", function($scope, $http, $sce, $rootScope, $stat
 });
 ```
 
-Il nome del controller ```"AffissioniCtrl"``` definito subito dopo ```app.controller(``` dev'essere chiaramente lo stesso che abbiamo definito nella configurazione della route con il parametro ```controller```.
+Il nome del controller ```AffissioniCtrl``` definito subito dopo ```app.controller(``` dev'essere chiaramente lo stesso che abbiamo definito nella configurazione della route con il parametro ```controller```.
 
 All'interno del corpo della funzione controller, effettuiamo una chiamata ```$http.get``` al seguente indirizzo:
 
@@ -197,16 +202,20 @@ La funzione passata al metodo ```.error()``` permette di gestire il caso in cui 
 Analogamente a quanto descritto per il controller di Affissioni, occorre definire un controller per il dettaglio della stessa view:
 
 ```
-$http.get( "oauth/client.php?action=p&path=api/public/affissioni/dettaglio/" + $stateParams.id )
-  .success(function(data, status, header, config) {
-  if (data.length > 0) {
-    $scope.affissioni = data[0];
-  } else {
-    console.log("Pubblicità " + $stateParams.id + " non esistente");
-  }
-})
-  .error(function(data, status, header, config) {
-  console.log("Error in $http.get() of AffissioniDettaglioCtrl");
+app.controller("AffissioniDettaglioCtrl", function($scope, $http, $sce, $rootScope, $stateParams) {
+
+  $http.get( "oauth/client.php?action=p&path=api/public/affissioni/dettaglio/" + $stateParams.id )
+    .success(function(data, status, header, config) {
+    if (data.length > 0) {
+      $scope.affissioni = data[0];
+    } else {
+      console.log("Affissione " + $stateParams.id + " non esistente");
+    }
+  })
+    .error(function(data, status, header, config) {
+    console.log("Error in $http.get() of AffissioniDettaglioCtrl");
+  });
+
 });
 ```
 
