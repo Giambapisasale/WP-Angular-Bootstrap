@@ -242,7 +242,146 @@ Per questo motivo effetuiamo un controllo sulla lunghezza dell'array ```data```.
 
 ### Template HTML
 
-TODO
+I file rappresentanti i template parziali HTML relativi alle nuove view vanno inseriti nella cartella **/portale/partials/** ed in questo caso devono avere anch'essi il prefisso ```.panel```.
+
+I file devono necessariamente avere lo stesso nome che abbiamo indicato nell'attributo ```templateUrl``` delle relative route nello ```$stateProvider```. Nel nostro caso avevamo impostato come segue:
+
+- per la view principale "Affissioni"
+```
+templateUrl: "partials/panel.affissioni.html"
+```
+
+dobbiamo dunque creare il file **partials/panel.affissioni.html** all'interno del quale inseriremo il codice HTML:
+
+```
+<div class="contracts">
+  <br>
+  <h2 class="panel-title">Affissioni</h2>
+  <br>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+  <h3 class="post-title">seleziona una riga</h3>
+  <br>
+  <table class="contracts-data table table-striped text-center">
+    <thead>
+      <tr>
+        <td><h4>#</h4></td>
+        <td><h4>ID Affissione</h4></td>
+        <td><h4>Numero Dichiarazione</h4></td>
+        <td><h4>Data Dichiarazione</h4></td>
+        <td><h4>Descrizione</h4></td>
+        <td><h4>Numero Dichiarazione</h4></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="aff in affissioni" OnClick="this.getElementsByTagName('input')[0].click();" ng-click="getid(aff.idtaffissione_dichiarazione)">
+        <td><input type="radio" name="contract" id="{{contract.id}}"><img src="images/assets/checkbox.png" ng-style="{{radio}}"><img src="images/assets/checkbox_checked.png" ng-style="{{radio}}"></td>
+        <td>{{ aff.idtaffissione_dichiarazione }}</td>
+        <td>{{ aff.numero_dichiarazione }}</td>
+        <td>{{ aff.data_dichiarazione }}</td>
+        <td>{{ aff.descrizione }}</td>
+        <td>{{ aff.numero_dichiarazione }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <a ng-href="#/panel/affissioni/{{ id_ }}"><button class="uppercase">Avanti</button></a>
+  <br><br>
+  <div class="footer-panel">
+    <p class="pull-left">Copyright 2014-2015 Comune di Catania - Tutti i diritti riservati.</p>
+    <p class="pull-right">Segui il Comune di Catania su &nbsp;&nbsp;<i class="fa fa-facebook"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-twitter"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-youtube-play"></i></p>
+  </div>
+</div>
+```
+
+Il codice HTML è abbastanza semplice: vi è una tabella che mostra tutte le affissioni relative all'utente corrente, tali dati sono contenuti dentro l'array ```$scope.affissioni```, che dalla view è accessibile utilizzando semplicemente il termine ```affissioni```.
+
+Tramite il costrutto ```ng-repeat="aff in affissioni"``` cicliamo l'array affissioni, assegnando ad ogni iterazione un nuovo oggetto della collezione alla variabile ```aff``` e stampando una riga ```<tr>``` della tabella per ogni oggetto, mostrando un numero ristretto di proprietà.
+
+Intuitivamente, si può evincere come una qualunque variabile di ```$scope``` (per esempio ```$scope.unaVariabile```) sia accessibile tramite view semplicemente utilizzando il costrutto ```{{ unaVariabile }}```.
+
+Grazie all'input di tipo ```radio``` possiamo selezionare una riga e cliccare "Avanti", aprendo automaticamente la view di dettaglio per quella determinata affissione.
+
+- per la view dettaglio di "Affissioni"
+```
+templateUrl: "partials/panel.affissioni-dettaglio.html"
+```
+
+analogamente, dobbiamo creare il file **partials/panel.affissioni-dettaglio.html** all'interno del quale inseriremo il codice HTML:
+
+```
+<div class="contracts">
+  <br>
+  <h2 class="panel-title">Affissione {{ affissioni.idtaffissione_dichiarazione }}</h2>
+  <br>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+  <br>
+  <h3 class="post-title">Dettaglio affissione</h3>
+  <table class="contracts-data table table-striped text-center">
+    <thead>
+      <tr>
+        <th>ID Ente</th>
+        <th>Numero Dichiarazione</th>
+        <th>Data Dichiarazione</th>
+        <th>ID Presentante</th>
+        <th>ID Utente</th>
+        <th>Titolo</th>
+        <th>Descrizione</th>
+        <th>Tipo Riduzione</th>
+        <th>Data Esposizione</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ affissioni.idgen_ente }}</td>
+        <td>{{ affissioni.numero_dichiarazione }}</td>
+        <td>{{ affissioni.data_dichiarazione }}</td>
+        <td>{{ affissioni.idtco_presentante }}</td>
+        <td>{{ affissioni.idtco_utente }}</td>
+        <td>{{ affissioni.titolo }}</td>
+        <td>{{ affissioni.descrizione }}</td>
+        <td>{{ affissioni.tipo_riduzione }}</td>
+        <td>{{ affissioni.data_esposizione }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="contracts-data table table-striped text-center">
+    <thead>
+      <tr>
+        <th>Numero Giorni</th>
+        <th>Importo Totale</th>
+        <th>Importo Arrotondamento</th>
+        <th>Periodo Stage</th>
+        <th>Diritto Urgenza</th>
+        <th>Stato</th>
+        <th>Contribuente</th>
+        <th>Presentante</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ affissioni.numero_giorni }}</td>
+        <td>{{ affissioni.importo_totale }}</td>
+        <td>{{ affissioni.importo_arrotondamento }}</td>
+        <td>{{ affissioni.flag_periodo_stag }}</td>
+        <td>{{ affissioni.flag_diritto_urgenza }}</td>
+        <td>{{ affissioni.stato }}</td>
+        <td>{{ affissioni.contribuente }}</td>
+        <td>{{ affissioni.presentante }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <br>
+  <div class="footer-panel">
+    <p class="pull-left">Copyright 2014-2015 Comune di Catania - Tutti i diritti riservati.</p>
+    <p class="pull-right">Segui il Comune di Catania su &nbsp;&nbsp;<i class="fa fa-facebook"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-twitter"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-youtube-play"></i></p>
+    <br>
+    <br>
+  </div>
+</div>
+```
+
+questa volta non sono stati usati cicli ne altri particolari costrutti di AngularJS, sono state impiegate più tabelle per mostrare tutti gli attributi della riga selezionata.
+
 
 ## 4) Menu Wordpress
 
