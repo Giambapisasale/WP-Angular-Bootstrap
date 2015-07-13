@@ -104,7 +104,90 @@ Per approfondire le route ed i controller di Laravel si raccomanda di leggere la
 
 ## 3) Front-end AngularJS
 
-TODO
+### Route
+
+Anche lato front end occorre innanzitutto creare le nuove route, per far ciò va modificato il file **/portale/js/portale/config.js** ed inserite le apposite route utilizzando il metodo ```.state()``` sull'oggetto ```$stateProvider```.
+
+Nel nostro caso, aggiungiamo due nuove route per le view Affissioni e relativo dettaglio:
+
+```
+.state('panel.affissioni', {
+  url: 'affissioni/',
+  views: {
+    '': {
+      controller: 'AffissioniCtrl',
+      templateUrl: "partials/panel.affissioni.html"
+    }
+  }
+})
+.state('panel.affissioni-dettaglio', {
+  url: 'affissioni/:id',
+  views: {
+    '': {
+      controller: 'AffissioniDettaglioCtrl',
+      templateUrl: "partials/panel.affissioni-dettaglio.html"
+    }
+  }
+});
+```
+
+Il metodo .state() prende in input un oggetto avente i seguenti parametri:
+
+```url```: indirizzo della view, è possibile specificare eventuali parametri del tipo *:id*
+```controller```: nome del controller assegnato alla view
+```templateUrl```: file html della view
+
+per maggiori informazioni riguardo il sistema di routing in uso, fare riferimento [alla documentazione](http://angular-ui.github.io/ui-router/site/#/api/ui.router).
+
+
+### Controller
+
+I controller per il pannello vanno dichiarati all'interno del file **/portale/js/portale/panel.js**.
+
+Controller per la view Affissioni:
+
+```
+app.controller("AffissioniCtrl", function($scope, $http, $sce, $rootScope, $stateParams) {
+
+  $http.get( "oauth/client.php?action=p&path=api/public/affissioni/" + $rootScope.$storage.token_.ID )
+    .success(function(data, status, header, config) {
+    $scope.affissioni = data;
+  })
+    .error(function(data, status, header, config) {
+    console.log("Error in $http.get() of AffissioniCtrl");
+  });
+
+});
+```
+
+Il nome del controller ```"AffissioniCtrl"``` definito subito dopo ```app.controller(``` dev'essere chiaramente lo stesso che abbiamo definito nella configurazione della route con il parametro ```controller```.
+
+All'interno del corpo della funzione controller, effettuiamo una chiamata ```$http.get``` al seguente indirizzo:
+
+```"oauth/client.php?action=p&path=api/public/affissioni/" + $rootScope.$storage.token_.ID````
+
+il parametro ```path``` dev'essere la corrispondente route di Laravel che fornisce la risorsa desiderata, in questo caso tale parametro prende il valore di:
+
+```api/public/affissioni/``` concatenato al valore numerico ```$rootScope.$storage.token_.ID``` che corrisponde all'ID dell'utente corrente.
+
+La chiamata ```$http.get``` permette di definire due funzioni, una in caso di successo ed un'altra in caso di errore.
+
+La funzione passata al metodo ```.success()``` permette di gestire il caso in cui la chiamata ```$http.get``` vada a buon fine:
+
+```
+.success(function(data, status, header, config) {
+  $scope.affissioni = data;
+})
+```
+
+in questo caso viene ritornato un array ```data``` di oggetti JSON che noi associamo alla variabile ```$scope.affissioni```  per renderlo disponibile alla view e mostrare i dati all'utente.
+
+La funzione passata al metodo ```.error()``` permette di gestire il caso in cui la chiamata ```$http.get``` fallisca, nel nostro caso la utilizziamo per stampare un errore di console tramite la funzione ```console.log()```.
+
+
+
+### Template HTML
+
 
 ## 4) Menu Wordpress
 
