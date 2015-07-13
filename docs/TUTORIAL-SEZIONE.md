@@ -146,7 +146,9 @@ panel.affissioni-dettaglio
 seguita da un oggetto avente i seguenti parametri:
 
 ```url```: indirizzo della view, è possibile specificare eventuali parametri del tipo *:id*
+
 ```controller```: nome del controller assegnato alla view
+
 ```templateUrl```: file html della view
 
 per maggiori informazioni riguardo il sistema di routing in uso, fare riferimento [alla documentazione](http://angular-ui.github.io/ui-router/site/#/api/ui.router).
@@ -197,7 +199,7 @@ in questo caso viene ritornato un array ```data``` di oggetti JSON che noi assoc
 La funzione passata al metodo ```.error()``` permette di gestire il caso in cui la chiamata ```$http.get``` fallisca, nel nostro caso la utilizziamo per stampare un errore di console tramite la funzione ```console.log()```.
 
 
-- Controller la view dettaglio di Affissioni:
+- Controller per la view dettaglio di Affissioni:
 
 Analogamente a quanto descritto per il controller di Affissioni, occorre definire un controller per il dettaglio della stessa view:
 
