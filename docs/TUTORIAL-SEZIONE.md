@@ -131,7 +131,14 @@ Nel nostro caso, aggiungiamo due nuove route per le view Affissioni e relativo d
 });
 ```
 
-Il metodo .state() prende in input un oggetto avente i seguenti parametri:
+Il metodo .state() prende in input una stringa che rappresenta il nome della route:
+
+```'panel.affissioni'```
+```'panel.affissioni-dettaglio'```
+
+(il prefisso ```panel.``` indica che tali route fanno parte delle route del pannello utente)
+
+seguita da un oggetto avente i seguenti parametri:
 
 ```url```: indirizzo della view, è possibile specificare eventuali parametri del tipo *:id*
 ```controller```: nome del controller assegnato alla view
@@ -144,7 +151,7 @@ per maggiori informazioni riguardo il sistema di routing in uso, fare riferiment
 
 I controller per il pannello vanno dichiarati all'interno del file **/portale/js/portale/panel.js**.
 
-Controller per la view Affissioni:
+- Controller per la view Affissioni:
 
 ```
 app.controller("AffissioniCtrl", function($scope, $http, $sce, $rootScope, $stateParams) {
@@ -185,9 +192,46 @@ in questo caso viene ritornato un array ```data``` di oggetti JSON che noi assoc
 La funzione passata al metodo ```.error()``` permette di gestire il caso in cui la chiamata ```$http.get``` fallisca, nel nostro caso la utilizziamo per stampare un errore di console tramite la funzione ```console.log()```.
 
 
+- Controller la view dettaglio di Affissioni:
+
+Analogamente a quanto descritto per il controller di Affissioni, occorre definire un controller per il dettaglio della stessa view:
+
+```
+$http.get( "oauth/client.php?action=p&path=api/public/affissioni/dettaglio/" + $stateParams.id )
+  .success(function(data, status, header, config) {
+  if (data.length > 0) {
+    $scope.affissioni = data[0];
+  } else {
+    console.log("Pubblicità " + $stateParams.id + " non esistente");
+  }
+})
+  .error(function(data, status, header, config) {
+  console.log("Error in $http.get() of AffissioniDettaglioCtrl");
+});
+```
+
+Ci un paio di differenze, rispetto al controller precedente, che necessitano di una spiegazione.
+
+Una è l'utilizzo della varibile ```$stateParams.id``` passato alla chiamata alla route Laravel, che corrisponde all'id della route di AngularJS ```affissioni/:id```.
+
+L'altra è l'implementazione della funzione di successo:
+
+```
+if (data.length > 0) {
+  $scope.affissioni = data[0];
+} else {
+  console.log("Affissione " + $stateParams.id + " non esistente");
+}
+```
+
+in questo caso ci aspettiamo che l'array ```data``` contenga un elemento (nel caso in cui esiste la riga corrispondente nel database) o zero elementi.
+
+Per questo motivo effetuiamo un controllo sulla lunghezza dell'array ```data```. Se tale valore è maggiore di zero, associamo il primo (e presumibilmente unico) elemento dell'array alla variabile ```$scope.affissioni```, rendendo tale oggetto disponibile alla view. Se l'array ```data``` è vuoto, stampiamo un messaggio nella console per segnalare l'assenza di tale riga.
+
 
 ### Template HTML
 
+TODO
 
 ## 4) Menu Wordpress
 
