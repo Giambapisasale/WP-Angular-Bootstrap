@@ -29,7 +29,7 @@ All'interno del database abbiamo una tabella ````vista_affissioni_dichiazioni_co
 
 ```
 
-L'obiettivo è creare una view contenenti la lista di affissioni per l'utente corrente, identificato dal campo ```idtco_utente```, che mostra pochi campi per ogni riga, con la possibilità di selezionare una riga ed accedere ad una seconda view contenente tutti i campi della riga selezionata.
+L'obiettivo è creare una view contenente la lista di affissioni per l'utente corrente, identificato dal campo ```idtco_utente```, che mostra pochi campi per ogni riga, con la possibilità di selezionare una riga ed accedere ad una seconda view contenente tutti i campi della riga selezionata.
 
 
 ## 2) Back-end Laravel
