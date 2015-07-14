@@ -387,4 +387,35 @@ questa volta non sono stati usati cicli ne altri particolari costrutti di Angula
 
 Infine, è necessario creare il menu nel pannello per la nuova sezione appena realizzata. Per far ciò è necessario accedere al pannello di controllo di Wordpress come amministratore e recarsi nella sezione **Aspetto -> Menu**
 
+![WP-Menu](https://raw.githubusercontent.com/Giambapisasale/WP-Angular-Bootstrap/master/docs/img/wp-menu-1.png)
+
+Selezionare il menu "Servizi":
+
+![WP-Menu](https://raw.githubusercontent.com/Giambapisasale/WP-Angular-Bootstrap/master/docs/img/wp-menu-2.png)
+
+A questo punto bisogna creare la voce principale "Affissioni", creando un nuovo *Link*:
+
+![WP-Menu](https://raw.githubusercontent.com/Giambapisasale/WP-Angular-Bootstrap/master/docs/img/wp-menu-3.png)
+
+- **URL** va impostato con **#**, questo vale per tutte le voci principali del Menu (cioè i "contenitori" dei link veri e propri)
+- **Testo del link** va impostato con il nome del menu che vogliamo far visualizzare, in questo caso "Affissioni".
+
+A questo punto dobbiamo aggiungere un altro *Link*:
+
+![WP-Menu](https://raw.githubusercontent.com/Giambapisasale/WP-Angular-Bootstrap/master/docs/img/wp-menu-4.png)
+
+- **URL** questa volta va impostato la route AngularJS corrispondente alla view da linkare, priva della parte /panel/ e preceduta dal **#**. In questo caso la route è **/panel/affissioni/** e quindi dobbiamo mettere **#affissioni**.
+- **Testo del link** va impostato con il nome del menu che vogliamo far visualizzare, in questo caso "Visualizza Affissioni".
+
+Nel caso in cui volessimo aggiungere un icona alla voce principale "Affissioni", dobbiamo modificare il campo **Attributo-titolo** inserendo il nome di un immagine che dovremmo posizionare nella cartella **/portale/images/assets/**, nel nostro caso è *text-file.png*.
+
+![WP-Menu](https://raw.githubusercontent.com/Giambapisasale/WP-Angular-Bootstrap/master/docs/img/wp-menu-5.png)
+
+Infine, dobbiamo impostare il Link "**Visualizza Affissioni**" come figlio di "**Affissioni**". Eventuali altre voci del menu affissioni vanno create esattamente nella stessa maniera in cui abbiamo creato il link "**Visualizza Affissioni**".
+
+![WP-Menu](https://raw.githubusercontent.com/Giambapisasale/WP-Angular-Bootstrap/master/docs/img/wp-menu-6.png)
+
+Il risultato ottenuto è il seguente:
+
+![WP-Menu](https://raw.githubusercontent.com/Giambapisasale/WP-Angular-Bootstrap/master/docs/img/menu-result.png)
 
