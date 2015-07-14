@@ -385,4 +385,6 @@ questa volta non sono stati usati cicli ne altri particolari costrutti di Angula
 
 ## 4) Menu Wordpress
 
-TODO
+Infine, è necessario creare il menu nel pannello per la nuova sezione appena realizzata. Per far ciò è necessario accedere al pannello di controllo di Wordpress come amministratore e recarsi nella sezione **Aspetto -> Menu**
+
+
