@@ -66,7 +66,7 @@ if ($retvar == 0)
   $file_headers = @get_headers($file);
   if($file_headers[0] == 'HTTP/1.1 404 Not Found')
   {
-    die( "Il database e' stato installato, tuttavia sembra che i permalink non siano abilitati. Abilitare i permalink e riavviare lo script di installazione.<br>\n" );
+    die( "Il database e' stato installato, tuttavia sembra che i permalink non siano abilitati. Abilitare i permalink e riavviare lo script di installazione.<br>\n<br>\n Per abilitare i permalink è necessario modificare il file di configurazione di Apache2 /etc/apache2/apache2.conf sostituire 'AllowOverride None' con 'AllowOverride All' per la directory desiderata (o per tutte le directory), dopo di che riavviare il servizio apache2.<br>\n<br>\n" );
   }
   else
   {
