@@ -12,6 +12,8 @@ In particolare, la versione **minima** di PHP necessaria è la **5.4**. Sono nec
 - Mbstring
 - Tokenizer
 - JSON
+- Mysqli
+- Rewrite
 
 Il portale supporta tutti i principali browser, tuttavia è consigliato utilizzare **Mozilla Firefox** oppure **Google Chrome**. È utile aggiornare il proprio browser all'ultima versione disponibile.
 
