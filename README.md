@@ -81,8 +81,8 @@ Se si ha intenzione di modificare il percorso di installazione del portale **dop
 
 - eseguire le query:
 
-```UPDATE wp_options SET option_value = 'http://localhost/nuovopath/wordpress/' where option_name='siteurl';```
+```UPDATE wp_options SET option_value = 'http://localhost/nuovopath/wordpress/' WHERE option_name='siteurl';```
 
-```UPDATE wp_options SET option_value = 'http://localhost/nuovopath/wordpress/' where option_name='home';```
+```UPDATE wp_options SET option_value = 'http://localhost/nuovopath/wordpress/' WHERE option_name='home';```
 
 sostituendo a *nuovopath* il nuovo percorso di installazione del portale.
