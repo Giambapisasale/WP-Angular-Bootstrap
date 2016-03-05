@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /* Configurazione Utente */
 
@@ -80,7 +80,7 @@ else
 
 /* Installazione Oauth */
 
-$oauth_path = substr($new_path, strlen($domain), $new_path.length-1);
+$oauth_path = substr($new_path, strlen($domain), strlen($new_path)-1);
 
 $new_common_inc = file_get_contents($common_inc);
 
