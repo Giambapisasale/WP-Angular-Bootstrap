@@ -1,1 +1,0 @@
-ALTER TABLE `tacqua_dichiarazione_mobile`  ADD `lettura_approvata` BOOLEAN NOT NULL DEFAULT FALSE ;
