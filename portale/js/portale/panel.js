@@ -104,6 +104,7 @@
     };
   });
 
+  
   app.controller("AcquedottoCtrl", function($scope, $http, $sce, $rootScope, $stateParams) {
     $http.get( "oauth/client.php?action=p&path=api/public/contratto/" + $rootScope.$storage.token_.ID )
       .success(function(data, status, header, config) {
@@ -195,5 +196,178 @@
     });
 
   });
+  
+  
+  app.controller("VerificaCtrl", function($scope, $http, $sce, $rootScope, $stateParams) {
+
+    $http.get( "oauth/client.php?action=p&path=api/public/verifica/" + $rootScope.$storage.token_.ID )
+      .success(function(data, status, header, config) {
+      $scope.verifica = data;
+    })
+      .error(function(data, status, header, config) {
+      console.log("Error in $http.get() of VerificaCtrl");
+    });
+	
+	$scope.permission = false;
+    var mdata = $rootScope.$storage.token_;
+    if (mdata.roles == "administrator")
+    {
+		$scope.permission = true;
+	}
+  });
+  
+  app.controller("VerificaDettaglioCtrl", function($scope, $http, $sce, $rootScope, $stateParams) {
+
+    $http.get( "oauth/client.php?action=p&path=api/public/verifica/dettaglio/" + $stateParams.id )
+      .success(function(data, status, header, config) {
+      if (data.length > 0) {
+        $scope.verifica = data[0];
+      } else {
+        console.log("Verifica " + $stateParams.id + " non esistente");
+      }
+    })
+      .error(function(data, status, header, config) {
+      console.log("Error in $http.get() of VerificaDettaglioCtrl");
+    });
+	
+	$scope.permission = false;
+    var mdata = $rootScope.$storage.token_;
+    if (mdata.roles == "administrator")
+    {
+		$scope.permission = true;
+	}
+  });
+  
+  
+  app.controller("VerificaAccettaCtrl", function($scope, $http, $sce, $rootScope, $stateParams) {
+
+    $http.get( "oauth/client.php?action=p&path=api/public/verifica/accetta/" + $stateParams.id )
+      .success(function(data, status, header, config) {
+      if (data.length > 0) {
+        $scope.verifica = data[0];
+      } else {
+        console.log("Verifica " + $stateParams.id + " non esistente");
+      }
+    })
+      .error(function(data, status, header, config) {
+      console.log("Error in $http.get() of VerificaADettaglioCtrl");
+    });
+	
+  });
+  app.controller("VerificaRifiutaCtrl", function($scope, $http, $sce, $rootScope, $stateParams) {
+
+    $http.get( "oauth/client.php?action=p&path=api/public/verifica/rifiuta/" + $stateParams.id )
+      .success(function(data, status, header, config) {
+      if (data.length > 0) {
+        $scope.verifica = data[0];
+      } else {
+        console.log("Verifica " + $stateParams.id + " non esistente");
+      }
+    })
+      .error(function(data, status, header, config) {
+      console.log("Error in $http.get() of VerificaRDettaglioCtrl");
+    });
+
+  });
+ 
+ app.controller("LetturaCtrl", function($scope, $http, $sce, $rootScope, $stateParams) {
+	
+	console.log("hello letture");
+    $http.post( "oauth/client.php?action=p&path=api/public/acquedotto/"+$rootScope.$storage.token_.ID)
+      .success(function(data, status, header, config) {
+      $scope.verifica = data;
+    })
+      .error(function(data, status, header, config) {
+      console.log("Error in $http.get() of LetturaCtrl");
+    });
+
+  });
+  
+  app.controller("RegistrazioneCtrl", function($scope, $http, $sce, $rootScope, $stateParams) {
+	
+    $http.get( "oauth/client.php?action=p&path=users/me/" )
+        .success(function(data, status, header, config) {
+        $scope.users = data;
+      })
+        .error(function(data, status, header, config) {
+        console.log("Error in $http.get() of RegistrationCtrl (users)");
+      });
+	$scope.permission = false;
+    var mdata = $rootScope.$storage.token_;
+    if (mdata.roles == "administrator")
+    {
+		$scope.permission = true;
+	}
+  });
+	 app.controller("VerificaUtentiCtrl", function($scope, $http, $sce, $rootScope, $stateParams) {
+
+    $http.get( "oauth/client.php?action=p&path=api/public/utenti-verifica/" + $rootScope.$storage.token_.ID )
+      .success(function(data, status, header, config) {
+      $scope.verifica = data;
+    })
+      .error(function(data, status, header, config) {
+      console.log("Error in $http.get() of VerificaUtentiCtrl");
+    });
+	
+	$scope.permission = false;
+    var mdata = $rootScope.$storage.token_;
+    if (mdata.roles == "administrator")
+    {
+		$scope.permission = true;
+	}
+  });
+   app.controller("VerificaUtentiDettaglioCtrl", function($scope, $http, $sce, $rootScope, $stateParams) {
+
+    $http.get( "oauth/client.php?action=p&path=api/public/utenti-verifica/utente/" + $stateParams.id )
+      .success(function(data, status, header, config) {
+      if (data.length > 0) {
+        $scope.verifica = data[0];
+      } else {
+        console.log("Verifica " + $stateParams.id + " non esistente");
+      }
+    })
+      .error(function(data, status, header, config) {
+      console.log("Error in $http.get() of VerificaUtenteDettaglioCtrl");
+    });
+	
+	$scope.permission = false;
+    var mdata = $rootScope.$storage.token_;
+    if (mdata.roles == "administrator")
+    {
+		$scope.permission = true;
+	}
+  });
+  app.controller("VerificaUtentiAccettaCtrl", function($scope, $http, $sce, $rootScope, $stateParams) {
+
+    $http.get( "oauth/client.php?action=p&path=api/public/utenti-verifica/accetta/" + $stateParams.id )
+      .success(function(data, status, header, config) {
+      if (data.length > 0) {
+        $scope.verifica = data[0];
+      } else {
+        console.log("Verifica " + $stateParams.id + " non esistente");
+      }
+    })
+      .error(function(data, status, header, config) {
+      console.log("Error in $http.get() of VerificaUtenteAccettaCtrl");
+    });
+	
+  });
+  
+  
+    app.controller("VerificaUtentiRifiutaCtrl", function($scope, $http, $sce, $rootScope, $stateParams) {
+
+    $http.get( "oauth/client.php?action=p&path=api/public/utenti-verifica/rifiuta/" + $stateParams.id )
+      .success(function(data, status, header, config) {
+      if (data.length > 0) {
+        $scope.verifica = data[0];
+      } else {
+        console.log("Verifica " + $stateParams.id + " non esistente");
+      }
+    })
+      .error(function(data, status, header, config) {
+      console.log("Error in $http.get() of VerificaUtenteRifiutaCtrl");
+    });
+  });
+	
 
 }());

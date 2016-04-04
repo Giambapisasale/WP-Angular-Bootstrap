@@ -11,7 +11,7 @@ $db_name      = "portale";
 $old_path     = "http://localhost/WP-Angular-Bootstrap/";
 $sql_dump     = "wordpress/dumpAndRestore/wordpress.sql";
 
-$common_inc       = "portale/oauth/common.inc.php.rename_me";
+$common_inc       = "portale/oauth/common.inc.php";
 $common_inc_dest  = "portale/oauth/common.inc.php";
 
 

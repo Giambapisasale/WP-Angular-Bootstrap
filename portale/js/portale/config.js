@@ -92,6 +92,7 @@
         }
       }
     })
+	 
       .state('panel.contratto-acquedotto', {
       url: 'contratti-acquedotto/:id',
       views: {
@@ -136,7 +137,121 @@
           templateUrl: "partials/panel.affissioni-dettaglio.html"
         }
       }
-    });
+    })
+	.state('panel.verifica', {
+	  url: 'verifica/',
+	  views: {
+		'': {
+		  controller: 'VerificaCtrl',
+		  templateUrl: "partials/panel.verifica.html"
+		}
+	  }
+	})
+	
+	.state('panel.verifica-dettaglio', {
+	  url: 'verifica/:id',
+	  views: {
+		'': {
+		  controller: 'VerificaDettaglioCtrl',
+		  templateUrl: "partials/panel.verifica-dettaglio.html"
+		}
+	  }
+	})
+	.state('panel.verifica-accetta', {
+	  url: 'verifica/accetta/:id',
+	  views: {
+		'': {
+		  controller: 'VerificaAccettaCtrl',
+		  templateUrl: "partials/panel.verifica-dettaglio.html"
+		}
+	  }
+	})
+	.state('panel.verifica-rifiuta', {
+	  url: 'verifica/rifiuta/:id',
+	  views: {
+		'': {
+		  controller: 'VerificaRifiutaCtrl',
+		  templateUrl: "partials/panel.verifica-dettaglio.html"
+		}
+	  }
+	})
+	  .state('panel.acquedotto', {
+      url: 'acquedotto/',
+      views: {
+        '': {
+          controller: 'LetturaCtrl',
+          templateUrl: "partials/panel.contratto-acquedotto.html"
+        }
+      }
+    })
+	.state('panel.utenti-verifica', {
+	  url: 'utenti-verifica/',
+	  views: {
+		'': {
+		  controller: 'VerificaUtentiCtrl',
+		  templateUrl: "partials/panel.utenti-verifica.html"
+		}
+	  }
+	})
+	.state('panel.utenti-verifica-dettaglio', {
+	  url: 'utenti-verifica/utente/:id',
+	  views: {
+		'': {
+		  controller: 'VerificaUtentiDettaglioCtrl',
+		  templateUrl: "partials/panel.utenti-verifica-dettaglio.html"
+		}
+	  }
+	})
+	.state('panel.utenti-verifica-accetta', {
+	  url: 'utenti-verifica/accetta/:id',
+	  views: {
+		'': {
+		  controller: 'VerificaUtentiAccettaCtrl',
+		  templateUrl: "partials/panel.utenti-verifica-dettaglio.html"
+		}
+	  }
+	})
+	.state('panel.utenti-verifica-rifiuta', {
+	  url: 'utenti-verifica/rifiuta/:id',
+	  views: {
+		'': {
+		  controller: 'VerificaUtentiRifiutaCtrl',
+		  templateUrl: "partials/panel.utenti-verifica-dettaglio.html"
+		}
+	  }
+	})
+	.state('panel.registrazione', {
+	  url: 'registrazione/',
+	  views: {
+		'': {
+		  controller: 'RegistrazioneCtrl',
+		  templateUrl: "partials/panel.registrazione.html"
+		}
+	  }
+	})
+	.state('panel.errore', {
+	  url: 'errore/',
+	  views: {
+		'': {
+		  controller: 'ErroreCtrl',
+		  templateUrl: "partials/panel.errore.html"
+		}
+	  }
+	})
+	.state('panel.success', {
+	  url: 'success/',
+	  views: {
+		'': {
+		  controller: 'SuccessCtrl',
+		  templateUrl: "partials/panel.success.html"
+		}
+	  }
+	});
+	
+	
+	
+	
+	
   });
 
 }());

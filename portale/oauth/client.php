@@ -99,7 +99,14 @@ if( isset($_REQUEST['action']) && !empty($_REQUEST['action']) ) {
 			$parsed = parse_url($access_ep);
 			
 			$params = array();
-			parse_str($parsed['query'], $params);
+			if(array_key_exists('query',$parsed))
+			{
+				parse_str($parsed['query'], $params);
+			}
+			
+		
+			
+			
 			
 			$acc_req = OAuthRequest::from_consumer_and_token($test_consumer, $test_token, "GET", $access_ep, $params);
 			$acc_req->sign_request($sig_method, $test_consumer, $test_token);
@@ -110,6 +117,12 @@ if( isset($_REQUEST['action']) && !empty($_REQUEST['action']) ) {
 		}
 		
 		parse_str($acc_res);
+		
+		
+		$fp = fopen("myText.txt","wb");
+		fwrite($fp,$acc_res);
+		fclose($fp);
+		
 		
 		$data=array(
 				"key"=> $key,
