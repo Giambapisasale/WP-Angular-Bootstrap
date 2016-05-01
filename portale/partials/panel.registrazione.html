@@ -1,0 +1,91 @@
+<div class="contracts">
+  <br>
+  <h2 class="panel-title">Profilo Contribuente :  {{users.first_name}}  / ID: {{users.ID}}</h2>
+  <br>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+
+  <div class="panel-admin">
+   <form action="oauth/client.php?action=p&path=api/public/registrazione" method="post">
+    <!--<form action="#/panel/acquedotto" method="post">-->
+	  
+	  <input name="wp_id" value='{{users.ID}}' type ="hidden" >
+	  <h4>Cognome</h4>
+	  <input name="cognome" placeholder="..." type ="text" >
+	  
+	  <h4>Nome</h4>
+      <input name="nome" type="text" placeholder="...">
+	  
+      <h4>Data di nascita</h4>
+      <input name="datanascita" type="text" placeholder="gg-mm-aaaa">
+	  
+	  <h4>Comune Nascita</h4>
+      <input name="comunenascita" type="text" placeholder="Comune">
+	  
+	  <h4>Provincia Nascita</h4>
+      <input name="provincianascita" type="text" placeholder="XX">
+	   
+	<h4>Sesso</h4>
+    <select name="singleSelect" id="sex_list" ng-model="data.singleSelect" class="fa fa-search">
+      <option value="M">M</option>
+      <option value="F">F</option>
+    </select>
+     
+	  <h4>Città Residenza</h4>
+      <input name="citt_residenza" type="text" placeholder="...">
+	  
+	  <h4>Provincia Residenza</h4>
+      <input name="prov_residenza" type="text" placeholder="XX">
+	  
+	  <h4>CAP</h4>
+      <input name="cap_residenza" type="text" placeholder="...">
+	  
+	  <h4>Indirizzo Residenza</h4>
+      <input name="indirizzo" type="text" placeholder="...">
+	  
+	  <h4>Civico</h4>
+      <input name="civico" type="text" placeholder="...">
+	  
+	  <h4>Scala</h4>
+      <input name="scala" type="text" placeholder="...">
+	  
+	  <h4>Interno</h4>
+      <input name="interno" type="text" placeholder="...">
+	  
+      <h4>Piano</h4>
+      <input name="piano" type="text" placeholder="...">
+	  
+	  <h4>Codice Fiscale</h4>
+      <input name="codicefiscale" type="text" placeholder="...">
+	  
+	  <h4>Partita Iva</h4>
+      <input name="partitaiva" type="text" placeholder="...">
+	  
+	  <h4>Telefono</h4>
+      <input name="telefono" type="text" placeholder="...">
+	  
+	  <h4>Cellulare</h4>
+      <input name="cellulare" type="text" placeholder="...">
+	  
+	  <h4>Email</h4>
+      <input name="email" type="text" placeholder="...">
+	  
+	  <h4>Note</h4>
+      <input name="notes" type="text" placeholder="...">
+
+      <br><br>
+
+      <input type="submit" value="Inserisci" class="uppercase">
+    </form>
+  </div>
+
+  <br><br>
+  <br><br>
+  <div class="footer-panel">
+    <p class="pull-left">Copyright 2014-2015 Comune di Catania - Tutti i diritti riservati.</p>
+    <p class="pull-right">Segui il Comune di Catania su &nbsp;&nbsp;<i class="fa fa-facebook"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-twitter"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-youtube-play"></i></p>
+    <br>
+    <br>
+  </div>
+ 
+</div>
+

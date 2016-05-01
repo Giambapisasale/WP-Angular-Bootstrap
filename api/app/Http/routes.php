@@ -20,8 +20,16 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
+//Route::resource('acquedotto', 'AcquedottoController@store');
+Route::post('acquedotto','AcquedottoController@store');
 
-Route::resource('acquedotto', 'AcquedottoController');
+Route::resource('admin','AdminController');
+Route::group(array('prefix'=>'admin'),function(){
+	Route::get('admin/{id}',array('uses'=>'AdminController@show'));
+});
+Route::get('admin-import/{id}',array('uses'=>'AdminController@import'));
+
+
 
 Route::resource('contratto', 'ContrattoController');
 
@@ -29,9 +37,6 @@ Route::group(array('prefix'=>'contratto'),function(){
 	Route::get('dettaglio/{contratto}',array('uses'=>'ContrattoController@dettaglio'));
 });
 
-Route::group(array('prefix'=>'letture'),function(){
-	Route::post('insert',array('uses'=>'ContrattoController@store'));
-});
 
 Route::resource('pubblicita', 'PubblicitaController');
 
@@ -49,3 +54,26 @@ Route::resource('affissioni', 'AffissioniController');
 Route::group(array('prefix'=>'affissioni'),function(){
 	Route::get('dettaglio/{id}',array('uses'=>'AffissioniController@dettaglio'));
 });
+
+Route::resource('verifica', 'VerificaController');
+
+Route::group(array('prefix'=>'verifica'),function(){
+    Route::get('dettaglio/{id}',array('uses'=>'VerificaController@dettaglio'));
+	Route::get('accetta/{id}',array('uses'=>'VerificaController@accetta'));
+	Route::get('rifiuta/{id}',array('uses'=>'VerificaController@rifiuta'));
+});
+
+Route::resource('utenti-verifica', 'VerificaController@utenti');
+
+Route::group(array('prefix'=>'utenti-verifica'),function(){
+	Route::get('utente/{id}',array('uses'=>'VerificaController@utente'));
+	Route::get('accetta/{id}',array('uses'=>'VerificaController@accettaUtente'));
+	Route::get('rifiuta/{id}',array('uses'=>'VerificaController@rifiutaUtente'));
+});
+
+Route::post('registrazione','RegistrazioneController@store');
+Route::resource('registrazione', 'RegistrazioneController@store');
+
+
+
+

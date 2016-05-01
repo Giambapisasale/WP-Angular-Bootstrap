@@ -688,11 +688,32 @@ case 'register' :
 
 	$user_login = '';
 	$user_email = '';
+	$user_cf = '';
 	if ( $http_post ) {
 		$user_login = $_POST['user_login'];
 		$user_email = $_POST['user_email'];
+		$user_cf = $_POST['user_cf'];
+		global $wpdb;
+		$results = $wpdb->get_results( 'SELECT count(*),idtco_contribuente FROM tco_contribuente WHERE tco_contribuente.codicefiscale="'.$user_cf.'"', OBJECT );
+		$result_parse=get_object_vars($results[0]);
+		$exist_value=$result_parse['count(*)'];
+		$exist_id_value=$result_parse['idtco_contribuente'];
+		//echo var_dump($exist_id_value);
+		
+		if(intval($exist_value)==0 || strlen($user_cf)<15)
+		{
+			//non esiste, non permetto la registrazione
+			echo "Contribuente non presente, contattare l'ufficio amministrativo per ottenere l'accesso al Portale PA";
+			exit();
+		}
+		
 		$errors = register_new_user($user_login, $user_email);
+		//echo var_dump($errors);
+		//exit();
+		
+		
 		if ( !is_wp_error($errors) ) {
+			$results = $wpdb->get_results( 'INSERT INTO wp_tco_utenti (`id`, `idwp_user`, `idtco_contribuente`) VALUES (NULL,'. '"'.$errors.'"'.','.'"'.$exist_id_value.'"'.');', OBJECT );
 			$redirect_to = !empty( $_POST['redirect_to'] ) ? $_POST['redirect_to'] : 'wp-login.php?checkemail=registered';
 			wp_safe_redirect( $redirect_to );
 			exit();
@@ -719,6 +740,10 @@ case 'register' :
 	<p>
 		<label for="user_email"><?php _e('E-mail') ?><br />
 		<input type="email" name="user_email" id="user_email" class="input" value="<?php echo esc_attr( wp_unslash( $user_email ) ); ?>" size="25" /></label>
+	</p>
+	<p>
+		<label for="user_cf"><?php _e('Codice Fiscale') ?><br />
+		<input type="text" name="user_cf" id="user_cf" class="input" value="<?php echo esc_attr( wp_unslash( $user_cf ) ); ?>" size="25" /></label>
 	</p>
 	<?php
 	/**

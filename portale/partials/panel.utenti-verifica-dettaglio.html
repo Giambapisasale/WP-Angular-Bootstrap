@@ -1,0 +1,38 @@
+<div class="contracts" ng-show="permission" >
+  <br>
+  <h2 class="panel-title">Verifica {{ verifica.idtco_contribuente }}</h2>
+  <br>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+  <br>
+  <h3 class="post-title">Dettaglio verifica</h3>
+  <table class="contracts-data table table-striped text-center">
+    <thead>
+     <tr>
+        <td><h4>ID Contribuente</h4></td>
+        <td><h4>cognome </h4></td>
+        <td><h4>nome </h4></td>
+        <td><h4>codice fiscale</h4></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ verifica.idtco_contribuente }}</td>
+        <td>{{ verifica.cognome }}</td>
+        <td>{{ verifica.nome }}</td>
+        <td>{{ verifica.codicefiscale }}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <br>
+  <br>
+    <a ng-href="#/panel/utenti-verifica/"><button class="uppercase">Indietro</button></a>
+	<a  ng-href="#/panel/utenti-verifica/accetta/{{ verifica.idtco_contribuente }}"><button class="uppercase">Approva</button></a>
+	<a  ng-href="#/panel/utenti-verifica/rifiuta/{{ verifica.idtco_contribuente }}"><button class="uppercase">Rifiuta</button></a>
+  <div class="footer-panel">
+    <p class="pull-left">Copyright 2014-2015 Comune di Catania - Tutti i diritti riservati.</p>
+    <p class="pull-right">Segui il Comune di Catania su &nbsp;&nbsp;<i class="fa fa-facebook"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-twitter"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-youtube-play"></i></p>
+    <br>
+    <br>
+  </div>
+</div>

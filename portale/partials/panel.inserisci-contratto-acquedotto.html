@@ -1,11 +1,12 @@
 <div class="contracts">
   <br>
   <h2 class="panel-title">Inserisci nuova lettura</h2>
-  <br>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
 
+  <br>
+  
   <div class="panel-admin">
-    <form action="oauth/client.php?action=p&path=api/letture/insert" method="post">
+   <!--<form action="oauth/client.php?action=p&path=api/public/acquedotto" method="post" enctype="multipart/form-data">-->
+   <form action="/api/public/acquedotto" method="post" enctype="multipart/form-data">
       <h4 ng-show="permission">Seleziona utente</h4>
       <div ng-show="permission">
         <input type="text" class="search-user" placeholder="Cerca Utente" list="utenti" autocomplete="off">
@@ -14,18 +15,28 @@
         </datalist>
         <i class="fa fa-search"></i>
       </div>
-
+	  
+	  <h4>Identificativo Dichiarazione</h4>
+	  <input name="idtacqua_dichiarazione" placeholder="ID Dichiarazione" type ="text" >
+	  
+	  
+	  
       <h4>Data lettura</h4>
-      <input name="data" type="text" placeholder="gg/mm/aa">
+      <input name="data_lettura" type="text" placeholder="gg-mm-aaaa">
 
       <h4>Lettura</h4>
       <input name="lettura" type="text" placeholder="Lettura">
 
       <h4>Consumo</h4>
       <input name="consumo" type="text" placeholder="0001234556789">
-
+	  
+	  <h4>Note</h4>
+      <input name="note" type="text" placeholder="...">
+	  
+	  <h4>Foto</h4>
+	  <input name="photo_file" type="file" id="photo_file">
       <br><br>
-
+	  
       <input type="submit" value="Inserisci" class="uppercase">
     </form>
   </div>
@@ -39,4 +50,5 @@
     <br>
   </div>
 </div>
+
 

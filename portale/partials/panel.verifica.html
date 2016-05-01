@@ -1,0 +1,40 @@
+<div class="contracts" ng-show="permission">
+  <br>
+  <h2 class="panel-title">Verifica</h2>
+  <br>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+  <h3 class="post-title">seleziona una riga</h3>
+  <br>
+  <table class="contracts-data table table-striped text-center">
+    <thead>
+      <tr>
+        <td><h4>#</h4></td>
+        <td><h4>ID Lettura</h4></td>
+        <td><h4>Nome contribuente</h4></td>
+		<td><h4>Cognome</h4></td>
+        <td><h4>Data Lettura</h4></td>
+        <td><h4>Valore Lettura</h4></td>
+		<td><h4>Note</h4></td>
+        <td><h4>Proprietario</h4></td>
+      </tr>
+    </thead>
+    <tbody>
+     <tr ng-repeat="ver in verifica" OnClick="this.getElementsByTagName('input')[0].click();" ng-click="getid(ver.idtacqua_dichiarazione_lettura)">
+        <td><input type="radio" name="contract" id="{{contract.id}}"><img src="images/assets/checkbox.png" ng-style="{{radio}}"><img src="images/assets/checkbox_checked.png" ng-style="{{radio}}"></td>
+        <td>{{ ver.idtacqua_dichiarazione_lettura }}</td>
+        <td>{{ ver.cognome }}</td>
+		<td>{{ ver.nome }}</td>
+        <td>{{ ver.data_lettura }}</td>
+        <td>{{ ver.lettura }}</td>
+		<td>{{ ver.note }}</td>
+        <td>{{ ver.proprietario }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <a ng-href="#/panel/verifica/{{id_}}"><button class="uppercase">Avanti</button></a>
+  <br><br>
+  <div class="footer-panel">
+    <p class="pull-left">Copyright 2014-2015 Comune di Catania - Tutti i diritti riservati.</p>
+    <p class="pull-right">Segui il Comune di Catania su &nbsp;&nbsp;<i class="fa fa-facebook"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-twitter"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-youtube-play"></i></p>
+  </div>
+</div>

@@ -4,6 +4,10 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use Validator;
+
+use Input;
+use Form;
 
 class AcquedottoController extends Controller {
 
@@ -14,11 +18,13 @@ class AcquedottoController extends Controller {
 	 */
 	public function index()
 	{
+		
 		return array(
-				1 => "John",
-				2 => "Mary",
-				3 => "Steven"
+				1 => "Jon",
+				2 => "May",
+				3 => "Seven"
 		);
+		
 	}
 
 	/**
@@ -30,7 +36,8 @@ class AcquedottoController extends Controller {
 	{
 		//
 	}
-
+	
+	
 	/**
 	 * Store a newly created resource in storage.
 	 *
@@ -38,8 +45,63 @@ class AcquedottoController extends Controller {
 	 */
 	public function store()
 	{
-		//
+		
+		$rules = array(
+		'data_lettura'      	 => 'required|date',
+		'consumo'	   			 => 'required|numeric',
+		'idtacqua_dichiarazione' => 'required|numeric',
+		'note' 					 => 'max:500'
+		);
+		
+		
+		$validator = Validator::make(\Input::all(), $rules);
+		
+		if ($validator->fails()) {
+			
+			
+			return "<script>window.location='/portale/#/panel/errore/';</script>";
+		}
+		
+		$url_photo="";
+		if(\Input::file('photo_file'))
+        {
+  
+			$image = \Input::file('photo_file');
+            $filename  = time() . '.' . $image->getClientOriginalExtension();
+            $path = public_path('uploaded_pictures/' . $filename);
+			
+        
+           
+			if(\File::copy($image , $path))
+			{
+			
+				$url_photo="/api/public/uploaded_pictures/".$filename;
+			}
+			else
+			{
+				return "<script>window.location='/portale/#/panel/errore/';</script>";
+			}
+           
+        }
+		
+		
+		$data = date('Y-m-d', strtotime(\Input::get('data_lettura')));
+		$lettura = \Input::get('lettura');
+		$consumo = \Input::get('consumo');
+		$idacqua = \Input::get('idtacqua_dichiarazione');
+		$note = \Input::get('note');
+		
+		//$data=str_replace('-', '/', $data);
+		$inserimento=\DB::table('tacqua_dichiarazione_lettura')->insert([
+				[ 'idtacqua_dichiarazione'=> $idacqua,'data_lettura'=>$data,'lettura' => ((float)$lettura),'consumo' => ((float)$consumo),'fatturata' => 2,'note' => $note,'idtacqua_tbl_tipo_lettura' =>4,'url_foto'=>$url_photo]
+			]);
+		
+		
+		
+		
+		return "<script>window.location='/portale/#/panel/success/';</script>";
 	}
+	
 
 	/**
 	 * Display the specified resource.

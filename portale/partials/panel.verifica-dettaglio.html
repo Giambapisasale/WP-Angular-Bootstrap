@@ -1,0 +1,46 @@
+<div class="contracts" >
+  <br>
+  <h2 class="panel-title">Verifica {{ verifica.idtacqua_dichiarazione_lettura }}</h2>
+  <br>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+  <br>
+  <h3 class="post-title">Dettaglio verifica</h3>
+  <table class="contracts-data table table-striped text-center">
+    <thead>
+     <tr>
+        <td><h4>ID Lettura</h4></td>
+        <td><h4>Cognome contribuente</h4></td>
+		<td><h4>Nome contribuente</h4></td>
+        <td><h4>Data Inizio Contratto</h4></td>
+        <td><h4>Data Fine contratto</h4></td>
+        <td><h4>consumo</h4></td>
+		<td><h4>lettura</h4></td>
+		<td><h4>Foto Lettura</h4></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+			<td>{{ verifica.idtacqua_dichiarazione_lettura }}</td>
+        <td>{{ verifica.cognome }}</td>
+		<td>{{ verifica.nome }}</td>
+        <td>{{ verifica.data_inizio_contratto }}</td>
+        <td>{{ verifica.data_fine_contratto }}</td>
+		<td>{{ verifica.consumo }}</td>
+		<td>{{ verifica.lettura }}</td>
+		<td><a href='{{ verifica.url_foto }}'>Clicca per visualizzare</a></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <br>
+  <br>
+    <a ng-href="#/panel/verifica/"><button class="uppercase">Indietro</button></a>
+	<a  ng-href="#/panel/verifica/accetta/{{ verifica.idtacqua_dichiarazione_lettura }}"><button class="uppercase">Approva</button></a>
+	<a  ng-href="#/panel/verifica/rifiuta/{{ verifica.idtacqua_dichiarazione_lettura }}"><button class="uppercase">Rifiuta</button></a>
+  <div class="footer-panel">
+    <p class="pull-left">Copyright 2014-2015 Comune di Catania - Tutti i diritti riservati.</p>
+    <p class="pull-right">Segui il Comune di Catania su &nbsp;&nbsp;<i class="fa fa-facebook"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-twitter"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-youtube-play"></i></p>
+    <br>
+    <br>
+  </div>
+</div>

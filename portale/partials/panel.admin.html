@@ -1,0 +1,34 @@
+<div class="contracts">
+  <br>
+  <h2 class="panel-title">Pannello Amministrazione</h2>
+
+  <h4> Esportazione Tabelle </h4>
+  
+   <label for="singleSelect"> Seleziona la tabella da esportare </label><br>
+    <select name="singleSelect" id="singleSelect" ng-model="data.singleSelect">
+      <option value="">---Please select---</option> <!-- not selected / blank option -->
+      <option value="tco_contribuente">tco_contribuente</option> <!-- interpolation -->
+      <option value="tacqua_dichiarazione_lettura">tacqua_dichiarazione_lettura</option>
+    </select><br>
+	<br>
+	<!--<button ng-click="">Esporta</button><br>-->
+	<a ng-href="#/panel/admin/{{data.singleSelect}}"><button >Generazione Token</button></a><br>
+  
+	<div ng-if="table">
+	<br>
+	Link  :	<a href="dump_table.php?token={{token}}&method=JSON&table={{table}}"> POST REQUEST </a>
+	<br>
+	Token : {{token}}
+	</div>
+	
+  <br><br>
+  <br><br>
+  <div class="footer-panel">
+    <p class="pull-left">Copyright 2014-2015 Comune di Catania - Tutti i diritti riservati.</p>
+    <p class="pull-right">Segui il Comune di Catania su &nbsp;&nbsp;<i class="fa fa-facebook"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-twitter"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-youtube-play"></i></p>
+    <br>
+    <br>
+  </div>
+</div>
+
+
