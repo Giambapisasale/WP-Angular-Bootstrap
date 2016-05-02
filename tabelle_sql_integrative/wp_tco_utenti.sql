@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 04, 2016 alle 08:50
+-- Generation Time: Mag 02, 2016 alle 10:23
 -- Versione del server: 5.7.9
 -- PHP Version: 5.5.12
 
@@ -20,18 +20,23 @@ SET time_zone = "+00:00";
 -- Database: `portale`
 --
 
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `wp_tco_utenti`
+--
+
+CREATE TABLE IF NOT EXISTS `wp_tco_utenti` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idwp_user` int(11) DEFAULT NULL,
+  `idtco_contribuente` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
+
 --
 -- Dump dei dati per la tabella `wp_tco_utenti`
 --
 
-INSERT INTO `wp_tco_utenti` (`id`, `idwp_user`, `idtco_contribuente`) VALUES
-(1, 1, 3155),
-(2, 1, 3156),
-(3, 1, 3157),
-(4, 1, 3158),
-(5, 1, 3159),
-(6, 1, 3160),
-(7, 1, 3161);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

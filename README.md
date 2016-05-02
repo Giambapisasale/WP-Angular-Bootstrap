@@ -5,7 +5,8 @@ Portale amministrazione
 
 Per installare il portale è necessario un sistema LAMP/WAMP o analogo (Apache2, PHP, MySQL).
 
-In particolare, la versione **minima** di PHP necessaria è la **5.4**. Sono necessari inoltre le seguenti estensioni PHP:
+In particolare, la versione **minima** di PHP necessaria è la **5.4**, la versione *massima* di PHP è la *5.5* .
+ Sono necessari inoltre le seguenti estensioni PHP:
 
 - Mcrypt
 - OpenSSL
