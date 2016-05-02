@@ -31,6 +31,7 @@ $db_username  = "root"; // nome utente root
 $db_password  = "password"; // password dell'utente root
 ```
 
+
 le variabili ```$db_username``` e ```$db_password``` corrispondono, come da commento, alle credenziali dell'utente root di MySQL.
 
 Inoltre è necessario specificare il path dell'eseguibile principale di mysql:
@@ -87,3 +88,14 @@ Se si ha intenzione di modificare il percorso di installazione del portale **dop
 ```UPDATE wp_options SET option_value = 'http://localhost/nuovopath/wordpress/' WHERE option_name='home';```
 
 sostituendo a *nuovopath* il nuovo percorso di installazione del portale.
+
+## Funzionalità impostazione/esportazione tabelle
+
+Nel file file portale/dump_table.php e impostare le variabili di configurazione:
+
+```
+ $username = "username"; 
+ $password = "password";   
+ $database="portale";
+```
+
