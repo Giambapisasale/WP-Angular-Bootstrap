@@ -89,7 +89,8 @@ Se si ha intenzione di modificare il percorso di installazione del portale **dop
 
 sostituendo a *nuovopath* il nuovo percorso di installazione del portale.
 
-## Funzionalità impostazione/esportazione tabelle
+
+## Funzionalità importazione/esportazione tabelle
 
 Nel file file portale/dump_table.php e impostare le variabili di configurazione:
 
@@ -99,3 +100,17 @@ Nel file file portale/dump_table.php e impostare le variabili di configurazione:
  $database="portale";
 ```
 
+
+## Notifica via email per accettazione e rifiuto utenti
+
+Richiede la configurazione mailgun del server apache del file 
+
+api\config\mail.php 
+
+```
+	'driver' => 'smtp',
+	'host' => 'smtp.mailgun.org',
+	'username' => null,
+	'password' => null,
+```
+più informazioni per la configurazione : https://laravel.com/docs/5.1/mail
