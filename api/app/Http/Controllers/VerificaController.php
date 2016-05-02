@@ -5,7 +5,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Contratto;
 
 use Illuminate\Http\Request;
-use Mail;
 
 class VerificaController extends Controller {
 
@@ -119,20 +118,12 @@ class VerificaController extends Controller {
 	
 	 public function accetta($id)
     {	
-
-        $verifica = \DB::table("tacqua_dichiarazione_lettura")
+			
+		$verifica = \DB::table("tacqua_dichiarazione_lettura")
 			->where("tacqua_dichiarazione_lettura.idtacqua_dichiarazione_lettura", "=", $id)
             ->update(['verifica' => 1]);
-	
-		
-		/* Invio email, contenuto template "welcome"
-		\Mail::send("welcome", array(), function ($message) {
-		$message->from('us@example.com', 'Laravel');
-
-		$message->to('mg.divenire@gmail.com')->subject('Accettazione dati nel portale');
-		});
-		
-		*/
+		sendEmail(0);
+        
         return $verifica;
     }
 	
@@ -143,12 +134,68 @@ class VerificaController extends Controller {
          $verifica = \DB::table("tacqua_dichiarazione_lettura")
 			->where("tacqua_dichiarazione_lettura.idtacqua_dichiarazione_lettura", "=", $id)
             ->update(['verifica' => 2]);
-			
+		
+		 sendEmail(1);
 		
 
         return $verifica;
     }
 
+	public function sendEmail($status)
+	{
+		$user_id = \DB::table("tacqua_dichiarazione")
+			->join("tco_contribuente","tacqua_dichiarazione.idtco_contribuente","=","tco_contribuente.idtco_contribuente")
+			->join("tacqua_dichiarazione_lettura","tacqua_dichiarazione_lettura.idtacqua_dichiarazione","=","tacqua_dichiarazione.idtacqua_dichiarazione")
+		    ->select ("tco_contribuente.idtco_contribuente")
+			->where("tacqua_dichiarazione_lettura.idtacqua_dichiarazione_lettura", "=", $id)
+			->get();
+		$user_id_value=$user_id[0]->idtco_contribuente;
+		
+		
+		$email = \DB::table("wp_tco_utenti")
+			->join("wp_users","wp_users.ID","=","wp_tco_utenti.idwp_user")
+		    ->select("wp_users.user_email")
+			->where("wp_tco_utenti.idtco_contribuente", "=", $user_id_value)
+			->get();
+
+		$email_value=$email[0]->user_email;
+		
+		
+		
+		$testo = \DB::table("wp_portale_emails")
+		    ->select("wp_portale_emails.*")
+			->where("wp_portale_emails.id", "=", "1")
+			->get();
+	
+		$testo_value=$testo[0];
+
+		try
+		{
+			if($status==0)
+			{
+				$mstatus=\Mail::send('emails.blank', array('key' => 'value'), function($message)
+				{
+					$message->from('portale@comune.it');
+					$message->to($email_value, 'Portale PA')->subject($testo_value->accettazione);
+				});
+			}
+			else
+			{
+				$mstatus=\Mail::send('emails.blank', array('key' => 'value'), function($message)
+				{
+				$message->from('portale@comune.it');
+				$message->to($email_value, 'Portale PA')->subject($testo_value->rifiuto);
+				});
+			}	
+			
+		}
+		catch (\Exception $e)
+		{
+			dd($e->getMessage());
+		}
+	
+        
+	}
     /**
 	 * Show the form for editing the specified resource.
 	 *
