@@ -43,6 +43,20 @@
 
         if (menu.parent === 0) {
           menu.submenus = [];
+		  
+		  f (menu.url.startsWith("#")) {
+				menu.url = menu.url.substring(1, menu.url.length);
+				
+				if(menu.url.endsWith("@"))
+				{
+				menu.url = menu.url.substring(0, menu.url.length-1);
+				if($scope.permission != true)return;
+				}
+				
+				if (menu.url.length > 1 ) {
+					menu.url = menu.url+"/";
+				}
+			}
 
           for (j = 0; j < data.items.length; j++) {
             submenu = data.items[j];
@@ -432,6 +446,18 @@
       console.log("Error in $http.get() of AdminExportCtrl");
     });
   });
+  
+  app.controller("TestCtrl", function($scope, $http, $sce, $rootScope, $stateParams) {
+
+  $http.get( "oauth/client.php?action=p&path=api/public/testmenu/" )
+    .success(function(data, status, header, config) {
+    $scope.affissioni = data;
+  })
+    .error(function(data, status, header, config) {
+    console.log("Error in $http.get() of TestCtrl");
+  });
+
+});
 	
 
 }());

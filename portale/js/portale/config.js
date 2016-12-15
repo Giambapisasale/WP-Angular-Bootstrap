@@ -229,6 +229,15 @@
 		}
 	  }
 	})
+	.state('panel.testmenu', {
+      url: 'testmenu/',
+      views: {
+        '': {
+          controller: 'TestCtrl',
+          templateUrl: "partials/panel.testmenu.html"
+        }
+      }
+    })
 	.state('panel.errore', {
 	  url: 'errore/',
 	  views: {
