@@ -44,7 +44,7 @@
         if (menu.parent === 0) {
           menu.submenus = [];
 		  
-		  f (menu.url.startsWith("#")) {
+		  if (menu.url.startsWith("#")) {
 				menu.url = menu.url.substring(1, menu.url.length);
 				
 				if(menu.url.endsWith("@"))
