@@ -50,7 +50,7 @@ class BackupDownloadController extends Controller {
 		session_start();
 		header('Content-Type: application/json');
 		
-		/*if(!isset($_SESSION["userData"]) || $this->isNotAdmin($_SESSION["userData"]))
+		if(!isset($_SESSION["userData"]) || $this->isNotAdmin($_SESSION["userData"]))
 		{
 			$returnObject = array('error' => 'ERROR: Only admins can use this functionality!');
 			return json_encode($returnObject);
@@ -59,7 +59,7 @@ class BackupDownloadController extends Controller {
 		{
 			$returnObject = array('error' => 'ERROR: parameter tableName must not be empty.');
 			return json_encode($returnObject);
-		}*/
+		}
 		
 		$table = \DB::table($_GET["tableName"])->get();
 		return json_encode($table);
@@ -77,7 +77,7 @@ class BackupDownloadController extends Controller {
 		session_start();
 		header('Content-Type: application/json');
 		$returnObject;
-		/*if(!isset($_SESSION["userData"]) || $this->isNotAdmin($_SESSION["userData"]))
+		if(!isset($_SESSION["userData"]) || $this->isNotAdmin($_SESSION["userData"]))
 		{
 			$returnObject = array('error' => 'ERROR: Only admins can use this functionality!');
 			return json_encode($returnObject);
@@ -86,7 +86,7 @@ class BackupDownloadController extends Controller {
 		{
 			$returnObject = array('error' => 'ERROR: parameter tableName must not be empty.');
 			return json_encode($returnObject);
-		}*/
+		}
 		
 		if($_POST["modality"] =="insert")
 		{
