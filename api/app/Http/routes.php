@@ -20,6 +20,9 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
+Route::get('downloadbakdb','BackupDownloadController@show');
+Route::post('downloadbakdb','BackupDownloadController@store');
+
 //Route::resource('acquedotto', 'AcquedottoController@store');
 Route::post('acquedotto','AcquedottoController@store');
 
