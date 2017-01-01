@@ -265,6 +265,15 @@
 		}
 	  }
 	})
+	.state('panel.inserisci-istanza', {
+	  url: 'inserisci-istanza/',
+	  views: {
+		'': {
+		  controller: 'IstanzaCtrl',
+		  templateUrl: "partials/panel.inserisci-istanza.html"
+		}
+	  }
+	})
 	.state('panel.admin-import', {
 	  url: 'admin-import/:id',
 	  views: {

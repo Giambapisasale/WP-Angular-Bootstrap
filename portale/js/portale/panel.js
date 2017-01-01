@@ -165,6 +165,18 @@
     });
 
   });
+  
+   app.controller("IstanzaCtrl", function($scope, $http, $sce, $rootScope, $stateParams) {
+
+    $http.get( "oauth/client.php?action=p&path=api/public/istanza/" + $rootScope.$storage.token_.ID )
+      .success(function(data, status, header, config) {
+      $scope.pubblicita = data;
+    })
+      .error(function(data, status, header, config) {
+      console.log("Error in $http.get() of IstanzaController");
+    });
+
+  });
 
   app.controller("PubblicitaDettaglioCtrl", function($scope, $http, $sce, $rootScope, $stateParams) {
 
@@ -417,6 +429,8 @@
       console.log("Error in $http.get() of AdminImportCtrl");
     });
   });
+  
+  
   
    app.controller("AdminExportCtrl", function($scope, $http, $sce, $rootScope, $stateParams) {
 

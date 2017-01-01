@@ -47,21 +47,28 @@ class BackupDownloadController extends Controller {
 	 */
 	public function show()
 	{
-		session_start();
 		header('Content-Type: application/json');
+		
+		$rules = array(
+		'tableName'      	 => 'required'
+		);
+		$validatorFail = Validator::make(\Input::all(), $rules)->fails() ? true : false;
+		if ($validatorFail) 
+		{
+			$returnObject = array('error' => 'ERROR: something went wrong.');
+			return json_encode($returnObject);
+		}
+		
+		session_start();
 		
 		if(!isset($_SESSION["userData"]) || $this->isNotAdmin($_SESSION["userData"]))
 		{
 			$returnObject = array('error' => 'ERROR: Only admins can use this functionality!');
 			return json_encode($returnObject);
 		}
-		else if(!isset($_GET["tableName"]))
-		{
-			$returnObject = array('error' => 'ERROR: parameter tableName must not be empty.');
-			return json_encode($returnObject);
-		}
 		
-		$table = \DB::table($_GET["tableName"])->get();
+		$tableName = \Input::get('tableName');
+		$table = \DB::table($tableName)->get();
 		return json_encode($table);
 	}
 	
@@ -74,29 +81,42 @@ class BackupDownloadController extends Controller {
 	 */
 	public function store()
 	{
-		session_start();
 		header('Content-Type: application/json');
+		
+		$rules = array(
+		'tableName'      	 => 'required',
+		'modality'			=> 'required',
+		'data'			=> 'required'
+		);
+		$validatorFail = Validator::make(\Input::all(), $rules)->fails() ? true : false;
+		if ($validatorFail) 
+		{
+			$returnObject = array('error' => 'ERROR: something went wrong.');
+			return json_encode($returnObject);
+		}
+		
+		session_start();
+		
 		$returnObject;
 		if(!isset($_SESSION["userData"]) || $this->isNotAdmin($_SESSION["userData"]))
 		{
 			$returnObject = array('error' => 'ERROR: Only admins can use this functionality!');
 			return json_encode($returnObject);
 		}
-		else if(!isset($_POST["tableName"]))
-		{
-			$returnObject = array('error' => 'ERROR: parameter tableName must not be empty.');
-			return json_encode($returnObject);
-		}
 		
-		if($_POST["modality"] =="insert")
+		$modality = \Input::get('modality');
+		$tableName = \Input::get('tableName');
+		$data = \Input::get('data');
+		
+		if($modality =="insert")
 		{
-			\DB::table($_POST["tableName"])->truncate();
-			\DB::table($_POST["tableName"])->insert(json_decode($_POST["data"],true));
+			\DB::table($tableName)->truncate();
+			\DB::table($tableName)->insert(json_decode($data,true));
 			$returnObject = array('error' => 'OK');
 		}
-		else if($_POST["modality"] == "update")
+		else if($modality == "update")
 		{
-			\DB::table($_POST["tableName"])->insert(json_decode($_POST["data"],true));
+			\DB::table($tableName)->insert(json_decode($data,true));
 			$returnObject = array('error' => 'OK');
 		}
 		return json_encode($returnObject);

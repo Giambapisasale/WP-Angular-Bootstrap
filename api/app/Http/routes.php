@@ -23,6 +23,9 @@ Route::controllers([
 Route::get('downloadbakdb','BackupDownloadController@show');
 Route::post('downloadbakdb','BackupDownloadController@store');
 
+Route::post('istanza','IstanzeController@store');
+Route::get('istanzaget','IstanzeController@store');
+
 //Route::resource('acquedotto', 'AcquedottoController@store');
 Route::post('acquedotto','AcquedottoController@store');
 
