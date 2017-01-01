@@ -50,7 +50,8 @@ class AcquedottoController extends Controller {
 		'data_lettura'      	 => 'required|date',
 		'consumo'	   			 => 'required|numeric',
 		'idtacqua_dichiarazione' => 'required|numeric',
-		'note' 					 => 'max:500'
+		'note' 					 => 'max:500',
+		'photo_file'			 => 'image|max:2048'
 		);
 		
 		
@@ -65,26 +66,19 @@ class AcquedottoController extends Controller {
 		$url_photo="";
 		if(\Input::file('photo_file'))
         {
-  
-			$image = \Input::file('photo_file');
-            $filename  = time() . '.' . $image->getClientOriginalExtension();
-            $path = public_path('uploaded_pictures/' . $filename);
-			
-        
-           
-			if(\File::copy($image , $path))
+			$file_allegato = \Input::file('photo_file');
+			$filename  = time() . '.' . $file_allegato->getClientOriginalExtension();
+			$path = public_path('uploaded_pictures/');
+			if($file_allegato->move($path, $filename))
 			{
-			
 				$url_photo="/api/public/uploaded_pictures/".$filename;
 			}
 			else
 			{
 				return "<script>window.location='/portale/#/panel/errore/';</script>";
 			}
-           
         }
-		
-		
+
 		$data = date('Y-m-d', strtotime(\Input::get('data_lettura')));
 		$lettura = \Input::get('lettura');
 		$consumo = \Input::get('consumo');
