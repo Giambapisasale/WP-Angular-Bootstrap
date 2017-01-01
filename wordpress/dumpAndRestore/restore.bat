@@ -21,7 +21,7 @@ set mysql="C:\wamp\bin\mysql\mysql5.5.24\bin\mysql.exe"
 
 
 :: importa dump
-%mysql% -u%user% -p%password%  %database% < %database%.sql
+%mysql% -u%user% -p%password%  %database% < wordpress.sql
 
 :: configura url di wordpress
 %mysql% -u%user% -p%password%  %database% --execute="UPDATE wp_options SET option_value = '%url%' where option_name='siteurl';"
