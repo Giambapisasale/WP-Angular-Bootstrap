@@ -694,26 +694,34 @@ case 'register' :
 		$user_email = $_POST['user_email'];
 		$user_cf = $_POST['user_cf'];
 		global $wpdb;
-		$results = $wpdb->get_results( 'SELECT count(*),idtco_contribuente FROM tco_contribuente WHERE tco_contribuente.codicefiscale="'.$user_cf.'"', OBJECT );
+		$results = $wpdb->get_results( 'SELECT count(*),idtco_contribuente, nome, cognome, verifica FROM tco_contribuente WHERE tco_contribuente.codicefiscale="'.$user_cf.'"', OBJECT );
 		$result_parse=get_object_vars($results[0]);
 		$exist_value=$result_parse['count(*)'];
 		$exist_id_value=$result_parse['idtco_contribuente'];
+		$first_name = $result_parse['nome'];
+		$last_name = $result_parse['cognome'];
+		$verifica  = $result_parse['verifica'];
 		//echo var_dump($exist_id_value);
 		
 		if(intval($exist_value)==0 || strlen($user_cf)<15)
 		{
 			//non esiste, non permetto la registrazione
-			echo "Contribuente non presente, contattare l'ufficio amministrativo per ottenere l'accesso al Portale PA";
+			echo "Contribuente non presente, contattare l'ufficio amministrativo per ottenere l'accesso al Portale";
 			exit();
 		}
-		
-		$errors = register_new_user($user_login, $user_email);
-		//echo var_dump($errors);
+		if($verifica > 0) {
+			echo "Contribuente gia' registrato, contattare l'ufficio amministrativo per ottenere l'accesso al Portale";
+			exit();
+		}
+			
+		$new_user = register_new_user($user_login, $user_email);
+		//echo var_dump($new_user);
 		//exit();
 		
 		
-		if ( !is_wp_error($errors) ) {
-			$results = $wpdb->get_results( 'INSERT INTO wp_tco_utenti (`id`, `idwp_user`, `idtco_contribuente`) VALUES (NULL,'. '"'.$errors.'"'.','.'"'.$exist_id_value.'"'.');', OBJECT );
+		if ( !is_wp_error($new_user) ) {
+			$results = $wpdb->get_results( 'INSERT INTO wp_tco_utenti (`id`, `idwp_user`, `idtco_contribuente`) VALUES (NULL,'. '"'.$new_user.'"'.','.'"'.$exist_id_value.'"'.');', OBJECT );
+			$user_id = wp_update_user( array( 'ID' => $new_user, 'first_name' => $first_name, 'last_name' => $last_name ) );
 			$redirect_to = !empty( $_POST['redirect_to'] ) ? $_POST['redirect_to'] : 'wp-login.php?checkemail=registered';
 			wp_safe_redirect( $redirect_to );
 			exit();
