@@ -5,6 +5,16 @@
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
   <h3 class="post-title">seleziona una riga</h3>
   <br>
+  <form>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-search"></i></div>
+
+        <input type="text" class="form-control" placeholder="Cerca" ng-model="searchVerifica">
+
+      </div>      
+    </div>
+  </form>
   <table class="contracts-data table table-striped text-center">
     <thead>
       <tr>
@@ -19,8 +29,8 @@
       </tr>
     </thead>
     <tbody>
-     <tr ng-repeat="ver in verifica" OnClick="this.getElementsByTagName('input')[0].click();" ng-click="getid(ver.idtacqua_dichiarazione_lettura)">
-        <td><input type="radio" name="contract" id="{{contract.id}}"><img src="images/assets/checkbox.png" ng-style="{{radio}}"><img src="images/assets/checkbox_checked.png" ng-style="{{radio}}"></td>
+     <tr ng-repeat="ver in verifica | filter:searchVerifica" OnClick="this.getElementsByTagName('input')[0].click();" ng-click="getid(ver.idtacqua_dichiarazione_lettura)">
+        <td><input type="radio" name="verifica" id="{{ ver.idtacqua_dichiarazione_lettura }}"><img src="images/assets/checkbox.png" ng-style="{{radio}}"><img src="images/assets/checkbox_checked.png" ng-style="{{radio}}"></td>
         <td>{{ ver.idtacqua_dichiarazione_lettura }}</td>
         <td>{{ ver.cognome }}</td>
 		<td>{{ ver.nome }}</td>

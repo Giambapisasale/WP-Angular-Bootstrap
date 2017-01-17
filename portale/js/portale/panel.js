@@ -233,6 +233,7 @@
     });
 	
 	$scope.permission = false;
+	$scope.searchVerifica= '';
     var mdata = $rootScope.$storage.token_;
     if (mdata.roles == "administrator")
     {
