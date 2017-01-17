@@ -323,7 +323,7 @@
 		$scope.permission = true;
 	}
   });
-	 app.controller("VerificaUtentiCtrl", function($scope, $http, $sce, $rootScope, $stateParams) {
+  app.controller("VerificaUtentiCtrl", function($scope, $http, $sce, $rootScope, $stateParams) {
 
     $http.get( "oauth/client.php?action=p&path=api/public/utenti-verifica/" + $rootScope.$storage.token_.ID )
       .success(function(data, status, header, config) {
@@ -334,6 +334,7 @@
     });
 	
 	$scope.permission = false;
+	$scope.searchUtenteCF= '';
     var mdata = $rootScope.$storage.token_;
     if (mdata.roles == "administrator")
     {

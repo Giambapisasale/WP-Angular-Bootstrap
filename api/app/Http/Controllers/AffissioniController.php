@@ -45,7 +45,8 @@ class AffissioniController extends Controller {
     public function show($id)
     {
         $affissioni = \DB::table("vista_affissioni_dichiazioni_completa")
-            ->where("vista_affissioni_dichiazioni_completa.idtco_utente", "=", $id)
+        	->leftJoin("wp_tco_utenti", "wp_tco_utenti.idtco_contribuente", "=", "vista_affissioni_dichiazioni_completa.idtco_utente")
+        	->where("wp_tco_utenti.idwp_user", "=", $id)
             ->get();
 
         return $affissioni;

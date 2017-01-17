@@ -45,7 +45,9 @@ class PubblicitaController extends Controller {
     public function show($id)
     {
         $pubblicita = \DB::table("vista_pubblicita_dichiazioni_completa")
-            ->where("vista_pubblicita_dichiazioni_completa.idtco_contribuente", "=", $id)
+    	    ->leftJoin("wp_tco_utenti", "wp_tco_utenti.idtco_contribuente", "=", "vista_pubblicita_dichiazioni_completa.idtco_contribuente")
+	        ->where("wp_tco_utenti.idwp_user", "=", $id)
+
             ->get();
 
         return $pubblicita;

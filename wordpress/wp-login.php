@@ -811,6 +811,39 @@ default:
 	}
 
 	$requested_redirect_to = isset( $_REQUEST['redirect_to'] ) ? $_REQUEST['redirect_to'] : '';
+	
+	if ( !is_wp_error($user) && !$reauth ) {
+		// verificare utente e in caso aggiungere un nuovo WP_Error con messaggio corretto per permettere login altri utenti/normale
+		// vedi riga 874
+		$is_verificato = false;
+		
+		global $wpdb;
+		$results = $wpdb->get_results( 'SELECT count(*) as trovato, c.verifica FROM tco_contribuente c '
+				.' join wp_tco_utenti u on c.idtco_contribuente=u.idtco_contribuente where u.idwp_user = '
+				.$user->ID, OBJECT );
+		$result_parse=get_object_vars($results[0]);
+		$exist_value=$result_parse['trovato'];
+		$exist_id_value=$result_parse['verifica'];
+		//echo var_dump($exist_id_value);
+		
+		if(intval($exist_value) > 0 && intval($exist_id_value) > 0)
+		{
+			$is_verificato =true;
+		}		
+		
+		if(!$is_verificato && !is_super_admin( $user->ID )) {
+			wp_logout();
+			$message = '<p class="message">Utente non verificato, completa il processo recandoti presso gli uffici del tuo Comune.</p>';
+			login_header( '', $message );
+			?>
+				</div>
+				<?php
+				/** This action is documented in wp-login.php */
+				do_action( 'login_footer' ); ?>
+				</body></html>
+	<?php		exit;
+			}
+	}
 	/**
 	 * Filter the login redirect URL.
 	 *
@@ -821,7 +854,7 @@ default:
 	 * @param WP_User|WP_Error $user                  WP_User object if login was successful, WP_Error object otherwise.
 	 */
 	$redirect_to = apply_filters( 'login_redirect', $redirect_to, $requested_redirect_to, $user );
-
+	
 	if ( !is_wp_error($user) && !$reauth ) {
 		if ( $interim_login ) {
 			$message = '<p class="message">' . __('You have logged in successfully.') . '</p>';
@@ -837,7 +870,7 @@ default:
 			</body></html>
 <?php		exit;
 		}
-
+		
 		if ( ( empty( $redirect_to ) || $redirect_to == 'wp-admin/' || $redirect_to == admin_url() ) ) {
 			// If the user doesn't belong to a blog, send them to user admin. If the user can't edit posts, send them to their profile.
 			if ( is_multisite() && !get_active_blog_for_user($user->ID) && !is_super_admin( $user->ID ) )
@@ -930,15 +963,16 @@ default:
 
 <?php if ( ! $interim_login ) { ?>
 <p id="nav">
+<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>" title="<?php esc_attr_e( 'Password Lost and Found' ); ?>"><?php _e( 'Lost your password?' ); ?></a> | 
 <?php if ( ! isset( $_GET['checkemail'] ) || ! in_array( $_GET['checkemail'], array( 'confirm', 'newpass' ) ) ) :
 	if ( get_option( 'users_can_register' ) ) :
 		$registration_url = sprintf( '<a href="%s">%s</a>', esc_url( wp_registration_url() ), __( 'Register' ) );
 
 		/** This filter is documented in wp-includes/general-template.php */
-		echo apply_filters( 'register', $registration_url ) . ' | ';
+		echo apply_filters( 'register', $registration_url );
 	endif;
 	?>
-	<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>" title="<?php esc_attr_e( 'Password Lost and Found' ); ?>"><?php _e( 'Lost your password?' ); ?></a>
+	
 <?php endif; ?>
 </p>
 <?php } ?>

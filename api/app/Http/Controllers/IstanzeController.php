@@ -87,9 +87,13 @@ class IstanzeController extends Controller {
 		$titolo = \Input::get('titolo');
 		$oggetto = \Input::get('oggetto');
 		$tipo_di_istanza = \Input::get('tipo_di_istanza');
+		
+		$contribuente = \DB::table("wp_tco_utenti")
+        	->where("wp_tco_utenti.idwp_user", "=", $id_utente)
+            ->first(); 
 
 		$inserimento = \DB::table('tco_istanza')->insert([
-				[ 'id_utente'=> $id_utente,'data_istanza'=>$data,'titolo' => $titolo,'oggetto' => $oggetto,'tipo_di_istanza' => $tipo_di_istanza,'url_allegato'=>$url_file]
+				[ 'id_utente'=> $contribuente->idtco_contribuente,'data_istanza'=>$data,'titolo' => $titolo,'oggetto' => $oggetto,'tipo_di_istanza' => $tipo_di_istanza,'url_allegato'=>$url_file]
 			]);
 		
 		return "<script>window.location='/portale/#/panel/success/';</script>";

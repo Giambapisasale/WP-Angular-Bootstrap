@@ -99,7 +99,8 @@ class ContrattoController extends Controller {
 		$contratti = \DB::table("tacqua_dichiarazione")
 			->leftJoin("tco_contribuente_recapito", "tacqua_dichiarazione.idtco_recapito", "=", "tco_contribuente_recapito.idtco_contribuente_recapito")
 			->leftJoin("tacqua_tbl_categoria", "tacqua_dichiarazione.idtacqua_tbl_categoria", "=", "tacqua_tbl_categoria.idtacqua_tbl_categoria")
-			->where("tacqua_dichiarazione.idtco_contribuente", "=", $id)
+			->leftJoin("wp_tco_utenti", "wp_tco_utenti.idtco_contribuente", "=", "tacqua_dichiarazione.idtco_contribuente")
+			->where("wp_tco_utenti.idwp_user", "=", $id)
 			->selectRaw('idtacqua_dichiarazione as id,
 					indirizzo, 
 					categoria,

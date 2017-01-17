@@ -70,7 +70,7 @@ class RegistrazioneController extends Controller {
 		
 		if ($validator->fails()) {
 			 //return "Errore nei dati inseriti, riprovare <script>setTimeout(function(){ javascript:history.go(-1) }, 3000);</script>";
-				return "<script>window.location=/portale/#/panel/errore/<script>";
+				return "<script>window.location='/portale/#/panel/errore/';<script>";
 		}
 		
 		

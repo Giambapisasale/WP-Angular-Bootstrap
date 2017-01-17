@@ -8,7 +8,8 @@
   <table class="contracts-data table table-striped">
     <thead>
       <tr>
-        <td><h4>Indirizzo di ubicazione</h4></td>
+        <td><h4>#</h4></td>
+        <td><h4>Indirizzo</h4></td>
         <td><h4>Categoria utilizzo</h4></td>
         <td><h4>Matricola contatore</h4></td>
         <td><h4>Data inizio contratto</h4></td>
@@ -17,6 +18,7 @@
     <tbody>
       <tr ng-repeat="contract in contracts_.contracts" OnClick="this.getElementsByTagName('input')[0].click();" ng-click="getid(contract.id)">
         <td><input type="radio" name="contract" id="{{contract.id}}"><img src="images/assets/checkbox.png" ng-style="{{radio}}"><img src="images/assets/checkbox_checked.png" ng-style="{{radio}}"> &nbsp; {{contract.indirizzo}}</td>
+        <td>{{contract.indirizzo}}</td>
         <td>{{contract.categoria}}</td>
         <td>{{contract.matricola}}</td>
         <td>{{contract.data}}</td>
