@@ -11,6 +11,8 @@ use Form;
 
 class BackupDownloadController extends Controller {
 
+	var $apiKey = "---------------";
+	
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -50,7 +52,8 @@ class BackupDownloadController extends Controller {
 		header('Content-Type: application/json');
 		
 		$rules = array(
-		'tableName'      	 => 'required'
+			'tableName'			=> 'required',
+			'apiKey' 			=> 'required'	
 		);
 		$validatorFail = Validator::make(\Input::all(), $rules)->fails() ? true : false;
 		if ($validatorFail) 
@@ -59,9 +62,10 @@ class BackupDownloadController extends Controller {
 			return json_encode($returnObject);
 		}
 		
-		session_start();
+		//session_start();
+		$apiKey = \Input::get('apiKey');
 		
-		if(!isset($_SESSION["userData"]) || $this->isNotAdmin($_SESSION["userData"]))
+		if(!isset($apiKey) || $apiKey != $this->apiKey)
 		{
 			$returnObject = array('error' => 'ERROR: Only admins can use this functionality!');
 			return json_encode($returnObject);
@@ -94,11 +98,11 @@ class BackupDownloadController extends Controller {
 			$returnObject = array('error' => 'ERROR: something went wrong.');
 			return json_encode($returnObject);
 		}
-		
-		session_start();
-		
+	
 		$returnObject;
-		if(!isset($_SESSION["userData"]) || $this->isNotAdmin($_SESSION["userData"]))
+		$apiKey = \Input::get('apiKey');
+		
+		if(!isset($apiKey) || $apiKey != $this->apiKey)
 		{
 			$returnObject = array('error' => 'ERROR: Only admins can use this functionality!');
 			return json_encode($returnObject);
